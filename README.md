@@ -20,11 +20,14 @@ Team Forever
 Team Leads:
 ElspethThePict
 Aprkot
+AlyStyle
 
 Coding:
 ElspethThePict
 Cosmic Eternity
-Xanman
+AlyStyle
+Tania
+with contributions from Leonx254
 
 Artists:
 Aprkot
@@ -32,13 +35,12 @@ Cosmic Eternity
 Cyb
 KatKuriN
 Louplayer
-Makoto
 Retro
 Storice
 TruthTomato
-Underscore_
-Xanman
-with contribution by GreenKnight9000
+Viator_
+AlyStyle
+with contribution by GreenKnight9000 & Makoto
 
 Animation Supervisor:
 Retro
@@ -52,7 +54,7 @@ Credits Medley remastered by DJ Spindash
 Testers:
 BrySkye
 Cosmic Eternity
-Cyberdrem
+Cybercymbre
 Denzel The Eternal Understudy
 Freezer X-Treme
 Goofyking
@@ -63,18 +65,18 @@ Petlamb
 Retro
 Storice
 Tania
-ThunderLion
+ThunderLeon
 TruthTomato
-Xanman
+AlyStyle
 
 Website:
 Petlamb
-Xanman
-Underscore_
+AlyStyle
+Viator_
 
 Trailers:
 ElspethThePict
-Xanman
+AlyStyle
 
 
 
