@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ObjDef xmlns="http://www.sonicretro.org" Image="frame">
+  <Images>
+    <ImageFromSheet id="frame" sheet="CNZ/Objects.gif" sourcex="1" sourcey="99" width="48" height="40">
+      <Offset X="-24" Y="-20"/>
+    </ImageFromSheet>
+  </Images>
+  <Properties>
+    <Property name="Reward" description="Which prize type this object should have. Rings Machines should have a Slots Display object in the following object slot." type="rewards" startbit="0" length="8" />
+  </Properties>
+  <Enums>
+    <Enum name="rewards">
+      <EnumMember name="Points" />
+      <EnumMember name="Rings" />
+    </Enum>
+  </Enums>
+  <Subtypes>
+    <Subtype id="00" name="Combo Machine" image="frame" />
+    <Subtype id="01" name="Prize Machine" image="frame" />
+  </Subtypes>
+</ObjDef>

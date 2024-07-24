@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ObjDef xmlns="http://www.sonicretro.org">
+  <Images>
+    <ImageFromSheet id="frame1" sheet="HPZ/Objects.gif" sourcex="256" sourcey="114" width="80" height="24">
+      <Offset X="-40" Y="-12" />
+    </ImageFromSheet>
+    <ImageFromSheet id="frame2" sheet="HPZ/Objects.gif" sourcex="256" sourcey="139" width="8" height="56">
+      <Offset X="-40" Y="12" />
+    </ImageFromSheet>
+    <ImageFromSheet id="frame3" sheet="HPZ/Objects.gif" sourcex="256" sourcey="196" width="8" height="56">
+      <Offset X="32" Y="12" />
+    </ImageFromSheet>
+    <ImageFromSheet id="frame4" sheet="HPZ/Objects.gif" sourcex="451" sourcey="132" width="32" height="32">
+      <Offset X="-16" Y="-16" />
+    </ImageFromSheet>
+    <ImageFromSheet id="frame5" sheet="HPZ/Objects.gif" sourcex="402" sourcey="66" width="40" height="40">
+      <Offset X="-20" Y="-20" />
+    </ImageFromSheet>
+    <ImageFromSheet id="frame6" sheet="HPZ/Objects.gif" sourcex="353" sourcey="66" width="48" height="48">
+      <Offset X="-24" Y="-24" />
+    </ImageFromSheet>
+    <ImageFromSheet id="frame7" sheet="HPZ/Objects.gif" sourcex="418" sourcey="107" width="24" height="24">
+      <Offset X="-12" Y="-12" />
+    </ImageFromSheet>
+    <ImageFromSheet id="frame8" sheet="HPZ/Objects.gif" sourcex="378" sourcey="115" width="20" height="20">
+      <Offset X="-10" Y="-10" />
+    </ImageFromSheet>
+    <ImageFromSheet id="frame9" sheet="HPZ/Objects.gif" sourcex="361" sourcey="115" width="16" height="16">
+      <Offset X="-8" Y="-8" />
+    </ImageFromSheet>
+    <ImageFromSheet id="frame10" sheet="HPZ/Objects.gif" sourcex="349" sourcey="115" width="6" height="8">
+      <Offset X="-3" Y="-4" />
+    </ImageFromSheet>
+    <ImageFromSheet id="frame11" sheet="HPZ/Objects.gif" sourcex="349" sourcey="119" width="6" height="8">
+      <Offset X="-3" Y="-4" />
+    </ImageFromSheet>
+    <ImageFromSheet id="frame12" sheet="HPZ/Objects.gif" sourcex="356" sourcey="115" width="4" height="8">
+      <Offset X="-2" Y="-4" />
+    </ImageFromSheet>
+    <ImageFromSheet id="frame13" sheet="HPZ/Objects.gif" sourcex="356" sourcey="119" width="4" height="8">
+      <Offset X="-2" Y="-4" />
+    </ImageFromSheet>
+    <ImageFromSheet id="frame14" sheet="HPZ/Objects.gif" sourcex="337" sourcey="115" width="6" height="8">
+      <Offset X="-3" Y="-4" />
+    </ImageFromSheet>
+    <ImageFromSheet id="frame15" sheet="HPZ/Objects.gif" sourcex="337" sourcey="119" width="6" height="8">
+      <Offset X="-3" Y="-4" />
+    </ImageFromSheet>
+    <ImageFromSheet id="frame16" sheet="HPZ/Objects.gif" sourcex="344" sourcey="115" width="4" height="8">
+      <Offset X="-2" Y="-4" />
+    </ImageFromSheet>
+    <ImageFromSheet id="frame17" sheet="HPZ/Objects.gif" sourcex="344" sourcey="119" width="4" height="8">
+      <Offset X="-2" Y="-4" />
+    </ImageFromSheet>
+  </Images>
+  <ImageSets>
+    <ImageSet id="pendulum">
+      <ImageRef image="frame16">
+        <Offset Y="28" />
+      </ImageRef>
+      <ImageRef image="frame17">
+        <Offset Y="36" />
+      </ImageRef>
+      <ImageRef image="frame14">
+        <Offset Y="12" />
+      </ImageRef>
+      <ImageRef image="frame15">
+        <Offset Y="20" />
+      </ImageRef>
+      <ImageRef image="frame7">
+        <Offset Y="52" />
+      </ImageRef>
+      <ImageRef image="frame1" />
+      <ImageRef image="frame2" />
+      <ImageRef image="frame3" />
+      <ImageRef image="frame11">
+        <Offset Y="-12" />
+      </ImageRef>
+      <ImageRef image="frame10">
+        <Offset Y="-20" />
+      </ImageRef>
+      <ImageRef image="frame13">
+        <Offset Y="-28" />
+      </ImageRef>
+      <ImageRef image="frame12">
+        <Offset Y="-36" />
+      </ImageRef>
+      <ImageRef image="frame4">
+        <Offset Y="-52" />
+      </ImageRef>
+    </ImageSet>
+  </ImageSets>
+  <DefaultImage>
+    <ImageSetRef set="pendulum" />
+  </DefaultImage>
+</ObjDef>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ObjDef xmlns="http://www.sonicretro.org">
+  <Images>
+    <ImageFromSheet id="body" sheet="HPZ/Objects.gif" sourcex="33" sourcey="123" width="32" height="20">
+      <Offset X="-16" Y="-16" />
+    </ImageFromSheet>
+    <ImageFromSheet id="frontTentacle" sheet="HPZ/Objects.gif" sourcex="198" sourcey="50" width="6" height="6">
+      <Offset X="-3" Y="-3" />
+    </ImageFromSheet>
+    <ImageFromSheet id="backTentacle" sheet="HPZ/Objects.gif" sourcex="33" sourcey="144" width="6" height="6">
+      <Offset X="-3" Y="-3" />
+    </ImageFromSheet>
+  </Images>
+  <ImageSets>
+    <ImageSet id="jellygnite">
+      <ImageRef image="backTentacle" >
+        <Offset X="4" Y="7" />
+      </ImageRef>
+      <ImageRef image="backTentacle" >
+        <Offset X="3" Y="13" />
+      </ImageRef>
+      <ImageRef image="backTentacle" >
+        <Offset X="2" Y="20" />
+      </ImageRef>
+      <ImageRef image="backTentacle" >
+        <Offset X="1" Y="26" />
+      </ImageRef>
+      <ImageRef image="frontTentacle" >
+        <Offset X="-13" Y="7" />
+      </ImageRef>
+      <ImageRef image="frontTentacle" >
+        <Offset X="-13" Y="13" />
+      </ImageRef>
+      <ImageRef image="frontTentacle" >
+        <Offset X="-13" Y="19" />
+      </ImageRef>
+      <ImageRef image="frontTentacle" >
+        <Offset X="-13" Y="25" />
+      </ImageRef>
+      <ImageRef image="frontTentacle" >
+        <Offset X="13" Y="7" />
+      </ImageRef>
+      <ImageRef image="frontTentacle" >
+        <Offset X="13" Y="13" />
+      </ImageRef>
+      <ImageRef image="frontTentacle" >
+        <Offset X="13" Y="19" />
+      </ImageRef>
+      <ImageRef image="frontTentacle" >
+        <Offset X="13" Y="25" />
+      </ImageRef>
+      <ImageRef image="body" />
+    </ImageSet>
+  </ImageSets>
+  <DefaultImage>
+    <ImageSetRef set="jellygnite" />
+  </DefaultImage>
+</ObjDef>

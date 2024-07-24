@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ObjDef xmlns="http://www.sonicretro.org" Image="script">
+  <Images>
+    <ImageFromSheet id="script" sheet="Global/Display.gif" sourcex="1" sourcey="143" width="32" height="32">
+      <Offset X="-16" Y="-16"/>
+    </ImageFromSheet>
+  </Images>
+  <Properties>
+    <Property name="Variant" description="Which type of Earthquake this object is." type="types" startbit="0" length="8" /> <!-- this object is half hardcoded so i'm not really sure what else to do here? -->
+  </Properties>
+  <Enums>
+    <Enum name="types">
+      <EnumMember name="Ground (Flat)" />
+      <EnumMember name="Ground (Wall)" />
+      <EnumMember name="Lava (Wide, Ver 1)" />
+      <EnumMember name="Ground (Sloped)" />
+      <EnumMember name="Lava (Wide, Ver 2)" />
+      <EnumMember name="Lava (Wide, Ver 3)" />
+    </Enum>
+  </Enums>
+  <Subtypes>
+    <Subtype id="00" name="Ground (Flat)" image="script" />
+    <Subtype id="01" name="Ground (Wall)" image="script" />
+    <Subtype id="02" name="Lava (Wide, Ver 1)" image="script" />
+    <Subtype id="03" name="Ground (Sloped)" image="script" />
+    <Subtype id="04" name="Lava (Wide, Ver 2)" image="script" />
+    <Subtype id="05" name="Lava (Wide, Ver 3)" image="script" />
+  </Subtypes>
+</ObjDef>

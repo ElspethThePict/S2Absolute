@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ObjDef xmlns="http://www.sonicretro.org" Image="spear">
+  <Images>
+    <ImageFromSheet id="spear" sheet="MPZ/Objects.gif" sourcex="34" sourcey="102" width="8" height="32">
+      <Offset X="-4" Y="-16"/>
+    </ImageFromSheet>
+  </Images>
+  <Properties>
+    <Property name="Interval Offset" description="How offset this Spear should be from the global cycle." type="int" startbit="0" length="7" />
+  </Properties>
+</ObjDef>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ObjDef xmlns="http://www.sonicretro.org" Image="block">
+  <Images>
+    <ImageFromSheet id="block" sheet="MCZ/Objects.gif" sourcex="70" sourcey="0" width="32" height="32">
+      <Offset X="-16" Y="-16" />
+    </ImageFromSheet>
+  </Images>
+  <Display>
+    <DisplayOption>
+      <ImageRef image="block" xflip="NeverFlip" yflip="NeverFlip" />
+    </DisplayOption>
+  </Display>
+</ObjDef>

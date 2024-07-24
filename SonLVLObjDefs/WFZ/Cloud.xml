@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ObjDef xmlns="http://www.sonicretro.org" Image="long">
+  <Images>
+    <ImageFromSheet id="long" sheet="SCZ/Objects.gif" sourcex="72" sourcey="74" width="79" height="8">
+      <Offset X="-40" Y="-4" />
+    </ImageFromSheet>
+    <ImageFromSheet id="medium" sheet="SCZ/Objects.gif" sourcex="72" sourcey="83" width="48" height="8">
+      <Offset X="-24" Y="-4" />
+    </ImageFromSheet>
+    <ImageFromSheet id="small" sheet="SCZ/Objects.gif" sourcex="121" sourcey="83" width="16" height="8">
+      <Offset X="-8" Y="-4" />
+    </ImageFromSheet>
+  </Images>
+  <Properties>
+    <Property name="Frame ID" description="Which frame this Cloud should display." type="frames" startbit="0" length="8" />
+  </Properties>
+  <Enums>
+    <Enum name="frames">
+      <EnumMember name="Long Cloud" />
+      <EnumMember name="Medium Cloud" />
+      <EnumMember name="Small Cloud" />
+    </Enum>
+  </Enums>
+  <Subtypes>
+    <Subtype id="00" name="Long Cloud" image="long" />
+    <Subtype id="01" name="Medium Cloud" image="medium" />
+    <Subtype id="02" name="Small Cloud" image="small" />
+  </Subtypes>
+</ObjDef>

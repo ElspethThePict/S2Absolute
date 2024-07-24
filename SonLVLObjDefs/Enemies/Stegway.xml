@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ObjDef xmlns="http://www.sonicretro.org" Image="stegway">
+  <Images>
+    <ImageFromSheet id="stegway" sheet="HPZ/Objects.gif" sourcex="40" sourcey="57" width="48" height="32">
+      <Offset X="-24" Y="-16"/>
+    </ImageFromSheet>
+  </Images>
+  <Properties>
+    <Property name="Direction" description="Which way the Stegway will be facing initially." type="dirs" startbit="0" length="8" />
+  </Properties>
+  <Enums>
+    <Enum name="dirs">
+      <EnumMember name="Left" />
+      <EnumMember name="Right" />
+    </Enum>
+  </Enums>
+  <ImageSets>
+    <ImageSet id="left">
+      <ImageRef image="stegway" xflip="NeverFlip"/>
+    </ImageSet>
+    <ImageSet id="right">
+      <ImageRef image="stegway" xflip="AlwaysFlip"/>
+    </ImageSet>
+  </ImageSets>
+  <DefaultImage>
+    <ImageSetRef set="left" />
+  </DefaultImage>
+  <Subtypes>
+    <Subtype id="00" name="Facing Left">
+      <ImageSetRef set="left" />
+    </Subtype>
+    <Subtype id="01" name="Facing Right">
+      <ImageSetRef set="right" />
+    </Subtype>
+  </Subtypes>
+</ObjDef>

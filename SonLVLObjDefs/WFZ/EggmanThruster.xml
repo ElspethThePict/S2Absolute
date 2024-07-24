@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ObjDef xmlns="http://www.sonicretro.org" Image="thruster">
+  <Images>
+    <ImageFromSheet id="thruster" sheet="SCZ/Objects.gif" sourcex="203" sourcey="90" width="32" height="28">
+      <Offset X="-16" Y="-14" />
+    </ImageFromSheet>
+  </Images>
+  <Properties>
+    <Property name="Interval" description="Which Interval this Thruster should follow." type="intervals" startbit="0" length="8" />
+  </Properties>
+  <Enums>
+    <Enum name="intervals">
+      <EnumMember name="Interval A" />
+      <EnumMember name="Interval B" />
+    </Enum>
+  </Enums>
+  <Subtypes>
+    <Subtype id="00" name="Interval A" image="thruster" />
+    <Subtype id="01" name="Interval B" image="thruster" />
+  </Subtypes>
+</ObjDef>

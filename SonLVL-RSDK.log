@@ -1,0 +1,13 @@
+Operating system: Microsoft Windows NT 6.2.9200.0
+Opening game "E:\Sonic Modding\Sonic2Absolute\SonLVL.ini"...
+Game type is V4.
+System.InvalidOperationException: Undo system is not initialized!
+   at SonicRetro.SonLVL.API.UndoSystem.CreateState(String name) in D:\Repos\SonLVL-RSDK\SonLVLAPI\UndoSystem.cs:line 40
+   at SonicRetro.SonLVL.GUI.MainForm.SaveState(String name) in D:\Repos\SonLVL-RSDK\SonLVL\MainForm.cs:line 881
+   at SonicRetro.SonLVL.GUI.MainForm.foregroundPanel_MouseUp(Object sender, MouseEventArgs e) in D:\Repos\SonLVL-RSDK\SonLVL\MainForm.cs:line 3168
+   at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+   at System.Windows.Forms.Control.OnMouseUp(MouseEventArgs e)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.UserControl.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)

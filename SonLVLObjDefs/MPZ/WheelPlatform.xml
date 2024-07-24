@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ObjDef xmlns="http://www.sonicretro.org">
+  <Images>
+    <ImageFromSheet id="sprite1" sheet="MPZ/Objects.gif" sourcex="479" sourcey="182" width="32" height="24">
+      <Offset X="-16" Y="-12" />
+    </ImageFromSheet>
+    <ImageFromSheet id="sprite2" sheet="MPZ/Objects.gif" sourcex="479" sourcey="133" width="32" height="24">
+      <Offset X="-16" Y="-12" />
+    </ImageFromSheet>
+    <ImageFromSheet id="sprite3" sheet="MPZ/Objects.gif" sourcex="349" sourcey="165" width="80" height="16">
+      <Offset X="-40" Y="-8" />
+    </ImageFromSheet>
+    <ImageFromSheet id="sprite4" sheet="MPZ/Objects.gif" sourcex="319" sourcey="207" width="192" height="48">
+      <Offset X="-96" Y="-24" />
+    </ImageFromSheet>
+  </Images>
+  <Properties>
+    <Property name="Interval Offset" description="How offset this Wheel Platform's rotation should be from the global cycle." type="offsets" startbit="0" length="2" />
+  </Properties>
+  <Enums>
+    <Enum name="offsets">
+      <EnumMember name="0%" />
+      <EnumMember name="25%" />
+      <EnumMember name="50%" />
+      <EnumMember name="75%" />
+    </Enum>
+  </Enums>
+  <ImageSets>
+    <ImageSet id="wheelplat">
+      <ImageRef image="sprite4" />
+      <ImageRef image="sprite3" >
+        <Offset X="-136" Y="12"/>
+      </ImageRef>
+      <ImageRef image="sprite1" >
+        <Offset X="-192" Y="12"/>
+      </ImageRef>
+      <ImageRef image="sprite3" >
+        <Offset X="136" Y="12"/>
+      </ImageRef>
+      <ImageRef image="sprite2" >
+        <Offset X="192" Y="12"/>
+      </ImageRef>
+    </ImageSet>
+  </ImageSets>
+  <DefaultImage>
+    <ImageSetRef set="wheelplat" />
+  </DefaultImage>
+  <Subtypes>
+    <Subtype id="00" name="0% Cycle Offset">
+      <ImageSetRef set="wheelplat" />
+    </Subtype>
+    <Subtype id="01" name="25% Cycle Offset">
+      <ImageSetRef set="wheelplat" />
+    </Subtype>
+    <Subtype id="02" name="50% Cycle Offset">
+      <ImageSetRef set="wheelplat" />
+    </Subtype>
+    <Subtype id="03" name="75% Cycle Offset">
+      <ImageSetRef set="wheelplat" />
+    </Subtype>
+  </Subtypes>
+</ObjDef>

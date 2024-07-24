@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ObjDef xmlns="http://www.sonicretro.org" Image="siren">
+  <Images>
+    <ImageFromSheet id="siren" sheet="CPZ/Objects.gif" sourcex="198" sourcey="207" width="16" height="48">
+      <Offset X="-8" Y="-48"/>
+    </ImageFromSheet>
+    <ImageFromSheet id="light" sheet="CPZ/Objects.gif" sourcex="215" sourcey="216" width="8" height="39">
+      <Offset X="-4" Y="-40"/>
+    </ImageFromSheet>
+  </Images>
+  <Properties>
+    <Property name="Frame" description="Which sprite this Accessory will use." type="frames" startbit="0" length="8" />
+  </Properties>
+  <Enums>
+    <Enum name="frames">
+      <EnumMember name="Siren" />
+      <EnumMember name="Light" />
+    </Enum>
+  </Enums>
+  <Subtypes>
+    <Subtype id="00" name="Siren" image="siren" />
+    <Subtype id="01" name="Light" image="light" />
+  </Subtypes>
+</ObjDef>

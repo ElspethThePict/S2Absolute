@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ObjDef xmlns="http://www.sonicretro.org" Image="robotnik">
+  <Images>
+    <ImageFromSheet id="base" sheet="Global/Items2.gif" sourcex="34" sourcey="132" width="48" height="16">
+      <Offset X="-24" Y="16"/>
+    </ImageFromSheet>
+    <ImageFromSheet id="robotnik" sheet="Global/Items2.gif" sourcex="34" sourcey="100" width="48" height="32">
+      <Offset X="-24" Y="-16"/>
+    </ImageFromSheet>
+    <ImageFromSheet id="sonic" sheet="Global/Items2.gif" sourcex="34" sourcey="1" width="48" height="32">
+      <Offset X="-24" Y="-16"/>
+    </ImageFromSheet>
+    <ImageFromSheet id="tails" sheet="Global/Items2.gif" sourcex="34" sourcey="34" width="48" height="32">
+      <Offset X="-24" Y="-16"/>
+    </ImageFromSheet>
+  </Images>
+  <Properties>
+    <Property name="Mode" description="Used to differentiate multiplayer Signposts from regular Signposts." type="Modes" startbit="0" length="8" />
+  </Properties>
+  <Enums>
+    <Enum name="Modes">
+      <EnumMember name="Normal" />
+      <EnumMember name="VS Only (Y Bounds)" />
+      <EnumMember name="VS Only (No Y Bounds)" />
+    </Enum>
+  </Enums>
+  <DefaultImage>
+    <ImageRef image="base" />
+    <ImageRef image="robotnik" />
+  </DefaultImage>
+  <ImageSets>
+    <ImageSet id="robotnik">
+      <ImageRef image="base" />
+      <ImageRef image="robotnik" />
+    </ImageSet>
+    <ImageSet id="sonic">
+      <ImageRef image="base" />
+      <ImageRef image="sonic" />
+    </ImageSet>
+    <ImageSet id="tails">
+      <ImageRef image="base" />
+      <ImageRef image="tails" />
+    </ImageSet>
+  </ImageSets>
+  <Subtypes>
+    <Subtype id="00" name="Normal">
+      <ImageSetRef set="robotnik" />
+    </Subtype>
+    <Subtype id="01" name="VS Only (Y Bounds)">
+      <ImageSetRef set="sonic" />
+    </Subtype>
+    <Subtype id="02" name="VS Only (No Y Bounds)">
+      <ImageSetRef set="tails" />
+    </Subtype>
+  </Subtypes>
+</ObjDef>

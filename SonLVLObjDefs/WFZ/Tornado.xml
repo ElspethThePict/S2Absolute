@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ObjDef xmlns="http://www.sonicretro.org">
+  <Images>
+    <ImageFromSheet id="propeller" sheet="SCZ/Objects.gif" sourcex="378" sourcey="215" width="4" height="24">
+      <Offset X="21" Y="8" />
+    </ImageFromSheet>
+    <ImageFromSheet id="tornado" sheet="SCZ/Objects.gif" sourcex="261" sourcey="191" width="116" height="64">
+      <Offset X="-95" Y="-16" />
+    </ImageFromSheet>
+    <ImageFromSheet id="tails" sheet="SCZ/Objects.gif" sourcex="261" sourcey="174" width="21" height="16">
+      <Offset X="-45" Y="-8" />
+    </ImageFromSheet>
+  </Images>
+  <Properties>
+    <Property name="Cutscene Type" description="Which cutscene type this Tornado is for." type="types" startbit="0" length="1" />
+  </Properties>
+  <Enums>
+    <Enum name="types">
+      <EnumMember name="Intro" />
+      <EnumMember name="Outro" />
+    </Enum>
+  </Enums>
+  <ImageSets>
+    <ImageSet id="tornado">
+      <ImageRef image="propeller" />
+      <ImageRef image="tornado" />
+      <ImageRef image="tails" />
+    </ImageSet>
+  </ImageSets>
+  <Subtypes>
+    <Subtype id="00" name="Intro Tornado">
+      <ImageSetRef set="tornado" />
+    </Subtype>
+    <Subtype id="01" name="Outro Tornado">
+      <ImageSetRef set="tornado" />
+    </Subtype>
+  </Subtypes>
+  <DefaultImage>
+    <ImageSetRef set="tornado" />
+  </DefaultImage>
+</ObjDef>

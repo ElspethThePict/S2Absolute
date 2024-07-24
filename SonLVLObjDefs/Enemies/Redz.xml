@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ObjDef xmlns="http://www.sonicretro.org" Image="redz">
+  <Images>
+    <ImageFromSheet id="redz" sheet="HPZ/Objects.gif" sourcex="1" sourcey="118" width="31" height="32">
+      <Offset X="-16" Y="-16"/>
+    </ImageFromSheet>
+  </Images>
+  <Properties>
+    <Property name="Direction" description="Which way the Redz will be facing initially." type="dirs" startbit="0" length="8" />
+  </Properties>
+  <Enums>
+    <Enum name="dirs">
+      <EnumMember name="Left" />
+      <EnumMember name="Right" />
+    </Enum>
+  </Enums>
+  <ImageSets>
+    <ImageSet id="left">
+      <ImageRef image="redz" xflip="NeverFlip"/>
+    </ImageSet>
+    <ImageSet id="right">
+      <ImageRef image="redz" xflip="AlwaysFlip"/>
+    </ImageSet>
+  </ImageSets>
+  <DefaultImage>
+    <ImageSetRef set="left" />
+  </DefaultImage>
+  <Subtypes>
+    <Subtype id="00" name="Facing Left">
+      <ImageSetRef set="left" />
+    </Subtype>
+    <Subtype id="01" name="Facing Right">
+      <ImageSetRef set="right" />
+    </Subtype>
+  </Subtypes>
+</ObjDef>

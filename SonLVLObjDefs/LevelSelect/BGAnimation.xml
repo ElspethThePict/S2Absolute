@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ObjDef xmlns="http://www.sonicretro.org">
+  <Images>
+    <ImageFromSheet id="sgame" sheet="LevelSelect/Icons.gif" sourcex="0" sourcey="50" width="32" height="24">
+      <Offset X="-25" Y="-12"/>
+    </ImageFromSheet>
+    <ImageFromSheet id="frame" sheet="LevelSelect/Icons.gif" sourcex="0" sourcey="0" width="80" height="50">
+      <Offset X="-49" Y="-24"/>
+    </ImageFromSheet>
+  </Images>
+  <Properties>
+    <Property name="Hidden" description="If the zone preview should be hidden or not. The background will be animated regardless of what this value is set to." type="bool" startbit="0" length="1" />
+  </Properties>
+  <ImageSets>
+    <ImageSet id="sonicm">
+      <ImageRef image="frame" />
+      <ImageRef image="sgame" />
+    </ImageSet>
+  </ImageSets>
+  <DefaultImage>
+    <ImageSetRef set="sonicm" />
+  </DefaultImage>
+</ObjDef>

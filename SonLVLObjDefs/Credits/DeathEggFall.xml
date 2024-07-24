@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ObjDef xmlns="http://www.sonicretro.org" Image="angelisland">
+  <Images>
+    <ImageFromSheet id="skybg" sheet="Ending/Fall.gif" sourcex="1" sourcey="1" width="96" height="96">
+      <Offset X="-48" Y="-48" />
+    </ImageFromSheet>
+    <ImageFromSheet id="deathegg" sheet="Ending/Fall.gif" sourcex="163" sourcey="1" width="42" height="42">
+      <Offset X="-21" Y="-21" />
+    </ImageFromSheet>
+    <ImageFromSheet id="angelisland" sheet="Ending/Fall.gif" sourcex="98" sourcey="1" width="64" height="64">
+      <Offset X="-32" Y="-32" />
+    </ImageFromSheet>
+    <ImageFromSheet id="widecloud" sheet="Ending/Fall.gif" sourcex="206" sourcey="1" width="48" height="8">
+      <Offset X="-24" Y="-4" />
+    </ImageFromSheet>
+    <ImageFromSheet id="smallcloud" sheet="Ending/Fall.gif" sourcex="206" sourcey="10" width="16" height="8">
+      <Offset X="-8" Y="-4" />
+    </ImageFromSheet>
+    <ImageFromSheet id="dust_1_1" sheet="Ending/Fall.gif" sourcex="98" sourcey="66" width="16" height="13">
+      <Offset X="-8" Y="-7" />
+    </ImageFromSheet>
+    <ImageFromSheet id="dust_1_2" sheet="Ending/Fall.gif" sourcex="115" sourcey="66" width="15" height="14">
+      <Offset X="-8" Y="-7" />
+    </ImageFromSheet>
+    <ImageFromSheet id="dust_1_3" sheet="Ending/Fall.gif" sourcex="131" sourcey="66" width="15" height="14">
+      <Offset X="-8" Y="-7" />
+    </ImageFromSheet>
+    <ImageFromSheet id="dust_1_4" sheet="Ending/Fall.gif" sourcex="147" sourcey="66" width="12" height="12">
+      <Offset X="-6" Y="-6" />
+    </ImageFromSheet>
+    <ImageFromSheet id="explosion_1" sheet="Ending/Fall.gif" sourcex="98" sourcey="81" width="16" height="13">
+      <Offset X="-8" Y="-7" />
+    </ImageFromSheet>
+    <ImageFromSheet id="explosion_2" sheet="Ending/Fall.gif" sourcex="115" sourcey="81" width="15" height="14">
+      <Offset X="-8" Y="-7" />
+    </ImageFromSheet>
+    <ImageFromSheet id="explosion_3" sheet="Ending/Fall.gif" sourcex="131" sourcey="81" width="15" height="14">
+      <Offset X="-8" Y="-7" />
+    </ImageFromSheet>
+    <ImageFromSheet id="explosion_4" sheet="Ending/Fall.gif" sourcex="131" sourcey="96" width="12" height="12">
+      <Offset X="-6" Y="-6" />
+    </ImageFromSheet>
+    <ImageFromSheet id="dust_s_1_1" sheet="Ending/Fall.gif" sourcex="163" sourcey="44" width="8" height="7">
+      <Offset X="-4" Y="-4" />
+    </ImageFromSheet>
+    <ImageFromSheet id="dust_s_1_2" sheet="Ending/Fall.gif" sourcex="172" sourcey="44" width="8" height="7">
+      <Offset X="-4" Y="-4" />
+    </ImageFromSheet>
+    <ImageFromSheet id="dust_s_1_3" sheet="Ending/Fall.gif" sourcex="181" sourcey="44" width="8" height="7">
+      <Offset X="-4" Y="-4" />
+    </ImageFromSheet>
+    <ImageFromSheet id="dust_s_1_4" sheet="Ending/Fall.gif" sourcex="190" sourcey="44" width="6" height="6">
+      <Offset X="-3" Y="-3" />
+    </ImageFromSheet>
+    <ImageFromSheet id="explosion_s_1" sheet="Ending/Fall.gif" sourcex="163" sourcey="52" width="8" height="7">
+      <Offset X="-4" Y="-4" />
+    </ImageFromSheet>
+    <ImageFromSheet id="explosion_s_2" sheet="Ending/Fall.gif" sourcex="172" sourcey="52" width="8" height="7">
+      <Offset X="-4" Y="-4" />
+    </ImageFromSheet>
+    <ImageFromSheet id="explosion_s_3" sheet="Ending/Fall.gif" sourcex="181" sourcey="52" width="8" height="7">
+      <Offset X="-4" Y="-4" />
+    </ImageFromSheet>
+    <ImageFromSheet id="explosion_s_4" sheet="Ending/Fall.gif" sourcex="190" sourcey="52" width="6" height="6">
+      <Offset X="-3" Y="-3" />
+    </ImageFromSheet>
+    <ImageFromSheet id="sparks_1" sheet="Ending/Fall.gif" sourcex="163" sourcey="60" width="1" height="1">
+      <Offset X="0" Y="0" />
+    </ImageFromSheet>
+    <ImageFromSheet id="sparks_2" sheet="Ending/Fall.gif" sourcex="165" sourcey="60" width="1" height="2">
+      <Offset X="0" Y="-1" />
+    </ImageFromSheet>
+    <ImageFromSheet id="sparks_3" sheet="Ending/Fall.gif" sourcex="167" sourcey="60" width="2" height="2">
+      <Offset X="-1" Y="-1" />
+    </ImageFromSheet>
+    <ImageFromSheet id="sparks_4" sheet="Ending/Fall.gif" sourcex="170" sourcey="60" width="4" height="4">
+      <Offset X="-2" Y="-2" />
+    </ImageFromSheet>
+    <ImageFromSheet id="sparks_5" sheet="Ending/Fall.gif" sourcex="175" sourcey="60" width="4" height="4">
+      <Offset X="-2" Y="-2" />
+    </ImageFromSheet>
+    <ImageFromSheet id="sparks_6" sheet="Ending/Fall.gif" sourcex="180" sourcey="60" width="4" height="4">
+      <Offset X="-2" Y="-2" />
+    </ImageFromSheet>
+    <ImageFromSheet id="dust_2" sheet="Ending/Fall.gif" sourcex="223" sourcey="10" width="6" height="6">
+      <Offset X="-3" Y="-3" />
+    </ImageFromSheet>
+  </Images>
+  <Properties>
+    <Property name="Frame" description="Which sprite this object will use." type="frameids" startbit="0" length="8" />
+  </Properties>
+  <!-- in the scene, only BG, Death Egg, Angel Island, and clouds are placed, but RE2 has all of these, and they technically work, so... -->
+  <Enums>
+    <Enum name="frameids">
+      <EnumMember name="Sky BG" />
+      <EnumMember name="Death Egg" />
+      <EnumMember name="Angel Island" />
+      <EnumMember name="Cloud (Wide)" />
+      <EnumMember name="Cloud (Small)" />
+      <EnumMember name="Dust Puff (Frame 1)" />
+      <EnumMember name="Dust Puff (Frame 2)" />
+      <EnumMember name="Dust Puff (Frame 3)" />
+      <EnumMember name="Dust Puff (Frame 4)" />
+      <EnumMember name="Explosion (Frame 1)" />
+      <EnumMember name="Explosion (Frame 2)" />
+      <EnumMember name="Explosion (Frame 3)" />
+      <EnumMember name="Explosion (Frame 4)" />
+      <EnumMember name="Small Dust Puff (Frame 1)" />
+      <EnumMember name="Small Dust Puff (Frame 2)" />
+      <EnumMember name="Small Dust Puff (Frame 3)" />
+      <EnumMember name="Small Dust Puff (Frame 4)" />
+      <EnumMember name="Small Explosion (Frame 1)" />
+      <EnumMember name="Small Explosion (Frame 2)" />
+      <EnumMember name="Small Explosion (Frame 3)" />
+      <EnumMember name="Small Explosion (Frame 4)" />
+      <EnumMember name="Spark (Frame 1)" />
+      <EnumMember name="Spark (Frame 2)" />
+      <EnumMember name="Spark (Frame 3)" />
+      <EnumMember name="Spark (Frame 4)" />
+      <EnumMember name="Spark (Frame 5)" />
+      <EnumMember name="Spark (Frame 6)" />
+      <EnumMember name="Dust Puff 2" />
+    </Enum>
+  </Enums>
+  <Subtypes>
+    <Subtype id="00" name="Sky BG" image="skybg" />
+    <Subtype id="01" name="Death Egg" image="deathegg" />
+    <Subtype id="02" name="Angel Island" image="angelisland" />
+    <Subtype id="03" name="Cloud (Wide)" image="widecloud" />
+    <Subtype id="04" name="Cloud (Small)" image="smallcloud" />
+    <Subtype id="05" name="Dust Puff (Frame 1)" image="dust_1_1" />
+    <Subtype id="06" name="Dust Puff (Frame 2)" image="dust_1_2" />
+    <Subtype id="07" name="Dust Puff (Frame 3)" image="dust_1_3" />
+    <Subtype id="08" name="Dust Puff (Frame 4)" image="dust_1_4" />
+    <Subtype id="09" name="Explosion (Frame 1)" image="explosion_1" />
+    <Subtype id="0A" name="Explosion (Frame 2)" image="explosion_2" />
+    <Subtype id="0B" name="Explosion (Frame 3)" image="explosion_3" />
+    <Subtype id="0C" name="Explosion (Frame 4)" image="explosion_4" />
+    <Subtype id="0D" name="Small Dust Puff (Frame 1)" image="dust_s_1_1" />
+    <Subtype id="0E" name="Small Dust Puff (Frame 2)" image="dust_s_1_2" />
+    <Subtype id="0F" name="Small Dust Puff (Frame 3)" image="dust_s_1_3" />
+    <Subtype id="10" name="Small Dust Puff (Frame 4)" image="dust_s_1_4" />
+    <Subtype id="11" name="Small Explosion (Frame 1)" image="explosion_s_1" />
+    <Subtype id="12" name="Small Explosion (Frame 2)" image="explosion_s_2" />
+    <Subtype id="13" name="Small Explosion (Frame 3)" image="explosion_s_3" />
+    <Subtype id="14" name="Small Explosion (Frame 4)" image="explosion_s_4" />
+    <Subtype id="15" name="Spark (Frame 1)" image="sparks_1" />
+    <Subtype id="16" name="Spark (Frame 2)" image="sparks_2" />
+    <Subtype id="17" name="Spark (Frame 3)" image="sparks_3" />
+    <Subtype id="18" name="Spark (Frame 4)" image="sparks_4" />
+    <Subtype id="19" name="Spark (Frame 5)" image="sparks_5" />
+    <Subtype id="1A" name="Spark (Frame 6)" image="sparks_6" />
+    <Subtype id="1B" name="Dust Puff 2" image="dust_2" />
+  </Subtypes>
+</ObjDef>

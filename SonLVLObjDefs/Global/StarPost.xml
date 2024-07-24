@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ObjDef xmlns="http://www.sonicretro.org" Image="starpost">
+  <Images>
+    <ImageFromSheet id="starpost" sheet="Global/Items.gif" sourcex="1" sourcey="137" width="16" height="64">
+      <Offset X="-8" Y="-44" />
+    </ImageFromSheet>
+  </Images>
+  <Properties>
+    <Property name="ID" description="The checkpoint ID of this Star Post. Used in relation to other Star Posts, to know their order." type="int" startbit="0" length="8" />
+  </Properties>
+</ObjDef>

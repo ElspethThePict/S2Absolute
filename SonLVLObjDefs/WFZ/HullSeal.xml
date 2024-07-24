@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ObjDef xmlns="http://www.sonicretro.org" Image="seal">
+  <Images>
+    <ImageFromSheet id="seal" sheet="SCZ/Objects2.gif" sourcex="1" sourcey="193" width="64" height="32">
+      <Offset X="-32" Y="-16" />
+    </ImageFromSheet>
+  </Images>
+  <Properties>
+    <Property name="Edit Chunk" description="If this Hull Seal should alter the chunk it's in upon player interaction." type="bool" startbit="0" length="8" />
+  </Properties>
+  <Subtypes>
+    <Subtype id="00" name="Normal" image="seal" />
+    <Subtype id="01" name="Edit Chunk" image="seal" />
+  </Subtypes>
+</ObjDef>

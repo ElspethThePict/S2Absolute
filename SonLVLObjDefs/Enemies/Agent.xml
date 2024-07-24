@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ObjDef xmlns="http://www.sonicretro.org">
+  <Images>
+    <ImageFromSheet id="hand" sheet="CNZ/Objects2.gif" sourcex="42" sourcey="1" width="32" height="24">
+      <Offset X="-44" Y="-8" />
+    </ImageFromSheet>
+    <ImageFromSheet id="legs" sheet="CNZ/Objects2.gif" sourcex="75" sourcey="1" width="24" height="24">
+      <Offset X="-24" Y="32" />
+    </ImageFromSheet>
+    <ImageFromSheet id="body" sheet="CNZ/Objects2.gif" sourcex="1" sourcey="1" width="40" height="48">
+      <Offset X="-20" Y="-8" />
+    </ImageFromSheet>
+  </Images>
+  <ImageSets>
+    <ImageSet id="agent">
+      <ImageRef image="hand" />
+      <ImageRef image="legs" />
+      <ImageRef image="body" />
+    </ImageSet>
+  </ImageSets>
+  <DefaultImage>
+    <ImageSetRef set="agent" />
+  </DefaultImage>
+</ObjDef>

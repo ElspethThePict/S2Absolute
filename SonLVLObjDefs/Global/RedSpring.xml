@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ObjDef xmlns="http://www.sonicretro.org" Image="up">
+  <Images>
+    <ImageFromSheet id="up" sheet="Global/Items.gif" sourcex="52" sourcey="1" width="32" height="16">
+      <Offset X="-16" Y="-8"/>
+    </ImageFromSheet>
+    <ImageFromSheet id="right" sheet="Global/Items.gif" sourcex="85" sourcey="1" width="16" height="32">
+      <Offset X="-8" Y="-16"/>
+    </ImageFromSheet>
+    <ImageFromSheet id="left" sheet="Global/Items.gif" sourcex="118" sourcey="67" width="16" height="32">
+      <Offset X="-8" Y="-16"/>
+    </ImageFromSheet>
+    <ImageFromSheet id="down" sheet="Global/Items.gif" sourcex="157" sourcey="116" width="32" height="16">
+      <Offset X="-16" Y="-8"/>
+    </ImageFromSheet>
+    <ImageFromSheet id="upr" sheet="Global/Items.gif" sourcex="118" sourcey="1" width="32" height="32">
+      <Offset X="-16" Y="-16"/>
+    </ImageFromSheet>
+    <ImageFromSheet id="upl" sheet="Global/Items.gif" sourcex="157" sourcey="50" width="32" height="32">
+      <Offset X="-16" Y="-16"/>
+    </ImageFromSheet>
+  </Images>
+  <Properties>
+    <Property name="Direction" description="Which direction this Spring should face." type="directions" startbit="0" length="3" />
+    <Property name="Enabled in Air" description="If the Spring should be usable when the player is in the air already. Only affects horizontal springs." type="bool" startbit="3" length="1" />
+    <Property name="Stronger" description="Right Springs only. If this Spring should be slightly more powerful." type="bool" startbit="3" length="1" /> <!-- new #Absolute thing, technically it requires Twirl and Enabled In Air to be off too but honestly they did this in a kinda really rigid way and i can't think of any easy way to like do this properly, so -->
+    <Property name="Twirl" description="If this Spring should trigger the Twirl animation upon launch. Only affects upwards springs." type="bool" startbit="7" length="1" />
+  </Properties>
+  <Enums>
+    <Enum name="directions">
+      <EnumMember name="Up" />
+      <EnumMember name="Right" />
+      <EnumMember name="Left" />
+      <EnumMember name="Down" />
+      <EnumMember name="Up Right" />
+      <EnumMember name="Up Left" />
+      <EnumMember name="Down Right" />
+      <EnumMember name="Down Left" />
+    </Enum>
+  </Enums>
+  <ImageSets>
+    <ImageSet id="downr">
+      <ImageRef image="upr" yflip="AlwaysFlip" />
+    </ImageSet>
+    <ImageSet id="downl">
+      <ImageRef image="upl" yflip="AlwaysFlip" />
+    </ImageSet>
+  </ImageSets>
+  <Display>
+    <DisplayOption>
+      <Condition property="Direction" value="Up" />
+      <ImageRef image="up" />
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Direction" value="Right" />
+      <ImageRef image="right" />
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Direction" value="Left" />
+      <ImageRef image="left" />
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Direction" value="Down" />
+      <ImageRef image="down" />
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Direction" value="Up Right" />
+      <ImageRef image="upr" />
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Direction" value="Up Left" />
+      <ImageRef image="upl" />
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Direction" value="Down Right" />
+      <ImageSetRef set="downr" />
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Direction" value="Down Left" />
+      <ImageSetRef set="downl" />
+    </DisplayOption>
+  </Display>
+  <Subtypes>
+    <Subtype id="00" name="Upwards" image="up" />
+    <Subtype id="01" name="Right" image="right" />
+    <Subtype id="02" name="Left" image="left" />
+    <Subtype id="03" name="Down" image="down" />
+    <Subtype id="04" name="Up Right" image="upr" />
+    <Subtype id="05" name="Up Left" image="upl" />
+    <Subtype id="06" name="Down Right">
+      <ImageSetRef set="downr" />
+    </Subtype>
+    <Subtype id="07" name="Down Left">
+      <ImageSetRef set="downl" />
+    </Subtype>
+    <Subtype id="09" name="Right (Enabled in Air)" image="right" />
+    <Subtype id="0A" name="Left (Enabled in Air)" image="left" />
+    <Subtype id="80" name="Upwards (Twirl)" image="up" />
+    <Subtype id="84" name="Up Right (Twirl)" image="upr" />
+    <Subtype id="85" name="Up Left (Twirl)" image="upl" />
+  </Subtypes>
+</ObjDef>

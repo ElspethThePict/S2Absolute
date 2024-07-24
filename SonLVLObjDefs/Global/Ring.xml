@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ObjDef xmlns="http://www.sonicretro.org" Image="ring">
+  <Images>
+    <ImageFromSheet id="ring" sheet="Global/Items.gif" sourcex="1" sourcey="1" width="16" height="16">
+      <Offset X="-8" Y="-8"/>
+    </ImageFromSheet>
+  </Images>
+  <Properties>
+    <Property name="Perfect Bonus" description="If this ring is necessary for the Perfect Bonus or not." type="pbonus" startbit="0" length="8" />
+  </Properties>
+  <Enums>
+    <Enum name="pbonus"> <!-- p much just the normal "booL" type except flipped and 2 instead of 1 -->
+      <EnumMember name="True" />
+      <!-- the code looks like a "not needed by sonic but needed by all other characters" type of thing is supposed to be prop val 1.. but the perfect bonus programming itself looks kind of off.. -->
+      <EnumMember name="False" value="2" />
+    </Enum>
+  </Enums>
+  <Subtypes>
+    <Subtype id="00" name="Normal" image="ring" />
+    <Subtype id="02" name="Not Needed For Perfect Bonus" image="ring" />
+  </Subtypes>
+</ObjDef>

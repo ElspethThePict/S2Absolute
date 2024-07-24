@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ObjDef xmlns="http://www.sonicretro.org" DefaultSubtype="01">
+  <Images>
+    <ImageFromSheet id="monitor" sheet="Global/Items.gif" sourcex="18" sourcey="1" width="32" height="32">
+      <Offset X="-16" Y="-16" />
+    </ImageFromSheet>
+    <ImageFromSheet id="static" sheet="Global/Items.gif" sourcex="35" sourcey="51" width="16" height="14">
+      <Offset X="-8" Y="-9" />
+    </ImageFromSheet>
+    <ImageFromSheet id="rings" sheet="Global/Items.gif" sourcex="18" sourcey="66" width="16" height="14">
+      <Offset X="-8" Y="-9" />
+    </ImageFromSheet>
+    <ImageFromSheet id="shield" sheet="Global/Items.gif" sourcex="35" sourcey="66" width="16" height="14">
+      <Offset X="-8" Y="-9" />
+    </ImageFromSheet>
+    <ImageFromSheet id="invincibility" sheet="Global/Items.gif" sourcex="18" sourcey="81" width="16" height="14">
+      <Offset X="-8" Y="-9" />
+    </ImageFromSheet>
+    <ImageFromSheet id="shoes" sheet="Global/Items.gif" sourcex="35" sourcey="81" width="16" height="14">
+      <Offset X="-8" Y="-9" />
+    </ImageFromSheet>
+    <ImageFromSheet id="sonic" sheet="Global/Items.gif" sourcex="18" sourcey="96" width="16" height="14">
+      <Offset X="-8" Y="-9" />
+    </ImageFromSheet>
+    <ImageFromSheet id="tails" sheet="Global/Items.gif" sourcex="35" sourcey="96" width="16" height="14">
+      <Offset X="-8" Y="-9" />
+    </ImageFromSheet>
+    <ImageFromSheet id="knuckles" sheet="Global/Items.gif" sourcex="18" sourcey="111" width="16" height="14">
+      <Offset X="-8" Y="-9" />
+    </ImageFromSheet>
+    <ImageFromSheet id="super" sheet="Global/Items.gif" sourcex="35" sourcey="111" width="16" height="14">
+      <Offset X="-8" Y="-9" />
+    </ImageFromSheet>
+    <ImageFromSheet id="bubble" sheet="Global/Items.gif" sourcex="18" sourcey="141" width="16" height="14">
+      <Offset X="-8" Y="-9" />
+    </ImageFromSheet>
+    <ImageFromSheet id="fire" sheet="Global/Items.gif" sourcex="35" sourcey="126" width="16" height="14">
+      <Offset X="-8" Y="-9" />
+    </ImageFromSheet>
+    <ImageFromSheet id="lightning" sheet="Global/Items.gif" sourcex="18" sourcey="126" width="16" height="14">
+      <Offset X="-8" Y="-9" />
+    </ImageFromSheet>
+    <ImageFromSheet id="eggman" sheet="Global/Items.gif" sourcex="35" sourcey="141" width="16" height="14">
+      <Offset X="-8" Y="-9" />
+    </ImageFromSheet>
+    <ImageFromSheet id="teleport" sheet="Global/Items.gif" sourcex="18" sourcey="156" width="16" height="14">
+      <Offset X="-8" Y="-9" />
+    </ImageFromSheet>
+    <ImageFromSheet id="random" sheet="Global/Items.gif" sourcex="35" sourcey="156" width="16" height="14">
+      <Offset X="-8" Y="-9" />
+    </ImageFromSheet>
+    <ImageFromSheet id="elements" sheet="Global/Items.gif" sourcex="18" sourcey="171" width="16" height="14">
+      <Offset X="-8" Y="-9" />
+    </ImageFromSheet>
+  </Images>
+  <Properties>
+    <Property name="Contents" description="The primary contents of this Monitor." type="Contents" startbit="0" length="4" />
+    <Property name="Alt Contents" description="The alternative contents of this Monitor. Used if Contents holds an elemental shield when the setting for them is off. Static Alt Contents mean that the Monitor should not appear at all when elemental shields are disabled." type="Contents" startbit="4" length="4" />
+  </Properties>
+  <Enums>
+    <Enum name="Contents">
+      <EnumMember name="Static" />
+      <EnumMember name="Rings" />
+      <EnumMember name="Shield" />
+      <EnumMember name="Invincibility" />
+      <EnumMember name="Speed Shoes" />
+      <EnumMember name="Sonic 1UP" />
+      <EnumMember name="Tails 1UP" />
+      <EnumMember name="Knuckles 1UP" />
+      <EnumMember name="Super" />
+      <EnumMember name="Bubble Shield" />
+      <EnumMember name="Fire Shield" />
+      <EnumMember name="Lightning Shield" />
+      <EnumMember name="Eggman" />
+      <EnumMember name="Teleport" />
+      <EnumMember name="Random" />
+      <EnumMember name="Debug Shields" />
+    </Enum>
+  </Enums>
+  <ImageSets>
+    <ImageSet id="static">
+      <ImageRef image="monitor" />
+      <ImageRef image="static" />
+    </ImageSet>
+    <ImageSet id="rings">
+      <ImageRef image="monitor" />
+      <ImageRef image="rings" />
+    </ImageSet>
+    <ImageSet id="shield">
+      <ImageRef image="monitor" />
+      <ImageRef image="shield" />
+    </ImageSet>
+    <ImageSet id="invincibility">
+      <ImageRef image="monitor" />
+      <ImageRef image="invincibility" />
+    </ImageSet>
+    <ImageSet id="shoes">
+      <ImageRef image="monitor" />
+      <ImageRef image="shoes" />
+    </ImageSet>
+    <ImageSet id="sonic">
+      <ImageRef image="monitor" />
+      <ImageRef image="sonic" />
+    </ImageSet>
+    <ImageSet id="tails">
+      <ImageRef image="monitor" />
+      <ImageRef image="tails" />
+    </ImageSet>
+    <ImageSet id="knuckles">
+      <ImageRef image="monitor" />
+      <ImageRef image="knuckles" />
+    </ImageSet>
+    <ImageSet id="super">
+      <ImageRef image="monitor" />
+      <ImageRef image="super" />
+    </ImageSet>
+    <ImageSet id="bubble">
+      <ImageRef image="monitor" />
+      <ImageRef image="bubble" />
+    </ImageSet>
+    <ImageSet id="lightning">
+      <ImageRef image="monitor" />
+      <ImageRef image="lightning" />
+    </ImageSet>
+    <ImageSet id="fire">
+      <ImageRef image="monitor" />
+      <ImageRef image="fire" />
+    </ImageSet>
+    <ImageSet id="eggman">
+      <ImageRef image="monitor" />
+      <ImageRef image="eggman" />
+    </ImageSet>
+    <ImageSet id="teleport">
+      <ImageRef image="monitor" />
+      <ImageRef image="teleport" />
+    </ImageSet>
+    <ImageSet id="random">
+      <ImageRef image="monitor" />
+      <ImageRef image="random" />
+    </ImageSet>
+    <ImageSet id="elements">
+      <ImageRef image="monitor" />
+      <ImageRef image="elements" />
+    </ImageSet>
+    <!-- not doing debug emeralds or Amy because they're numerically >15 so they can't even be placed in the scene normally -->
+  </ImageSets>
+  <DefaultImage>
+    <ImageSetRef set="rings" />
+  </DefaultImage>
+  <Display>
+    <DisplayOption>
+      <Condition property="Contents" value="Static" />
+      <ImageSetRef set="static" />
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Contents" value="Rings" />
+      <ImageSetRef set="rings" />
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Contents" value="Shield" />
+      <ImageSetRef set="shield" />
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Contents" value="Invincibility" />
+      <ImageSetRef set="invincibility" />
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Contents" value="Speed Shoes" />
+      <ImageSetRef set="shoes" />
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Contents" value="Sonic 1UP" />
+      <ImageSetRef set="sonic" />
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Contents" value="Tails 1UP" />
+      <ImageSetRef set="tails" />
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Contents" value="Knuckles 1UP" />
+      <ImageSetRef set="knuckles" />
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Contents" value="Super" />
+      <ImageSetRef set="super" />
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Contents" value="Bubble Shield" />
+      <ImageSetRef set="bubble" />
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Contents" value="Fire Shield" />
+      <ImageSetRef set="fire" />
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Contents" value="Lightning Shield" />
+      <ImageSetRef set="lightning" />
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Contents" value="Eggman" />
+      <ImageSetRef set="eggman" />
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Contents" value="Teleport" />
+      <ImageSetRef set="teleport" />
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Contents" value="Random" />
+      <ImageSetRef set="random" />
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Contents" value="Debug Shields" />
+      <ImageSetRef set="elements" />
+    </DisplayOption>
+  </Display>
+  <Subtypes>
+    <Subtype id="00" name="Static">
+      <ImageSetRef set="static" />
+    </Subtype>
+    <Subtype id="01" name="Rings">
+      <ImageSetRef set="rings" />
+    </Subtype>
+    <Subtype id="02" name="Shield">
+      <ImageSetRef set="shield" />
+    </Subtype>
+    <Subtype id="03" name="Invincibility">
+      <ImageSetRef set="invincibility" />
+    </Subtype>
+    <Subtype id="04" name="Speed Shoes">
+      <ImageSetRef set="shoes" />
+    </Subtype>
+    <Subtype id="05" name="Sonic 1UP">
+      <ImageSetRef set="sonic" />
+    </Subtype>
+    <Subtype id="06" name="Tails 1UP">
+      <ImageSetRef set="tails" />
+    </Subtype>
+    <Subtype id="07" name="Knuckles 1UP">
+      <ImageSetRef set="knuckles" />
+    </Subtype>
+    <Subtype id="08" name="Super">
+      <ImageSetRef set="super" />
+    </Subtype>
+    <Subtype id="29" name="Bubble/Classic Shield">
+      <ImageSetRef set="bubble" />
+    </Subtype>
+    <Subtype id="2A" name="Fire/Classic Shield">
+      <ImageSetRef set="fire" />
+    </Subtype>
+    <Subtype id="2B" name="Lightning/Classic Shield">
+      <ImageSetRef set="lightning" />
+    </Subtype>
+    <!-- trying to distinguish elemental shields that can turn into classic ones as opposed to ones that just despawn with 3K shields disabled.. not sure if i did a good job with that? -->
+    <Subtype id="09" name="Bubble Shield (3K Shields Exclusive)">
+      <ImageSetRef set="bubble" />
+    </Subtype>
+    <Subtype id="0A" name="Fire Shield (3K Shields Exclusive)">
+      <ImageSetRef set="fire" />
+    </Subtype>
+    <Subtype id="0B" name="Lightning Shield (3K Shields Exclusive)">
+      <ImageSetRef set="lightning" />
+    </Subtype>
+    <Subtype id="0C" name="Eggman">
+      <ImageSetRef set="eggman" />
+    </Subtype>
+    <Subtype id="0D" name="Teleport">
+      <ImageSetRef set="teleport" />
+    </Subtype>
+    <Subtype id="0E" name="Random">
+      <ImageSetRef set="random" />
+    </Subtype>
+    <Subtype id="0F" name="Debug Shields">
+      <ImageSetRef set="elements" />
+    </Subtype>
+  </Subtypes>
+</ObjDef>

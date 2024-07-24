@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ObjDef xmlns="http://www.sonicretro.org">
+  <Images>
+    <ImageFromSheet id="frame1" sheet="MPZ/Objects.gif" sourcex="256" sourcey="1" width="28" height="32">
+      <Offset X="-14" Y="-16" />
+    </ImageFromSheet>
+    <!-- in-game, frame 1 is just rotated to meet all angles, leaving all the other frames unused, but let's use the pre-rotated vers here anyways (cause it's not like we can rotate sprites in editor, so) -->
+    <ImageFromSheet id="frame2" sheet="MPZ/Objects.gif" sourcex="376" sourcey="1" width="32" height="32">
+      <Offset X="-16" Y="-16" />
+    </ImageFromSheet>
+    <ImageFromSheet id="frame3" sheet="MPZ/Objects.gif" sourcex="256" sourcey="34" width="32" height="30">
+      <Offset X="-16" Y="-15" />
+    </ImageFromSheet>
+    <ImageFromSheet id="frame4" sheet="MPZ/Objects.gif" sourcex="388" sourcey="34" width="32" height="32">
+      <Offset X="-16" Y="-16" />
+    </ImageFromSheet>
+    <ImageFromSheet id="frame5" sheet="MPZ/Objects.gif" sourcex="256" sourcey="67" width="28" height="32">
+      <Offset X="-14" Y="-16" />
+    </ImageFromSheet>
+    <ImageFromSheet id="frame6" sheet="MPZ/Objects.gif" sourcex="376" sourcey="67" width="32" height="32">
+      <Offset X="-16" Y="-16" />
+    </ImageFromSheet>
+    <ImageFromSheet id="frame7" sheet="MPZ/Objects.gif" sourcex="256" sourcey="100" width="32" height="28">
+      <Offset X="-16" Y="-14" />
+    </ImageFromSheet>
+    <ImageFromSheet id="frame8" sheet="MPZ/Objects.gif" sourcex="388" sourcey="100" width="32" height="32">
+      <Offset X="-16" Y="-16" />
+    </ImageFromSheet>
+  </Images>
+  <Properties>
+    <Property name="Direction" description="Which direction this gear should rotate in." type="directions" startbit="0" length="8" />
+  </Properties>
+  <Enums>
+    <Enum name="directions">
+      <EnumMember name="Clockwise" />
+      <EnumMember name="Counter-Clockwise" />
+    </Enum>
+  </Enums>
+  <ImageSets>
+    <ImageSet id="largegear">
+      <ImageRef image="frame1">
+        <Offset X="0" Y="-72" />
+      </ImageRef>
+      <ImageRef image="frame2">
+        <Offset X="50" Y="-50" />
+      </ImageRef>
+      <ImageRef image="frame3">
+        <Offset X="72" Y="0" />
+      </ImageRef>
+      <ImageRef image="frame4">
+        <Offset X="50" Y="50" />
+      </ImageRef>
+      <ImageRef image="frame5">
+        <Offset X="0" Y="72" />
+      </ImageRef>
+      <ImageRef image="frame6">
+        <Offset X="-50" Y="50" />
+      </ImageRef>
+      <ImageRef image="frame7">
+        <Offset X="-72" Y="0" />
+      </ImageRef>
+      <ImageRef image="frame8">
+        <Offset X="-50" Y="-50" />
+      </ImageRef>
+    </ImageSet>
+  </ImageSets>
+  <DefaultImage>
+    <ImageSetRef set="largegear" />
+  </DefaultImage>
+  <Subtypes>
+    <Subtype id="00" name="Rotate Clockwise">
+      <ImageSetRef set="largegear" />
+    </Subtype>
+    <Subtype id="01" name="Rotate Counter-Clockwise">
+      <ImageSetRef set="largegear" />
+    </Subtype>
+  </Subtypes>
+</ObjDef>

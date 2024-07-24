@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ObjDef xmlns="http://www.sonicretro.org" Image="trigger" DefaultSubtype="1">
+  <Images>
+    <ImageFromSheet id="trigger" sheet="Global/Display.gif" sourcex="168" sourcey="18" width="16" height="16">
+      <Offset X="-8" Y="-8"/>
+    </ImageFromSheet>
+  </Images>
+  <Properties>
+    <Property name="Marker Type" description="What Boss Attack trigger this VSGame object is." type="types" startbit="0" length="8" />
+  </Properties>
+  <Enums>
+    <Enum name="types">
+      <EnumMember name="Boss Attack Start" value="1" />
+      <EnumMember name="Boss Attack End" />
+    </Enum>
+  </Enums>
+  <Subtypes>
+    <Subtype id="01" name="Boss Attack Start" image="trigger" />
+    <Subtype id="02" name="Boss Attack End" image="trigger" />
+  </Subtypes>
+</ObjDef>

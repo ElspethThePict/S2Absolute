@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ObjDef xmlns="http://www.sonicretro.org">
+  <Images>
+    <ImageFromSheet id="propeller" sheet="SCZ/Objects.gif" sourcex="378" sourcey="215" width="4" height="24">
+      <Offset X="21" Y="8" />
+    </ImageFromSheet>
+    <ImageFromSheet id="tornado" sheet="SCZ/Objects.gif" sourcex="261" sourcey="191" width="116" height="64">
+      <Offset X="-95" Y="-16" />
+    </ImageFromSheet>
+    <ImageFromSheet id="tails" sheet="SCZ/Objects.gif" sourcex="261" sourcey="174" width="21" height="16">
+      <Offset X="-45" Y="-8" />
+    </ImageFromSheet>
+  </Images>
+  <ImageSets>
+    <ImageSet id="tornado">
+      <ImageRef image="propeller" />
+      <ImageRef image="tornado" />
+      <ImageRef image="tails" />
+    </ImageSet>
+  </ImageSets>
+  <DefaultImage>
+    <ImageSetRef set="tornado" />
+  </DefaultImage>
+</ObjDef>

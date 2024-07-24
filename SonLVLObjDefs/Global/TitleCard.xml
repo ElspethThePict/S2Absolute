@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ObjDef xmlns="http://www.sonicretro.org" Image="titlecard">
+  <Images>
+    <ImageFromSheet id="titlecard" sheet="Global/Display.gif" sourcex="168" sourcey="18" width="16" height="16">
+      <Offset X="-8" Y="-8"/>
+    </ImageFromSheet>
+  </Images>
+  <Properties>
+    <Property name="Act Type" description="The Act Number to be displayed on the Title Card." type="acttypes" startbit="0" length="4" />
+  </Properties>
+  <Enums>
+    <Enum name="acttypes">
+      <EnumMember name="Use Act Num" />
+      <EnumMember name="Show Act 1" />
+      <EnumMember name="Show Act 2" />
+      <EnumMember name="Show Act 3" />
+      <EnumMember name="Show Zone Text" />
+      <EnumMember name="Marathon Base" />
+    </Enum>
+  </Enums>
+  <Subtypes>
+    <Subtype id="00" name="Use Act Num" image="titlecard" />
+    <Subtype id="01" name="Show Act 1" image="titlecard" />
+    <Subtype id="02" name="Show Act 2" image="titlecard" />
+    <Subtype id="03" name="Show Act 3" image="titlecard" />
+    <Subtype id="04" name="Show Zone Text" image="titlecard" />
+    <Subtype id="05" name="Marathon Base" image="titlecard" />
+  </Subtypes>
+</ObjDef>

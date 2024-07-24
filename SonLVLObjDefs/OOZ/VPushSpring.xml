@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ObjDef xmlns="http://www.sonicretro.org" Image="extended">
+  <Images>
+    <ImageFromSheet id="extended" sheet="OOZ/Objects.gif" sourcex="239" sourcey="140" width="32" height="40">
+      <Offset X="-16" Y="-20" />
+    </ImageFromSheet>
+    <ImageFromSheet id="extend1" sheet="OOZ/Objects.gif" sourcex="239" sourcey="140" width="32" height="16">
+      <Offset X="-16" Y="-20" />
+    </ImageFromSheet>
+    <ImageFromSheet id="extend2" sheet="OOZ/Objects.gif" sourcex="239" sourcey="156" width="32" height="8">
+      <Offset X="-16" Y="-4" />
+    </ImageFromSheet>
+    <ImageFromSheet id="extend3" sheet="OOZ/Objects.gif" sourcex="239" sourcey="164" width="32" height="8">
+      <Offset X="-16" Y="4" />
+    </ImageFromSheet>
+    <ImageFromSheet id="base" sheet="OOZ/Objects.gif" sourcex="239" sourcey="172" width="32" height="8">
+      <Offset X="-16" Y="12" />
+    </ImageFromSheet>
+    <ImageFromSheet id="ball" sheet="OOZ/Objects.gif" sourcex="429" sourcey="190" width="32" height="32">
+      <Offset X="-16" Y="-16" />
+    </ImageFromSheet>
+  </Images>
+  <Properties>
+    <Property name="Has Ball" description="If this Spring has a Ball." type="bool" startbit="0" length="8" />
+  </Properties>
+  <ImageSets>
+    <ImageSet id="noball">
+      <ImageRef image="extended" />
+    </ImageSet>
+    <ImageSet id="hasball">
+      <ImageRef image="extend1">
+        <Offset Y="18" />
+      </ImageRef>
+      <ImageRef image="ball">
+        <Offset Y="-18" />
+      </ImageRef>
+      <ImageRef image="extend2">
+        <Offset Y="12" />
+      </ImageRef>
+      <ImageRef image="extend3">
+        <Offset Y="6" />
+      </ImageRef>
+      <ImageRef image="base" />
+    </ImageSet>
+  </ImageSets>
+  <Subtypes>
+    <Subtype id="00" name="No Ball">
+      <ImageSetRef set="noball" />
+    </Subtype>
+    <Subtype id="01" name="Has Ball">
+      <ImageSetRef set="hasball" />
+    </Subtype>
+  </Subtypes>
+</ObjDef>

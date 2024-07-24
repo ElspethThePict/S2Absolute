@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ObjDef xmlns="http://www.sonicretro.org" Image="cogplat">
+  <Images>
+    <ImageFromSheet id="cogplat" sheet="MPZ/Objects.gif" sourcex="350" sourcey="182" width="128" height="24">
+      <Offset X="-16" Y="-32"/>
+    </ImageFromSheet>
+  </Images>
+  <Properties>
+    <Property name="Behaviour" description="How this platform should act upon coming into contact with a wall." type="behaviours" startbit="0" length="8" />
+  </Properties>
+  <Enums>
+    <Enum name="behaviours">
+      <EnumMember name="Stop on Contact" />
+      <EnumMember name="Swap Direction on Contact" />
+    </Enum>
+  </Enums>
+  <Subtypes>
+    <Subtype id="00" name="Stop on Contact" image="cogplat" />
+    <Subtype id="01" name="Swap Direction on Contact" image="cogplat" />
+  </Subtypes>
+</ObjDef>

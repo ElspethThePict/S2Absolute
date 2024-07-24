@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ObjDef xmlns="http://www.sonicretro.org" Image="frame1">
+  <Images>
+    <ImageFromSheet id="frame1" sheet="HPZ/Objects.gif" sourcex="353" sourcey="222" width="13" height="32">
+      <Offset X="-5" Y="-16" />
+    </ImageFromSheet>
+    <ImageFromSheet id="frame2" sheet="HPZ/Objects.gif" sourcex="353" sourcey="222" width="13" height="12">
+      <Offset X="-5" Y="-16" />
+    </ImageFromSheet>
+    <ImageFromSheet id="frame3" sheet="HPZ/Objects.gif" sourcex="344" sourcey="222" width="8" height="12">
+      <Offset X="-4" Y="-4" />
+    </ImageFromSheet>
+    <ImageFromSheet id="frame4" sheet="HPZ/Objects.gif" sourcex="175" sourcey="140" width="16" height="32">
+      <Offset X="-8" Y="-16" />
+    </ImageFromSheet>
+    <ImageFromSheet id="frame5" sheet="HPZ/Objects.gif" sourcex="186" sourcey="231" width="24" height="24">
+      <Offset X="-12" Y="-22" />
+    </ImageFromSheet>
+  </Images>
+  <Properties>
+    <Property name="Frame" description="Which sprite this object should display." type="frames" startbit="0" length="8" />
+  </Properties>
+  <Enums>
+    <Enum name="frames">
+      <EnumMember name="Frame 1" />
+      <EnumMember name="Frame 2" />
+      <EnumMember name="Frame 3" />
+      <EnumMember name="Frame 4" />
+      <EnumMember name="Frame 5" />
+      <EnumMember name="Frame 5 (Follow water surface)" />
+    </Enum>
+  </Enums>
+  <Subtypes>
+    <Subtype id="00" name="Frame 1" image="frame1" />
+    <Subtype id="01" name="Frame 2" image="frame2" />
+    <Subtype id="02" name="Frame 3" image="frame3" />
+    <Subtype id="03" name="Frame 4" image="frame4" />
+    <Subtype id="04" name="Frame 5" image="frame5" />
+    <Subtype id="05" name="Frame 5 (Follow water surface)" image="frame5" />
+  </Subtypes>
+</ObjDef>

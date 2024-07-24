@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ObjDef xmlns="http://www.sonicretro.org" Image="plunger">
+  <Images>
+    <ImageFromSheet id="plunger" sheet="CNZ/Objects.gif" sourcex="170" sourcey="51" width="48" height="48">
+      <Offset X="-24" Y="-24"/>
+    </ImageFromSheet>
+  </Images>
+  <Properties>
+    <Property name="Lock Controls" description="If this Plunger should lock player controls upon launch." type="lockcontrols" startbit="0" length="8" />
+  </Properties>
+  <Enums>
+    <Enum name="lockcontrols"> <!-- sounds cleaner this way compared to "disable lock" imo -->
+      <EnumMember name="True" />
+      <EnumMember name="False" />
+    </Enum>
+  </Enums>
+  <Subtypes>
+    <Subtype id="00" name="Lock Controls Upon Launch" image="plunger" />
+    <Subtype id="01" name="Release Controls Upon Launch" image="plunger" />
+  </Subtypes>
+</ObjDef>

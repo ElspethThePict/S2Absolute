@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ObjDef xmlns="http://www.sonicretro.org">
+  <Images>
+    <ImageFromSheet id="up" sheet="LevelSelect/Icons.gif" sourcex="138" sourcey="1" width="20" height="20">
+      <Offset X="-10" Y="-30"/>
+    </ImageFromSheet>
+    <ImageFromSheet id="down" sheet="LevelSelect/Icons.gif" sourcex="159" sourcey="1" width="20" height="20">
+      <Offset X="-10" Y="10"/>
+    </ImageFromSheet>
+    <ImageFromSheet id="left" sheet="LevelSelect/Icons.gif" sourcex="138" sourcey="22" width="20" height="20">
+      <Offset X="-30" Y="-10"/>
+    </ImageFromSheet>
+    <ImageFromSheet id="right" sheet="LevelSelect/Icons.gif" sourcex="159" sourcey="22" width="20" height="20">
+      <Offset X="10" Y="-10"/>
+    </ImageFromSheet>
+  </Images>
+  <ImageSets>
+    <ImageSet id="dpad">
+      <ImageRef image="up" />
+      <ImageRef image="down" />
+      <ImageRef image="left" />
+      <ImageRef image="right" />
+    </ImageSet>
+  </ImageSets>
+  <DefaultImage>
+    <ImageSetRef set="dpad" />
+  </DefaultImage>
+</ObjDef>
