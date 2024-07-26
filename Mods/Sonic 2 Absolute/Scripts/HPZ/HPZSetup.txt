@@ -16,6 +16,7 @@ reserve function HPZSetup_Function100
 reserve function HPZSetup_Function101
 reserve function HPZSetup_Function102
 reserve function HPZSetup_Function103
+reserve function summon_birdies
 
 // Static Values
 public value HPZSetup_value33 = 0;
@@ -403,6 +404,17 @@ function HPZSetup_Function102
 end function
 
 
+function summon_birdies
+	if currentPlayer == 0
+		foreach (TypeName[Insta Shield], arrayPos0, ALL_ENTITIES)
+			if object[arrayPos0].propertyValue == 2
+				object[arrayPos0].ypos += temp1
+			end if
+		next
+	end if
+end function
+
+
 event ObjectMain	
 	switch stage.actNum
 		case 1 //Taxman
@@ -589,6 +601,45 @@ event ObjectMain
 		RotatePalette(0, 208, 221, 1)
 		RotatePalette(0, 208, 221, 1)
 	end if
+	
+	//Level Wrap
+	if object[0].ypos >= 0x800 0000
+		temp1 = object[0].ypos
+		currentPlayer = 0
+		while currentPlayer < playerCount
+			temp0 = object[currentPlayer].ypos
+			temp0 -= temp1
+			Abs(temp0)
+			if temp0 < 0x8C0000
+				object[currentPlayer].ypos -= 0x800 0000
+				CallFunction(summon_birdies)
+			end if
+			currentPlayer++
+		loop
+		if screen.cameraY >= 0x800
+			screen.cameraY -= 0x800
+			screen.yoffset -= 0x800
+		end if
+	end if
+	
+	if object[0].ypos <= 0x90 0000
+		temp1 = object[0].ypos
+		currentPlayer = 0
+		while currentPlayer < playerCount
+			temp0 = object[currentPlayer].ypos
+			temp0 -= temp1
+			Abs(temp0)
+			if temp0 < 0x8C0000
+				object[currentPlayer].ypos += 0x8000000
+				CallFunction(summon_birdies)
+			end if
+			currentPlayer++
+		loop
+		if screen.cameraY <= 384
+			screen.cameraY += 0x800
+			screen.yoffset += 0x800
+		end if
+	end if	
 	
 	//temp0 = screen.xoffset
 	//temp0 >>= 4
