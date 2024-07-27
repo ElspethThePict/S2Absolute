@@ -425,6 +425,7 @@ event ObjectMain
 			end if
 			break
 		case 2 //Proto
+			stage.newWaterLevel = 0xA000000
 			if object.value21 == 0
 				if object[0].xpos < 0x2260000
 					object[0].controlMode = -1
