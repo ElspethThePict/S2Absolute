@@ -416,7 +416,7 @@ function summon_birdies
 end function
 
 function HPZSetup_LevelWrap
-	if object.xpos >= 0x12800000
+	if object[0].xpos >= 0x12800000
 		if object[0].ypos >= 0x800 0000
 			temp1 = object[0].ypos
 			currentPlayer = 0
@@ -453,7 +453,7 @@ function HPZSetup_LevelWrap
 				screen.cameraY += 0x800
 				screen.yoffset += 0x800
 			end if
-		end if	
+		end if
 	end if
 end function
 
@@ -468,6 +468,11 @@ event ObjectMain
 			end if
 			break
 		case 2 //Proto
+			if object[0].xpos > 0x12800000
+				stage.newWaterLevel = 0xAA00000
+			else
+				stage.newWaterLevel = 0x6080000
+			end if
 			CallFunction(HPZSetup_LevelWrap)
 			if object.value21 == 0
 				if object[0].xpos < 0x2260000
