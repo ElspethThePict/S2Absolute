@@ -40,6 +40,7 @@ Storice
 TruthTomato
 Viator_
 AlyStyle
+Casteor573
 with contribution by GreenKnight9000 & Makoto
 
 Animation Supervisor:

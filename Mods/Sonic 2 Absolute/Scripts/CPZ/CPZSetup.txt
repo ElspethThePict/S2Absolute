@@ -98,7 +98,7 @@ function CPZSetup_Function98
 	GetPaletteEntry(1, 5, temp1)
 	SetTableValue(temp1, temp0, PlayerObject_SonicSuperAltPal)
 	temp0++
-	CopyPalette(1, 0, 4, 2, 4)
+	CopyPalette(1, 0, 2, 2, 4)
 	while temp0 < 64
 		GetTableValue(temp1, temp0, PlayerObject_SonicSuperPal)
 		SetPaletteEntry(3, 0, temp1)
@@ -112,17 +112,17 @@ function CPZSetup_Function98
 		GetTableValue(temp1, temp0, PlayerObject_SonicSuperPal)
 		SetPaletteEntry(3, 3, temp1)
 		temp0 -= 3
-		SetPaletteFade(5, 3, 4, 48, 0, 4)
-		GetPaletteEntry(5, 0, temp1)
+		SetPaletteFade(3, 3, 2, 48, 0, 4)
+		GetPaletteEntry(3, 0, temp1)
 		SetTableValue(temp1, temp0, PlayerObject_SonicSuperAltPal)
 		temp0++
-		GetPaletteEntry(5, 1, temp1)
+		GetPaletteEntry(3, 1, temp1)
 		SetTableValue(temp1, temp0, PlayerObject_SonicSuperAltPal)
 		temp0++
-		GetPaletteEntry(5, 2, temp1)
+		GetPaletteEntry(3, 2, temp1)
 		SetTableValue(temp1, temp0, PlayerObject_SonicSuperAltPal)
 		temp0++
-		GetPaletteEntry(5, 3, temp1)
+		GetPaletteEntry(3, 3, temp1)
 		SetTableValue(temp1, temp0, PlayerObject_SonicSuperAltPal)
 		temp0++
 	loop
@@ -139,7 +139,7 @@ function CPZSetup_Function98
 	GetPaletteEntry(1, 5, temp1)
 	SetTableValue(temp1, temp0, PlayerObject_SonicSuper2AltPal)
 	temp0++
-	CopyPalette(1, 0, 4, 2, 4)
+	CopyPalette(1, 0, 2, 2, 4)
 	while temp0 < 120
 		GetTableValue(temp1, temp0, PlayerObject_SonicSuper2Pal)
 		SetPaletteEntry(3, 0, temp1)
@@ -153,17 +153,17 @@ function CPZSetup_Function98
 		GetTableValue(temp1, temp0, PlayerObject_SonicSuper2Pal)
 		SetPaletteEntry(3, 3, temp1)
 		temp0 -= 3
-		SetPaletteFade(5, 3, 4, 48, 0, 4)
+		SetPaletteFade(3, 3, 2, 48, 0, 4)
 		GetPaletteEntry(5, 0, temp1)
 		SetTableValue(temp1, temp0, PlayerObject_SonicSuper2AltPal)
 		temp0++
-		GetPaletteEntry(5, 1, temp1)
+		GetPaletteEntry(3, 1, temp1)
 		SetTableValue(temp1, temp0, PlayerObject_SonicSuper2AltPal)
 		temp0++
-		GetPaletteEntry(5, 2, temp1)
+		GetPaletteEntry(3, 2, temp1)
 		SetTableValue(temp1, temp0, PlayerObject_SonicSuper2AltPal)
 		temp0++
-		GetPaletteEntry(5, 3, temp1)
+		GetPaletteEntry(3, 3, temp1)
 		SetTableValue(temp1, temp0, PlayerObject_SonicSuper2AltPal)
 		temp0++
 	loop
