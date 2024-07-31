@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<game>
+  <objects>
+    <object name="Palette Police" script="Global/PalettePolice.txt" forceLoad="true" />
+  </objects>
+</game>
