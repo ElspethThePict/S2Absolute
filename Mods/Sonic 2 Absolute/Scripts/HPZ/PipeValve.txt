@@ -75,6 +75,9 @@ event ObjectStartup
 	SpriteFrame(-16, -16, 32, 32, 443, 1)
 	foreach (TypeName[Pipe Valve], arrayPos0, ALL_ENTITIES)
 		object[arrayPos0].drawOrder = 5
+		if object[arrayPos0].propertyValue == 1
+			object[arrayPos0].drawOrder = 4
+		end if
 	next
 	SetTableValue(TypeName[Pipe Valve], DebugMode_ObjCount, DebugMode_TypesTable)
 	SetTableValue(PipeValve_DebugDraw, DebugMode_ObjCount, DebugMode_DrawTable)
