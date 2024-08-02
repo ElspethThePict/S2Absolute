@@ -31,7 +31,7 @@ end function
 
 
 event ObjectMain
-	if object.propertyValue == 1
+	if object.propertyValue > 0
 		object.xpos += object.xvel
 		object.ypos += object.yvel
 		object.yvel += 0x7000
@@ -60,81 +60,69 @@ event ObjectMain
 				if checkResult == 1
 					object.type = TypeName[Blank Object]
 					PlaySfx(SfxName[Ledge Break], 0)
-					temp2 = object.xpos
-					temp2 -= 0x80000
-					temp3 = object.xpos
-					temp3 += 0x80000
-					temp4 = object.ypos
-					temp4 -= 0x180000
 					if object[currentPlayer].xpos < object.xpos
-						CreateTempObject(TypeName[Breakable Wall], 1, temp2, temp4)
+						CreateTempObject(TypeName[Breakable Wall], 1, object.xpos, object.ypos)
 						object[tempObjectPos].xvel = -0x60000
 						object[tempObjectPos].yvel = -0x60000
 						object[tempObjectPos].drawOrder = 4
-						CreateTempObject(TypeName[Breakable Wall], 1, temp3, temp4)
+						CreateTempObject(TypeName[Breakable Wall], 5, object.xpos, object.ypos)
 						object[tempObjectPos].xvel = -0x40000
 						object[tempObjectPos].yvel = -0x50000
 						object[tempObjectPos].drawOrder = 4
-						temp4 += 0x100000
-						CreateTempObject(TypeName[Breakable Wall], 1, temp2, temp4)
+						CreateTempObject(TypeName[Breakable Wall], 2, object.xpos, object.ypos)
 						object[tempObjectPos].xvel = -0x80000
 						object[tempObjectPos].yvel = -0x20000
 						object[tempObjectPos].drawOrder = 4
-						CreateTempObject(TypeName[Breakable Wall], 1, temp3, temp4)
+						CreateTempObject(TypeName[Breakable Wall], 6, object.xpos, object.ypos)
 						object[tempObjectPos].xvel = -0x60000
 						object[tempObjectPos].yvel = -0x10000
 						object[tempObjectPos].drawOrder = 4
-						temp4 += 0x100000
-						CreateTempObject(TypeName[Breakable Wall], 1, temp2, temp4)
+						CreateTempObject(TypeName[Breakable Wall], 3, object.xpos, object.ypos)
 						object[tempObjectPos].xvel = -0x80000
 						object[tempObjectPos].yvel = 0x20000
 						object[tempObjectPos].drawOrder = 4
-						CreateTempObject(TypeName[Breakable Wall], 1, temp3, temp4)
+						CreateTempObject(TypeName[Breakable Wall], 7, object.xpos, object.ypos)
 						object[tempObjectPos].xvel = -0x60000
 						object[tempObjectPos].yvel = 0x10000
 						object[tempObjectPos].drawOrder = 4
-						temp4 += 0x100000
-						CreateTempObject(TypeName[Breakable Wall], 1, temp2, temp4)
+						CreateTempObject(TypeName[Breakable Wall], 4, object.xpos, object.ypos)
 						object[tempObjectPos].xvel = -0x60000
 						object[tempObjectPos].yvel = 0x60000
 						object[tempObjectPos].drawOrder = 4
-						CreateTempObject(TypeName[Breakable Wall], 1, temp3, temp4)
+						CreateTempObject(TypeName[Breakable Wall], 8, object.xpos, object.ypos)
 						object[tempObjectPos].xvel = -0x40000
 						object[tempObjectPos].yvel = 0x50000
 						object[tempObjectPos].drawOrder = 4
 					else
-						CreateTempObject(TypeName[Breakable Wall], 1, temp2, temp4)
+						CreateTempObject(TypeName[Breakable Wall], 1, object.xpos, object.ypos)
 						object[tempObjectPos].xvel = 0x40000
 						object[tempObjectPos].yvel = -0x50000
 						object[tempObjectPos].drawOrder = 4
-						CreateTempObject(TypeName[Breakable Wall], 1, temp3, temp4)
+						CreateTempObject(TypeName[Breakable Wall], 5, object.xpos, object.ypos)
 						object[tempObjectPos].xvel = 0x60000
 						object[tempObjectPos].yvel = -0x60000
 						object[tempObjectPos].drawOrder = 4
-						temp4 += 0x100000
-						CreateTempObject(TypeName[Breakable Wall], 1, temp2, temp4)
+						CreateTempObject(TypeName[Breakable Wall], 2, object.xpos, object.ypos)
 						object[tempObjectPos].xvel = 0x60000
 						object[tempObjectPos].yvel = -0x10000
 						object[tempObjectPos].drawOrder = 4
-						CreateTempObject(TypeName[Breakable Wall], 1, temp3, temp4)
+						CreateTempObject(TypeName[Breakable Wall], 6, object.xpos, object.ypos)
 						object[tempObjectPos].xvel = 0x80000
 						object[tempObjectPos].yvel = -0x20000
 						object[tempObjectPos].drawOrder = 4
-						temp4 += 0x100000
-						CreateTempObject(TypeName[Breakable Wall], 1, temp2, temp4)
+						CreateTempObject(TypeName[Breakable Wall], 3, object.xpos, object.ypos)
 						object[tempObjectPos].xvel = 0x60000
 						object[tempObjectPos].yvel = 0x10000
 						object[tempObjectPos].drawOrder = 4
-						CreateTempObject(TypeName[Breakable Wall], 1, temp3, temp4)
+						CreateTempObject(TypeName[Breakable Wall], 7, object.xpos, object.ypos)
 						object[tempObjectPos].xvel = 0x80000
 						object[tempObjectPos].yvel = 0x20000
 						object[tempObjectPos].drawOrder = 4
-						temp4 += 0x100000
-						CreateTempObject(TypeName[Breakable Wall], 1, temp2, temp4)
+						CreateTempObject(TypeName[Breakable Wall], 4, object.xpos, object.ypos)
 						object[tempObjectPos].xvel = 0x40000
 						object[tempObjectPos].yvel = 0x50000
 						object[tempObjectPos].drawOrder = 4
-						CreateTempObject(TypeName[Breakable Wall], 1, temp3, temp4)
+						CreateTempObject(TypeName[Breakable Wall], 8, object.xpos, object.ypos)
 						object[tempObjectPos].xvel = 0x60000
 						object[tempObjectPos].yvel = 0x60000
 						object[tempObjectPos].drawOrder = 4
@@ -161,7 +149,6 @@ end event
 
 
 event ObjectStartup
-	LoadSpriteSheet("HPZ/Objects.gif")
 	arrayPos0 = 32
 	while arrayPos0 < 0x420
 		if object[arrayPos0].type == TypeName[Breakable Wall]
@@ -170,8 +157,29 @@ event ObjectStartup
 		end if
 		arrayPos0++
 	loop
-	SpriteFrame(-16, -32, 32, 64, 443, 34)
-	SpriteFrame(-8, -8, 16, 16, 443, 34)
+	if stage.actNum == 2
+		LoadSpriteSheet("HPZ/Objects3.gif")
+		SpriteFrame(-16, -32, 32, 64, 69, 22)
+		SpriteFrame(-16, -32, 16, 16, 69, 22)
+		SpriteFrame(-16, -16, 16, 16, 69, 38)
+		SpriteFrame(-16,   0, 16, 16, 69, 54)
+		SpriteFrame(-16,  16, 16, 16, 69, 70)
+		SpriteFrame(  0, -32, 16, 16, 85, 22)
+		SpriteFrame(  0, -16, 16, 16, 85, 38)
+		SpriteFrame(  0,   0, 16, 16, 85, 54)
+		SpriteFrame(  0,  16, 16, 16, 85, 70)
+	else
+		LoadSpriteSheet("HPZ/Objects.gif")
+		SpriteFrame(-16, -32, 32, 64, 443, 34)
+		SpriteFrame(-16, -32, 16, 16, 443, 34)
+		SpriteFrame(-16, -16, 16, 16, 443, 50)
+		SpriteFrame(-16,   0, 16, 16, 443, 66)
+		SpriteFrame(-16,  16, 16, 16, 443, 82)
+		SpriteFrame(  0, -32, 16, 16, 459, 34)
+		SpriteFrame(  0, -16, 16, 16, 459, 50)
+		SpriteFrame(  0,   0, 16, 16, 459, 66)
+		SpriteFrame(  0,  16, 16, 16, 459, 82)
+	end if
 	SetTableValue(TypeName[Breakable Wall], DebugMode_ObjCount, DebugMode_TypesTable)
 	SetTableValue(BreakableWall_DebugDraw, DebugMode_ObjCount, DebugMode_DrawTable)
 	SetTableValue(BreakableWall_DebugSpawn, DebugMode_ObjCount, DebugMode_SpawnTable)

@@ -25,6 +25,7 @@ public value HPZSetup_value34 = 0;
 public value HPZSetup_value35 = 0;
 public value HPZSetup_value36 = 0;
 public value HPZSetup_paloffset = 0;
+public value HPZSetup_wrapmark = 0;
 
 // Tables
 public table HPZSetup_table38
@@ -452,6 +453,33 @@ function HPZSetup_LevelWrap
 			if screen.cameraY <= 384
 				screen.cameraY += 0x800
 				screen.yoffset += 0x800
+			end if
+		end if
+		
+		if screen.cameraY >= 0x480
+			if HPZSetup_wrapmark == 0
+				HPZSetup_wrapmark = 1
+				arrayPos0 = 32
+				while arrayPos0 < 0x4A0
+					if object[arrayPos0].ypos <= 0x2800000
+						object[arrayPos0].ypos += 0x8000000
+						object[arrayPos0].value31 += 0x8000000
+					end if
+					arrayPos0++
+				loop
+			end if
+		end if
+		if screen.cameraY <= 0x47F
+			if HPZSetup_wrapmark == 1
+				HPZSetup_wrapmark = 0
+				arrayPos0 = 32
+				while arrayPos0 < 0x4A0
+					if object[arrayPos0].ypos >= 0x680 0000
+						object[arrayPos0].ypos -= 0x8000000
+						object[arrayPos0].value31 -= 0x8000000
+					end if
+					arrayPos0++
+				loop
 			end if
 		end if
 	end if
