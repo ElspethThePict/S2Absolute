@@ -7,6 +7,8 @@
 
 //-------Aliases-------//
 private alias 40 : TYPE_HPZSETUP
+private alias 2048 : YBoundLeft
+private alias 2560 : YBoundRight
 
 // Function declarations
 reserve function HPZSetup_Function97
@@ -26,6 +28,7 @@ public value HPZSetup_value35 = 0;
 public value HPZSetup_value36 = 0;
 public value HPZSetup_paloffset = 0;
 public value HPZSetup_wrapmark = 0;
+public value HPZSetup_Ymark = 0;
 
 // Tables
 public table HPZSetup_table38
@@ -417,7 +420,13 @@ function summon_birdies
 end function
 
 function HPZSetup_LevelWrap
-	if object[0].xpos >= 0x12800000
+	if object[0].xpos >= 0x12800000		
+		if HPZSetup_Ymark == 0
+			stage.newYBoundary2 = YBoundRight
+			stage.deathBoundary = YBoundRight
+			stage.deathBoundary <<= 16
+			HPZSetup_Ymark = 1
+		end if
 		if object[0].ypos >= 0x800 0000
 			temp1 = object[0].ypos
 			currentPlayer = 0
@@ -462,8 +471,10 @@ function HPZSetup_LevelWrap
 				arrayPos0 = 32
 				while arrayPos0 < 0x4A0
 					if object[arrayPos0].ypos <= 0x2800000
-						object[arrayPos0].ypos += 0x8000000
-						object[arrayPos0].value31 += 0x8000000
+						if object[arrayPos0].type != TypeName[Water]
+							object[arrayPos0].ypos += 0x8000000
+							object[arrayPos0].value31 += 0x8000000
+						end if
 					end if
 					arrayPos0++
 				loop
@@ -475,12 +486,21 @@ function HPZSetup_LevelWrap
 				arrayPos0 = 32
 				while arrayPos0 < 0x4A0
 					if object[arrayPos0].ypos >= 0x680 0000
-						object[arrayPos0].ypos -= 0x8000000
-						object[arrayPos0].value31 -= 0x8000000
+						if object[arrayPos0].type != TypeName[Water]
+							object[arrayPos0].ypos -= 0x8000000
+							object[arrayPos0].value31 -= 0x8000000
+						end if
 					end if
 					arrayPos0++
 				loop
 			end if
+		end if
+	else
+		if HPZSetup_Ymark == 1
+			stage.newYBoundary2 = YBoundLeft
+			stage.deathBoundary = YBoundLeft
+			stage.deathBoundary <<= 16
+			HPZSetup_Ymark = 0
 		end if
 	end if
 end function
