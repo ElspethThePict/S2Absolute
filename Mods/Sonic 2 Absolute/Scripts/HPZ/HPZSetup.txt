@@ -19,8 +19,11 @@ reserve function HPZSetup_Function101
 reserve function HPZSetup_Function102
 reserve function HPZSetup_Function103
 reserve function summon_birdies
-
+reserve function HPZSetup_SegapedeOn
+reserve function HPZSetup_SegapedeOff
 reserve function HPZSetup_LevelWrap
+
+
 // Static Values
 public value HPZSetup_value33 = 0;
 public value HPZSetup_value34 = 0;
@@ -50,6 +53,22 @@ end table
 public table HPZSetup_table42
 	0, 0, 1, 2, 3, 3, 2, 1, 2, 3, 3, 2, 1, 0
 end table
+
+function HPZSetup_SegapedeOn
+	stage[0].activeLayer = 4
+	object.drawOrder = 1
+	ResetObjectEntity(20, TypeName[Segapede BG], 0, 0, 0)
+	object[20].priority = PRIORITY_ACTIVE
+end function
+
+
+function HPZSetup_SegapedeOff
+	stage[0].activeLayer = 1
+	object.drawOrder = 0
+	foreach (TypeName[Segapede BG], arrayPos0, ALL_ENTITIES)
+		object[arrayPos0].type = TypeName[Blank Object]	
+	next
+end function
 
 function HPZSetup_Function97
 	object.value9 = temp1
@@ -420,7 +439,11 @@ function summon_birdies
 end function
 
 function HPZSetup_LevelWrap
-	if object[0].xpos >= 0x12800000		
+	CheckGreater(object[0].xpos, 0x18000000)
+	temp0 = checkResult
+	CheckLower(object[0].xpos, 0x1C000000)
+	temp0 &= checkResult
+	if temp0 == 1	
 		if HPZSetup_Ymark == 0
 			stage.newYBoundary2 = YBoundRight
 			stage.deathBoundary = YBoundRight
@@ -444,6 +467,11 @@ function HPZSetup_LevelWrap
 				screen.cameraY -= 0x800
 				screen.yoffset -= 0x800
 			end if
+			CallFunction(HPZSetup_SegapedeOff)
+			foreach (TypeName[Water], arrayPos0, ALL_ENTITIES)
+				object[arrayPos0].ypos -= 0x8000000
+			next
+			stage.newWaterLevel -= 0x8000000
 		end if
 		
 		if object[0].ypos <= 0x90 0000
@@ -463,6 +491,11 @@ function HPZSetup_LevelWrap
 				screen.cameraY += 0x800
 				screen.yoffset += 0x800
 			end if
+			CallFunction(HPZSetup_SegapedeOn)
+			foreach (TypeName[Water], arrayPos0, ALL_ENTITIES)
+				object[arrayPos0].ypos += 0x8000000
+			next
+			stage.newWaterLevel += 0x8000000
 		end if
 		
 		if screen.cameraY >= 0x480
@@ -502,6 +535,19 @@ function HPZSetup_LevelWrap
 			stage.deathBoundary <<= 16
 			HPZSetup_Ymark = 0
 		end if
+		if HPZSetup_wrapmark == 1
+			HPZSetup_wrapmark = 0
+			arrayPos0 = 32
+			while arrayPos0 < 0x4A0
+				if object[arrayPos0].ypos >= 0x680 0000
+					if object[arrayPos0].type != TypeName[Water]
+						object[arrayPos0].ypos -= 0x8000000
+						object[arrayPos0].value31 -= 0x8000000
+					end if
+				end if
+				arrayPos0++
+			loop
+		end if
 	end if
 end function
 
@@ -516,11 +562,6 @@ event ObjectMain
 			end if
 			break
 		case 2 //Proto
-			if object[0].xpos > 0x12800000
-				stage.newWaterLevel = 0xAA00000
-			else
-				stage.newWaterLevel = 0x6080000
-			end if
 			CallFunction(HPZSetup_LevelWrap)
 			if object.value21 == 0
 				if object[0].xpos < 0x2260000
@@ -782,6 +823,7 @@ event ObjectStartup
 	CallFunction(HPZSetup_Function99)
 	CallFunction(HPZSetup_Function100)
 	LoadPalette("ElectricFlash.act", 2, 0, 0, 256)
+	LoadPalette("HPZSP.act", 3, 0, 0, 256)
 	HPZSetup_value33 = 0
 	HPZSetup_value34 = 0
 	SetLayerDeformation(1, 64, 2, 0, 0, 0)
