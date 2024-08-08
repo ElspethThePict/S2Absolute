@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ObjDef xmlns="http://www.sonicretro.org" Image="trigger" DefaultSubtype="1">
+<ObjDef xmlns="http://www.sonicretro.org" Image="trigger" Debug="true" DefaultSubtype="1">
   <Images>
     <ImageFromSheet id="trigger" sheet="Global/Display.gif" sourcex="168" sourcey="18" width="16" height="16">
       <Offset X="-8" Y="-8"/>

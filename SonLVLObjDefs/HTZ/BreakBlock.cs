@@ -75,7 +75,7 @@ namespace S2ObjectDefinitions.HTZ
 
 		public override string SubtypeName(byte subtype)
 		{
-			string name = (5 - (subtype & 0x7f)) + " Blocks";
+			string name = properties[0].Enumeration.GetKey(subtype & 0x7f);
 			name += ((subtype > 0x7f) ? " (Plane B)" : " (Plane A)");
 			return name;
 		}

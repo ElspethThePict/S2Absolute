@@ -590,30 +590,16 @@ namespace S2ObjectDefinitions.CPZ
 				if (transportPath == 2) // random, draw both paths
 				{
 					dbg = new Sprite(dbg, DrawPath(paths_enterance[tubeType], 191)); // green
-					dbg = new Sprite(dbg, DrawPath(paths_enterance[tubeType+1], 175)); // red
+					dbg = new Sprite(dbg, DrawPath(paths_enterance[tubeType + 1], 175)); // red
 					
-					if (nodeFlags[index] < 0)
-						dbg = new Sprite(dbg, new Sprite(DrawPath(paths_tube[-nodeFlags[index]], 191), -obj.X, -obj.Y)); // green
-					else
-						dbg = new Sprite(dbg, new Sprite(DrawPath(paths_tube[nodeFlags[index]], 191), -obj.X, -obj.Y)); // green
-					
-					index++;
-					
-					if (nodeFlags[index] < 0)
-						dbg = new Sprite(dbg, new Sprite(DrawPath(paths_tube[-nodeFlags[index]], 175), -obj.X, -obj.Y)); // red
-					else
-						dbg = new Sprite(dbg, new Sprite(DrawPath(paths_tube[nodeFlags[index]], 175), -obj.X, -obj.Y)); // red
+					dbg = new Sprite(dbg, new Sprite(DrawPath(paths_tube[Math.Abs(nodeFlags[index])], 191), -obj.X, -obj.Y)); // green
+					dbg = new Sprite(dbg, new Sprite(DrawPath(paths_tube[Math.Abs(nodeFlags[index + 1])], 175), -obj.X, -obj.Y)); // red
 				}
 				else
 				{
-					int colour = (transportPath == 0) ? 191 : 175;
-					dbg = new Sprite(dbg, DrawPath(paths_enterance[transportPath + tubeType], colour)); // either green or red
-					
-					index += transportPath;
-					if (nodeFlags[index] < 0)
-						dbg = new Sprite(dbg, new Sprite(DrawPath(paths_tube[-nodeFlags[index]], colour), -obj.X, -obj.Y));
-					else
-						dbg = new Sprite(dbg, new Sprite(DrawPath(paths_tube[nodeFlags[index]], colour), -obj.X, -obj.Y));
+					int colour = (transportPath == 0) ? 191 : 175; // either green or red (in that order)
+					dbg = new Sprite(dbg, DrawPath(paths_enterance[tubeType + transportPath], colour));
+					dbg = new Sprite(dbg, new Sprite(DrawPath(paths_tube[Math.Abs(nodeFlags[index + transportPath])], colour), -obj.X, -obj.Y));
 				}
 			}
 			catch

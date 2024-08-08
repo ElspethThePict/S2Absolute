@@ -27,18 +27,22 @@ namespace S2ObjectDefinitions.MCZ
 	{
 		public override Sprite GetFrame()
 		{
-			Sprite[] sprites = new Sprite[2];
+			Sprite[] sprites = new Sprite[4];
 			if (LevelData.StageInfo.folder.EndsWith("Zone06"))
 			{
 				BitmapBits sheet = LevelData.GetSpriteSheet("MCZ/Objects.gif");
-				sprites[0] = new Sprite(sheet.GetSection(34, 48, 44, 16), -26, -24);
-				sprites[1] = new Sprite(sheet.GetSection(74, 197, 70, 58), -38, -37);
+				sprites[0] = new Sprite(sheet.GetSection(1, 132, 24, 64), -12 - 18, -48);
+				sprites[1] = new Sprite(sheet.GetSection(34, 48, 44, 16), -26, -24);
+				sprites[2] = new Sprite(sheet.GetSection(74, 197, 70, 58), -38, -37);
+				sprites[3] = new Sprite(sheet.GetSection(1, 132, 24, 64), -12 + 22, -48);
 			}
 			else
 			{
 				BitmapBits sheet = LevelData.GetSpriteSheet("MBZ/Objects.gif");
-				sprites[0] = new Sprite(sheet.GetSection(1, 5, 44, 16), -26, -24);
-				sprites[1] = new Sprite(sheet.GetSection(182, 197, 70, 58), -38, -37);
+				sprites[0] = new Sprite(sheet.GetSection(42, 191, 24, 64), -12 - 18, -48);
+				sprites[1] = new Sprite(sheet.GetSection(1, 5, 44, 16), -26, -24);
+				sprites[2] = new Sprite(sheet.GetSection(182, 197, 70, 58), -38, -37);
+				sprites[3] = new Sprite(sheet.GetSection(42, 191, 24, 64), -12 + 22, -48);
 			}
 			
 			return new Sprite(sprites);

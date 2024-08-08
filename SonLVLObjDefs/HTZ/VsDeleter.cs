@@ -11,11 +11,6 @@ namespace S2ObjectDefinitions.HTZ
 		private PropertySpec[] properties = new PropertySpec[1];
 		private Sprite sprite;
 		
-		public override ReadOnlyCollection<byte> Subtypes
-		{
-			get { return new ReadOnlyCollection<byte>(new byte[0]); }
-		}
-
 		public override void Init(ObjectData data)
 		{
 			sprite = new Sprite(LevelData.GetSpriteSheet("Global/Display.gif").GetSection(168, 18, 16, 16), -8, -8);
@@ -24,6 +19,16 @@ namespace S2ObjectDefinitions.HTZ
 				"How many of the following objects should be deleted when in 1P mode.", null,
 				(obj) => obj.PropertyValue,
 				(obj, value) => obj.PropertyValue = (byte)((int)value));
+		}
+		
+		public override ReadOnlyCollection<byte> Subtypes
+		{
+			get { return new ReadOnlyCollection<byte>(new byte[] {1, 2, 3}); }
+		}
+		
+		public override bool Debug
+		{
+			get { return true; }
 		}
 		
 		public override byte DefaultSubtype
@@ -38,7 +43,7 @@ namespace S2ObjectDefinitions.HTZ
 
 		public override string SubtypeName(byte subtype)
 		{
-			return null;
+			return "Delete " + subtype + " Object" + (subtype == 1 ? "" : "s");
 		}
 
 		public override Sprite Image
@@ -61,7 +66,7 @@ namespace S2ObjectDefinitions.HTZ
 			if (obj.PropertyValue == 0)
 				return null;
 			
-			List<ObjectEntry> objs = LevelData.Objects.Skip(LevelData.Objects.IndexOf(obj)).TakeWhile(a => LevelData.Objects.IndexOf(a) <= (LevelData.Objects.IndexOf(obj) + obj.PropertyValue)).ToList();
+			List<ObjectEntry> objs = LevelData.Objects.Skip(LevelData.Objects.IndexOf(obj)).Take(obj.PropertyValue + 1).ToList();
 			if (objs.Count == 0)
 				return null;
 			

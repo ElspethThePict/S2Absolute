@@ -62,7 +62,7 @@ namespace S2ObjectDefinitions.EHZ
 			if (obj.PropertyValue <= 1)
 				return sprite;
 			
-			int st = -(((obj.PropertyValue) * 16) / 2) + 8;
+			int st = -((obj.PropertyValue * 16) / 2) + 8;
 			List<Sprite> sprs = new List<Sprite>();
 			for (int i = 0; i < obj.PropertyValue; i++)
 				sprs.Add(new Sprite(sprite, st + (i * 16), 0));

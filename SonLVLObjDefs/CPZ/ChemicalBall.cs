@@ -29,7 +29,7 @@ namespace S2ObjectDefinitions.CPZ
 			properties[0] = new PropertySpec("Interval", typeof(int), "Extended",
 				"What interval this Chemical Ball should follow.", null,
 				(obj) => obj.PropertyValue & 0x3F,
-				(obj, value) => obj.PropertyValue = (byte)((obj.PropertyValue & ~0x3F) | (byte)((int)value)));
+				(obj, value) => obj.PropertyValue = (byte)((obj.PropertyValue & ~0x3F) | (int)value));
 			
 			properties[1] = new PropertySpec("Start From", typeof(int), "Extended",
 				"Which direction this Chemical Ball should start from.", null, new Dictionary<string, int>
@@ -38,7 +38,7 @@ namespace S2ObjectDefinitions.CPZ
 					{ "Right", 0x40 }
 				},
 				(obj) => obj.PropertyValue & 0x40,
-				(obj, value) => obj.PropertyValue = (byte)((obj.PropertyValue & ~0x40) | (byte)((int)value)));
+				(obj, value) => obj.PropertyValue = (byte)((obj.PropertyValue & ~0x40) | (int)value));
 			
 			properties[2] = new PropertySpec("Behaviour", typeof(int), "Extended",
 				"How this Chemical Ball should act.", null, new Dictionary<string, int>
@@ -47,12 +47,12 @@ namespace S2ObjectDefinitions.CPZ
 					{ "Straight", 0x80 }
 				},
 				(obj) => obj.PropertyValue & 0x80,
-				(obj, value) => obj.PropertyValue = (byte)((obj.PropertyValue & ~0x80) | (byte)((int)value)));
+				(obj, value) => obj.PropertyValue = (byte)((obj.PropertyValue & ~0x80) | (int)value));
 		}
 
 		public override ReadOnlyCollection<byte> Subtypes
 		{
-			get { return new ReadOnlyCollection<byte>(new byte[0]); }
+			get { return new ReadOnlyCollection<byte>(new byte[] {0x00, 0x40, 0x80, 0xC0}); }
 		}
 		
 		public override PropertySpec[] CustomProperties
@@ -62,7 +62,7 @@ namespace S2ObjectDefinitions.CPZ
 
 		public override string SubtypeName(byte subtype)
 		{
-			return null;
+			return ((subtype < 0x80) ? "Arc" : "Straight") + (((subtype & 0x40) == 0x00) ? " (Start From Left)" : " (Start From Right)");
 		}
 
 		public override Sprite Image

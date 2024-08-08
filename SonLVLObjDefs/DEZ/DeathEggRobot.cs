@@ -21,7 +21,7 @@ namespace S2ObjectDefinitions.DEZ
 				sprite = new Sprite(LevelData.GetSpriteSheet("MBZ/Objects.gif").GetSection(911, 183, 112, 72), -44, -36);
 			}
 			
-			properties[0] = new PropertySpec("Skip Cutscene", typeof(int), "Extended",
+			properties[0] = new PropertySpec("Skip Cutscene", typeof(bool), "Extended",
 				"If the Death Egg Robot should skip the ending cutscene after it is defeated.", null,
 				(obj) => obj.PropertyValue != 0,
 				(obj, value) => obj.PropertyValue = ((byte)((bool)value ? 1 : 0)));
@@ -30,11 +30,6 @@ namespace S2ObjectDefinitions.DEZ
 		public override ReadOnlyCollection<byte> Subtypes
 		{
 			get { return new ReadOnlyCollection<byte>(new byte[] {0, 1}); }
-		}
-		
-		public override byte DefaultSubtype
-		{
-			get { return 0; }
 		}
 		
 		public override PropertySpec[] CustomProperties

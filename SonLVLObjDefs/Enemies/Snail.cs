@@ -37,17 +37,12 @@ namespace S2ObjectDefinitions.Enemies
 					{ "Right", 1 }
 				},
 				(obj) => obj.PropertyValue & 1, // in-game is a bit iffy, startup only looks at first bit but oob reset looks at entire number (== 0) - we're just gonna stick with 1st bit here
-				(obj, value) => obj.PropertyValue = (byte)((obj.PropertyValue & ~1) | (byte)((int)value)));
+				(obj, value) => obj.PropertyValue = (byte)((obj.PropertyValue & ~1) | (int)value));
 		}
 
 		public override ReadOnlyCollection<byte> Subtypes
 		{
 			get { return new ReadOnlyCollection<byte>(new byte[] {0, 1}); }
-		}
-		
-		public override byte DefaultSubtype
-		{
-			get { return 0; }
 		}
 		
 		public override PropertySpec[] CustomProperties
@@ -57,7 +52,7 @@ namespace S2ObjectDefinitions.Enemies
 
 		public override string SubtypeName(byte subtype)
 		{
-			return (subtype == 0) ? "Start Facing Left" : "Start Facing Right";
+			return (subtype == 0) ? "Facing Left" : "Facing Right";
 		}
 
 		public override Sprite Image

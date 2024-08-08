@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ObjDef xmlns="http://www.sonicretro.org" Image="script">
+<ObjDef xmlns="http://www.sonicretro.org" Image="script" Debug="true">
   <Images>
     <ImageFromSheet id="script" sheet="Global/Display.gif" sourcex="1" sourcey="143" width="32" height="32">
       <Offset X="-16" Y="-16"/>

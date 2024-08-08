@@ -23,7 +23,12 @@ namespace S2ObjectDefinitions.WFZ
 		
 		public override ReadOnlyCollection<byte> Subtypes
 		{
-			get { return new ReadOnlyCollection<byte>(new byte[0]); }
+			get { return new ReadOnlyCollection<byte>(new byte[] {8, 10, 12, 14, 16, 18, 20}); }
+		}
+		
+		public override bool Debug
+		{
+			get { return true; }
 		}
 		
 		public override byte DefaultSubtype
@@ -38,7 +43,7 @@ namespace S2ObjectDefinitions.WFZ
 
 		public override string SubtypeName(byte subtype)
 		{
-			return null;
+			return subtype + " Tiles Long";
 		}
 
 		public override Sprite Image
@@ -58,6 +63,7 @@ namespace S2ObjectDefinitions.WFZ
 		
 		public override Sprite GetDebugOverlay(ObjectEntry obj)
 		{
+			if (obj.PropertyValue == 0) return null;
 			int width = obj.PropertyValue << 4;
 			BitmapBits bitmap = new BitmapBits(width + 1, 33);
 			bitmap.DrawRectangle(6, 0, 0, width, 32); // LevelData.ColorWhite

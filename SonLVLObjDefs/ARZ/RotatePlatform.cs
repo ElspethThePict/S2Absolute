@@ -46,11 +46,9 @@ namespace S2ObjectDefinitions.ARZ
 						return speed;
 					},
 				(obj, value) => {
-						int speed = (int)value;
+						int speed = Math.Min(Math.Max((int)value, -7), 7);
 						if (speed < 0)
 							speed = (-speed + 8);
-						
-						speed &= 0x0f;
 						
 						obj.PropertyValue = (byte)((obj.PropertyValue & ~0xf0) | (speed << 4));
 					}
@@ -59,7 +57,7 @@ namespace S2ObjectDefinitions.ARZ
 
 		public override ReadOnlyCollection<byte> Subtypes
 		{
-			get { return new ReadOnlyCollection<byte>(new byte[0]); }
+			get { return new ReadOnlyCollection<byte>(new byte[] {0x10, 0x15, 0x18, 0x11, 0x14, 0x19}); }
 		}
 		
 		public override byte DefaultSubtype
@@ -74,7 +72,7 @@ namespace S2ObjectDefinitions.ARZ
 		
 		public override string SubtypeName(byte subtype)
 		{
-			return null;
+			return "Start From " + properties[0].Enumeration.GetKey(subtype & 0x0f);
 		}
 
 		public override Sprite Image

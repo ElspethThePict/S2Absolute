@@ -26,6 +26,11 @@ namespace S2ObjectDefinitions.ARZ
 			get { return new ReadOnlyCollection<byte>(new byte[] {0, 1, 2, 3}); }
 		}
 		
+		public override bool Debug
+		{
+			get { return true; }
+		}
+		
 		public override PropertySpec[] CustomProperties
 		{
 			get { return properties; }

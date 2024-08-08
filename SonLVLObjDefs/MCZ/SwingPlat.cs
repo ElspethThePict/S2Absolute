@@ -40,7 +40,7 @@ namespace S2ObjectDefinitions.MCZ
 		
 		public override ReadOnlyCollection<byte> Subtypes
 		{
-			get { return new ReadOnlyCollection<byte>(new byte[0]); }
+			get { return new ReadOnlyCollection<byte>(new byte[] {0x16, 0x1e}); }
 		}
 		
 		public override byte DefaultSubtype
@@ -55,7 +55,7 @@ namespace S2ObjectDefinitions.MCZ
 
 		public override string SubtypeName(byte subtype)
 		{
-			return null;
+			return (((Math.Max(subtype, (byte)1) - 1) & 8) == 0) ? "Swing Left" : "Swing Right";
 		}
 
 		public override Sprite Image
@@ -65,7 +65,7 @@ namespace S2ObjectDefinitions.MCZ
 
 		public override Sprite SubtypeImage(byte subtype)
 		{
-			return sprites[1];
+			return sprites[2];
 		}
 
 		public override Sprite GetSprite(ObjectEntry obj)

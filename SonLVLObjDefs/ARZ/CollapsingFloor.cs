@@ -61,7 +61,7 @@ namespace S2ObjectDefinitions.ARZ
 
 		public override string SubtypeName(byte subtype)
 		{
-			return (subtype < 2) ? "Platform" : "Solid";
+			return (subtype < 2) ? "Top Solid" : "All Solid";
 		}
 
 		public override Sprite Image

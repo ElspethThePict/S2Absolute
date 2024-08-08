@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ObjDef xmlns="http://www.sonicretro.org" Image="bubbles">
+<ObjDef xmlns="http://www.sonicretro.org" Image="bubbler">
   <Images>
-    <ImageFromSheet id="bubbles" sheet="HPZ/Objects3.gif" sourcex="103" sourcey="1" width="16" height="16">
+    <ImageFromSheet id="bubbler" sheet="HPZ/Objects3.gif" sourcex="103" sourcey="1" width="16" height="16">
       <Offset X="-8" Y="-8" />
     </ImageFromSheet>
   </Images>
   <Properties>
-    <Property name="Num Duds" description="How many effect bubbles should spawn before a breathable bubble."  type="int" startbit="0" length="8" />
+    <Property name="Delay" description="How long the delay between large bubbles should be." type="int" startbit="0" length="8" />
   </Properties>
+  <Subtypes>
+    <Subtype id="00" name="Fastest Bubble Rate" image="bubbler" />
+    <Subtype id="01" name="Fast Bubble Rate" image="bubbler" />
+    <Subtype id="02" name="Slow Bubble Rate" image="bubbler" />
+    <Subtype id="03" name="Slower Bubble Rate" image="bubbler" />
+  </Subtypes>
 </ObjDef>

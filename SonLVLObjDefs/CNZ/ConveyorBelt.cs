@@ -26,6 +26,16 @@ namespace S2ObjectDefinitions.CNZ
 			get { return new ReadOnlyCollection<byte>(new byte[] {8, 10, 12, 14, 16, 18, 20}); }
 		}
 		
+		public override bool Debug
+		{
+			get { return true; }
+		}
+		
+		public override byte DefaultSubtype
+		{
+			get { return 0x10; }
+		}
+		
 		public override PropertySpec[] CustomProperties
 		{
 			get { return properties; }
@@ -53,6 +63,7 @@ namespace S2ObjectDefinitions.CNZ
 		
 		public override Sprite GetDebugOverlay(ObjectEntry obj)
 		{
+			if (obj.PropertyValue == 0) return null;
 			int width = obj.PropertyValue << 4;
 			BitmapBits bitmap = new BitmapBits(width + 1, 21);
 			bitmap.DrawRectangle(6, 0, 0, width, 20); // LevelData.ColorWhite

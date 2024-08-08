@@ -48,7 +48,7 @@ namespace S2ObjectDefinitions.HTZ
 		
 		public override ReadOnlyCollection<byte> Subtypes
 		{
-			get { return new ReadOnlyCollection<byte>(new byte[0]); }
+			get { return new ReadOnlyCollection<byte>(new byte[] {0x08, 0x10, 0x18, 0x20, 0x28}); } // it can be any value but let's give some starters, if only we could put direction in here too..
 		}
 		
 		public override byte DefaultSubtype
@@ -63,7 +63,7 @@ namespace S2ObjectDefinitions.HTZ
 
 		public override string SubtypeName(byte subtype)
 		{
-			return null;
+			return "Travel " + (subtype << 4) + " Pixels";
 		}
 
 		public override Sprite Image

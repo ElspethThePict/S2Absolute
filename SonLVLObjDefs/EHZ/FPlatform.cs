@@ -13,7 +13,7 @@ namespace S2ObjectDefinitions.EHZ
 		
 		public override void Init(ObjectData data)
 		{
-			if (LevelData.StageInfo.folder[LevelData.StageInfo.folder.Length-1] == '1')
+			if (LevelData.StageInfo.folder.EndsWith("Zone01"))
 			{
 				sprite = new Sprite(LevelData.GetSpriteSheet("EHZ/Objects.gif").GetSection(127, 98, 64, 32), -32, -12);
 			}
@@ -23,21 +23,20 @@ namespace S2ObjectDefinitions.EHZ
 			}
 			
 			// tagging this area with LevelData.ColorWhite
-			BitmapBits bitmap = new BitmapBits(1, 0x1C);
-			bitmap.DrawLine(6, 0, 0x00, 0, 0x03);
-			bitmap.DrawLine(6, 0, 0x08, 0, 0x0B);
-			bitmap.DrawLine(6, 0, 0x10, 0, 0x13);
-			bitmap.DrawLine(6, 0, 0x18, 0, 0x1B);
-			debug = new Sprite(bitmap, 0, 24);
+			BitmapBits bitmap = new BitmapBits(1, 40);
+			for (int i = 0; i < bitmap.Height; i += 8)
+				bitmap.DrawLine(6, 0, i, 0, i + 3);
+			
+			debug = new Sprite(bitmap);
 			
 			properties[0] = new PropertySpec("Behaviour", typeof(int), "Extended",
 				"How this Platform should act upon player contact.", null, new Dictionary<string, int>
 				{
 					{ "Fall", 0 },
-					{ "Static", 1 }
+					{ "Hover", 1 }
 				},
 				(obj) => (obj.PropertyValue == 1) ? 1 : 0,
-				(obj, value) => obj.PropertyValue = (byte)(int)value);
+				(obj, value) => obj.PropertyValue = (byte)((int)value));
 		}
 		
 		public override ReadOnlyCollection<byte> Subtypes
@@ -57,7 +56,7 @@ namespace S2ObjectDefinitions.EHZ
 
 		public override string SubtypeName(byte subtype)
 		{
-			return (subtype == 1) ? "Static Platform" : "Fall Platform";
+			return (subtype == 1) ? "Hover Platform" : "Fall Platform";
 		}
 
 		public override Sprite Image

@@ -25,7 +25,7 @@ namespace S2ObjectDefinitions.WFZ
 			sprites[1] = new Sprite(sprites[0], true, false);
 			
 			properties[0] = new PropertySpec("Distance", typeof(int), "Extended",
-				"How many pixels this Launcher should push the player before launching them. Note that actual launch velocity is unaffected by this value.", null,
+				"How many pixels this Launcher should push the player before launching them. Launch velocity is unaffected by this value.", null,
 				(obj) => obj.PropertyValue << 4,
 				(obj, value) => obj.PropertyValue = (byte)((int)value >> 4));
 			
@@ -41,7 +41,7 @@ namespace S2ObjectDefinitions.WFZ
 		
 		public override ReadOnlyCollection<byte> Subtypes
 		{
-			get { return new ReadOnlyCollection<byte>(new byte[0]); }
+			get { return new ReadOnlyCollection<byte>(new byte[] {0x04, 0x10, 0x18, 0x20}); }
 		}
 		
 		public override byte DefaultSubtype
@@ -56,7 +56,7 @@ namespace S2ObjectDefinitions.WFZ
 
 		public override string SubtypeName(byte subtype)
 		{
-			return null;
+			return "Travel " + (subtype << 4) + " Pixels";
 		}
 
 		public override Sprite Image

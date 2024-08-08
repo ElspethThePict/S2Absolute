@@ -48,7 +48,7 @@ namespace S2ObjectDefinitions.CPZ
 					{ "Counter-Clockwise", 1 }
 				},
 				(obj) => obj.PropertyValue & 1,
-				(obj, value) => obj.PropertyValue = (byte)((obj.PropertyValue & ~1) | (byte)((int)value)));
+				(obj, value) => obj.PropertyValue = (byte)((obj.PropertyValue & ~1) | (int)value));
 				
 			properties[1] = new PropertySpec("Size", typeof(int), "Extended",
 				"How many blocks this set of stairs should have.", null, new Dictionary<string, int>
@@ -57,7 +57,7 @@ namespace S2ObjectDefinitions.CPZ
 					{ "2 Blocks", 2 }
 				},
 				(obj) => obj.PropertyValue & 2,
-				(obj, value) => obj.PropertyValue = (byte)((obj.PropertyValue & ~2) | (byte)((int)value)));
+				(obj, value) => obj.PropertyValue = (byte)((obj.PropertyValue & ~2) | (int)value));
 		}
 
 		public override ReadOnlyCollection<byte> Subtypes

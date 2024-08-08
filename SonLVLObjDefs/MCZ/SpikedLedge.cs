@@ -54,7 +54,7 @@ namespace S2ObjectDefinitions.MCZ
 
 		public override Sprite SubtypeImage(byte subtype)
 		{
-			return sprites[0];
+			return sprites[subtype & 1];
 		}
 
 		public override Sprite GetSprite(ObjectEntry obj)

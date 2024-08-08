@@ -22,7 +22,7 @@ namespace S2ObjectDefinitions.MPZ
 					{ "Right", 1 }
 				},
 				(obj) => (obj.PropertyValue == 0) ? 0 : 1, // in-game any non-0/1 values are treated as opening from the right but they don't flip their sprite
-				(obj, value) => obj.PropertyValue = ((byte)((int)value)));
+				(obj, value) => obj.PropertyValue = (byte)((int)value));
 		}
 
 		public override ReadOnlyCollection<byte> Subtypes

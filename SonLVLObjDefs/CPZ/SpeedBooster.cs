@@ -8,7 +8,7 @@ namespace S2ObjectDefinitions.CPZ
 	class SpeedBooster : ObjectDefinition
 	{
 		private Sprite sprite;
-		private PropertySpec[] properties = new PropertySpec[1];
+		private PropertySpec[] properties = new PropertySpec[2];
 
 		public override void Init(ObjectData data)
 		{
@@ -29,6 +29,15 @@ namespace S2ObjectDefinitions.CPZ
 				},
 				(obj) => (obj.PropertyValue == 0) ? 0 : 1,
 				(obj, value) => obj.PropertyValue = (byte)((int)value));
+			
+			properties[1] = new PropertySpec("Direction", typeof(int), "Extended",
+				"Which direction the player should be launched in.", null, new Dictionary<string, int>
+				{
+					{ "Right", 0 },
+					{ "Left", 1 }
+				},
+				(obj) => (((V4ObjectEntry)obj).Direction == RSDKv3_4.Tiles128x128.Block.Tile.Directions.FlipX) ? 1 : 0,
+				(obj, value) => ((V4ObjectEntry)obj).Direction = (RSDKv3_4.Tiles128x128.Block.Tile.Directions)((int)value));
 		}
 
 		public override ReadOnlyCollection<byte> Subtypes

@@ -41,6 +41,39 @@ namespace S2ObjectDefinitions.EHZ
 		public override bool Hidden { get { return true; } }
 	}
 	
+	class Eggman : EHZ.Generic
+	{
+		public override Sprite GetFrame()
+		{
+			Sprite[] sprites = new Sprite[7];
+			
+			if (LevelData.StageInfo.folder.EndsWith("Zone01"))
+			{
+				BitmapBits sheet = LevelData.GetSpriteSheet("EHZ/Objects.gif");
+				sprites[0] = new Sprite(sheet.GetSection(1, 143, 32, 32), -16 - 44, -16 + 20); // back wheel
+				sprites[1] = new Sprite(sheet.GetSection(70, 155, 60, 20), -28, -28); // eggman
+				sprites[2] = new Sprite(sheet.GetSection(0, 209, 64, 29), -32, -8); // eggmobile
+				sprites[3] = new Sprite(sheet.GetSection(0, 109, 93, 32), -48, -16 + 8); // car
+				sprites[4] = new Sprite(sheet.GetSection(94, 131, 32, 23), -16 - 54, -12 + 16); // drill
+				sprites[5] = new Sprite(sheet.GetSection(1, 143, 32, 32), -16 - 12, -16 + 20); // front wheel 1
+				sprites[6] = new Sprite(sheet.GetSection(1, 143, 32, 32), -16 + 28, -16 + 20); // front wheel 1
+			}
+			else
+			{
+				BitmapBits sheet = LevelData.GetSpriteSheet("MBZ/Objects.gif");
+				sprites[0] = new Sprite(sheet.GetSection(123, 58, 32, 32), -16 - 44, -16 + 20); // back wheel
+				sprites[1] = new Sprite(sheet.GetSection(1, 1, 60, 20), -28, -28); // eggman
+				sprites[2] = new Sprite(sheet.GetSection(415, 170, 64, 29), -32, -8); // eggmobile
+				sprites[3] = new Sprite(sheet.GetSection(123, 1, 93, 32), -48, -16 + 8); // car
+				sprites[4] = new Sprite(sheet.GetSection(123, 34, 32, 23), -16 - 54, -12 + 16); // drill
+				sprites[5] = new Sprite(sheet.GetSection(123, 58, 32, 32), -16 - 12, -16 + 20); // front wheel 1
+				sprites[6] = new Sprite(sheet.GetSection(123, 58, 32, 32), -16 + 28, -16 + 20); // front wheel 1
+			}
+			
+			return new Sprite(sprites);
+		}
+	}
+	
 	class EggmanCar : EHZ.Generic
 	{
 		public override Sprite GetFrame()

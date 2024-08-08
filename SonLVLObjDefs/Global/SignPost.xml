@@ -25,8 +25,7 @@
     </Enum>
   </Enums>
   <DefaultImage>
-    <ImageRef image="base" />
-    <ImageRef image="robotnik" />
+    <ImageSetRef set="robotnik" />
   </DefaultImage>
   <ImageSets>
     <ImageSet id="robotnik">

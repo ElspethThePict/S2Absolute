@@ -66,12 +66,7 @@ namespace S2ObjectDefinitions.HTZ
 		{
 			get { return subtypes; }
 		}
-
-		public override byte DefaultSubtype
-		{
-			get { return 0; }
-		}
-
+		
 		public override PropertySpec[] CustomProperties
 		{
 			get { return properties; }

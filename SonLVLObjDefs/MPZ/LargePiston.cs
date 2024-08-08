@@ -16,20 +16,13 @@ namespace S2ObjectDefinitions.MPZ
 		{
 			sprites[2] = new Sprite(LevelData.GetSpriteSheet("MPZ/Objects.gif").GetSection(1, 135, 128, 120), -64, -12);
 			
-			sprites[0] = new Sprite(sprites[2], 0, 72); // let's show where the piston will be in its retracted state, it's cleaner that way imo
+			sprites[0] = new Sprite(sprites[2], 0, 64); // (let's show it in its retracted position, looks better imo)
 			sprites[1] = new Sprite(sprites[2], false, true);
 			
-			BitmapBits bitmap = new BitmapBits(sprites[2].Width, sprites[2].Height);
-			bitmap.DrawRectangle(6, 0, 0, sprites[2].Width-1, sprites[2].Height-1); // LevelData.ColorWhite
-			debug[0] = new Sprite(bitmap, sprites[2].X, sprites[2].Y - 72);
-			
-			bitmap = new BitmapBits(2, 73);
-			bitmap.DrawLine(6, 0, 0, 0, 72); // LevelData.ColorWhite
-			debug[0] = new Sprite(debug[0], new Sprite(bitmap));
-			
-			debug[1] = new Sprite(debug[0], false, true);
-			
-			debug[0].Offset(0, 72);
+			BitmapBits bitmap = new BitmapBits(128, 120);
+			bitmap.DrawRectangle(6, 0, 0, 127, 119);
+			debug[0] = new Sprite(bitmap, -64, -12);
+			debug[1] = new Sprite(bitmap, -64, -108 + 64);
 			
 			properties[0] = new PropertySpec("Direction", typeof(int), "Extended",
 				"Which way the piston is facing.", null, new Dictionary<string, int>

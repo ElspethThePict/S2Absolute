@@ -80,24 +80,20 @@ namespace S2ObjectDefinitions.Global
 				(obj) => obj.PropertyValue & 32,
 				(obj, value) => obj.PropertyValue = (byte)((obj.PropertyValue & ~32) | (int)value));
 			
-			properties[5] = new PropertySpec("Only Draw Order", typeof(int), "Extended",
-				"If only Draw Order should be affected.", null, new Dictionary<string, int>
-				{
-					{ "False", 0 },
-					{ "True", 64 }
-				},
-				(obj) => obj.PropertyValue & 64,
-				(obj, value) => obj.PropertyValue = (byte)((obj.PropertyValue & ~64) | (int)value));
+			properties[5] = new PropertySpec("Only Draw Order", typeof(bool), "Extended",
+				"If only Draw Order should be set, and not collision plane.", null,
+				(obj) => ((obj.PropertyValue & 64) == 64),
+				(obj, value) => obj.PropertyValue = (byte)((obj.PropertyValue & ~64) | ((bool)value ? 64 : 0)));
 			
 			properties[6] = new PropertySpec("Grounded", typeof(bool), "Extended",
 				"If only grounded players should be affected.", null,
-				(obj) => (obj.PropertyValue > 128),
+				(obj) => (obj.PropertyValue > 127),
 				(obj, value) => obj.PropertyValue = (byte)((obj.PropertyValue & ~128) | ((bool)value ? 128 : 0)));
 		}
 		
 		public override ReadOnlyCollection<byte> Subtypes
 		{
-			get { return new ReadOnlyCollection<byte>(new byte[0]); }
+			get { return new ReadOnlyCollection<byte>(new byte[] {0, 1, 2, 3}); } // putting every single combination here would be kinda too much, but let's have Size here
 		}
 		
 		public override bool Debug
@@ -112,7 +108,7 @@ namespace S2ObjectDefinitions.Global
 
 		public override string SubtypeName(byte subtype)
 		{
-			return null;
+			return properties[0].Enumeration.GetKey(subtype & 3) + " Tall";
 		}
 
 		public override Sprite Image
@@ -131,7 +127,7 @@ namespace S2ObjectDefinitions.Global
 			int sy = -(((count) * 16) / 2) + 8;
 			
 			int index = (obj.PropertyValue >> 2) & 15;
-			if ((obj.PropertyValue & 64) == 64)
+			if ((obj.PropertyValue & 64) == 64) // draw order only?
 				index = (index >> 2) + 16;
 			
 			Sprite frame = new Sprite(sprites[index]);

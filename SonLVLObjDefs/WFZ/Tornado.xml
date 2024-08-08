@@ -10,32 +10,45 @@
     <ImageFromSheet id="tails" sheet="SCZ/Objects.gif" sourcex="261" sourcey="174" width="21" height="16">
       <Offset X="-45" Y="-8" />
     </ImageFromSheet>
+    <ImageFromSheet id="booster" sheet="SCZ/Objects.gif" sourcex="375" sourcey="90" width="56" height="16">
+      <Offset X="-39" Y="32" />
+    </ImageFromSheet>
+    <ImageFromSheet id="flame" sheet="SCZ/Objects.gif" sourcex="386" sourcey="124" width="32" height="16">
+      <Offset X="-71" Y="32" />
+    </ImageFromSheet>
   </Images>
   <Properties>
-    <Property name="Cutscene Type" description="Which cutscene type this Tornado is for." type="types" startbit="0" length="1" />
+    <Property name="Cutscene" description="Which cutscene this Tornado is for." type="cutscenes" startbit="0" length="8" />
   </Properties>
   <Enums>
-    <Enum name="types">
+    <Enum name="cutscenes">
       <EnumMember name="Intro" />
       <EnumMember name="Outro" />
     </Enum>
   </Enums>
   <ImageSets>
-    <ImageSet id="tornado">
+    <ImageSet id="intro">
       <ImageRef image="propeller" />
       <ImageRef image="tornado" />
       <ImageRef image="tails" />
     </ImageSet>
+    <ImageSet id="outro">
+      <ImageRef image="propeller" />
+      <ImageRef image="tornado" />
+      <ImageRef image="tails" />
+      <ImageRef image="booster" />
+      <ImageRef image="flame" />
+    </ImageSet>
   </ImageSets>
   <Subtypes>
     <Subtype id="00" name="Intro Tornado">
-      <ImageSetRef set="tornado" />
+      <ImageSetRef set="intro" />
     </Subtype>
     <Subtype id="01" name="Outro Tornado">
-      <ImageSetRef set="tornado" />
+      <ImageSetRef set="outro" />
     </Subtype>
   </Subtypes>
   <DefaultImage>
-    <ImageSetRef set="tornado" />
+    <ImageSetRef set="intro" />
   </DefaultImage>
 </ObjDef>

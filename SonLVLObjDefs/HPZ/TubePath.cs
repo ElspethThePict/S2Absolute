@@ -22,12 +22,17 @@ namespace S2ObjectDefinitions.HPZ
 					{ "Exit", 1 }
 				},
 				(obj) => obj.PropertyValue & 1,
-				(obj, value) => obj.PropertyValue = ((byte)((int)value)));
+				(obj, value) => obj.PropertyValue = (byte)((int)value));
 		}
 
 		public override ReadOnlyCollection<byte> Subtypes
 		{
 			get { return new ReadOnlyCollection<byte>(new byte[] {0, 1}); }
+		}
+		
+		public override bool Debug
+		{
+			get { return true; }
 		}
 		
 		public override PropertySpec[] CustomProperties

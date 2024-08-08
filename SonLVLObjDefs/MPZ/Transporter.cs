@@ -52,6 +52,11 @@ namespace S2ObjectDefinitions.MPZ
 			get { return new ReadOnlyCollection<byte>(new byte[] {0, 2, 6, 11, 12, 0x11, 0x13, 0x14, 5, 7, 9, 8, 10}); }
 		}
 		
+		public override bool Debug
+		{
+			get { return true; }
+		}
+		
 		public override PropertySpec[] CustomProperties
 		{
 			get { return properties; }
