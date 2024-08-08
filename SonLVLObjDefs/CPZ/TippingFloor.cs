@@ -42,7 +42,7 @@ namespace S2ObjectDefinitions.CPZ
 					{ "93.75%", 15 }
 				},
 				(obj) => obj.PropertyValue & 0x0F,
-				(obj, value) => obj.PropertyValue = (byte)((obj.PropertyValue & ~0x0F) | (byte)((int)value)));
+				(obj, value) => obj.PropertyValue = (byte)((obj.PropertyValue & ~0x0F) | (int)value));
 			
 			properties[1] = new PropertySpec("Duration", typeof(int), "Extended",
 				"How long this floor should face up for.", null, new Dictionary<string, int>
@@ -53,17 +53,17 @@ namespace S2ObjectDefinitions.CPZ
 					{ "63 Frames", 3 }
 				},
 				(obj) => (obj.PropertyValue >> 4) & 3,
-				(obj, value) => obj.PropertyValue = (byte)((obj.PropertyValue & ~0x70) | (byte)((int)value << 4)));
+				(obj, value) => obj.PropertyValue = (byte)((obj.PropertyValue & ~0x70) | ((int)value << 4)));
 			
 			properties[2] = new PropertySpec("VS Disable", typeof(bool), "Extended",
 				"If this floor should always remain upright in 2P VS mode.", null,
 				(obj) => obj.PropertyValue > 0x7F,
-				(obj, value) => obj.PropertyValue = (byte)((obj.PropertyValue & ~0x80) | (byte)((bool)value ? 0x80 : 0x00)));
+				(obj, value) => obj.PropertyValue = (byte)((obj.PropertyValue & ~0x80) | ((bool)value ? 0x80 : 0x00)));
 		}
 
 		public override ReadOnlyCollection<byte> Subtypes
 		{
-			get { return new ReadOnlyCollection<byte>(new byte[0]); }
+			get { return new ReadOnlyCollection<byte>(new byte[] {0x00, 0x10, 0x20, 0x30}); } // instead of having every interval in here, let's just have duration
 		}
 		
 		public override PropertySpec[] CustomProperties
@@ -73,7 +73,7 @@ namespace S2ObjectDefinitions.CPZ
 
 		public override string SubtypeName(byte subtype)
 		{
-			return null;
+			return (((subtype & 0x30) + 0x10) - 1) + " Frame Duration";
 		}
 
 		public override Sprite Image

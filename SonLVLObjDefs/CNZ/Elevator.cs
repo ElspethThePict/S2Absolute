@@ -36,12 +36,12 @@ namespace S2ObjectDefinitions.CNZ
 
 		public override ReadOnlyCollection<byte> Subtypes
 		{
-			get { return new ReadOnlyCollection<byte>(new byte[0]); }
+			get { return new ReadOnlyCollection<byte>(new byte[] {0x20, 0xA0}); }
 		}
 		
 		public override byte DefaultSubtype
 		{
-			get { return 32; }
+			get { return 0x20; }
 		}
 		
 		public override PropertySpec[] CustomProperties
@@ -51,7 +51,7 @@ namespace S2ObjectDefinitions.CNZ
 
 		public override string SubtypeName(byte subtype)
 		{
-			return null;
+			return (subtype < 0x80) ? "Start From Bottom" : "Start From Top";
 		}
 
 		public override Sprite Image

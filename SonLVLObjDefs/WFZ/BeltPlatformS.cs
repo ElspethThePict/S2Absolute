@@ -49,6 +49,11 @@ namespace S2ObjectDefinitions.WFZ
 			get { return new ReadOnlyCollection<byte>(new byte[] {0, 1, 2, 3}); }
 		}
 		
+		public override bool Debug
+		{
+			get { return true; }
+		}
+		
 		public override PropertySpec[] CustomProperties
 		{
 			get { return properties; }
@@ -56,8 +61,8 @@ namespace S2ObjectDefinitions.WFZ
 
 		public override string SubtypeName(byte subtype)
 		{
-			string name = ((subtype & 1) == 0) ? "199 px" : "455 px";
-			name += ((subtype & 2) == 0) ? " (Start Downwards)" : " (Start Upwards)"; // yeah the properties are which direction to go while this is which direction to start from, dunno if it's confuisng so maybe i'll change this later?
+			string name = ((subtype & 2) == 0) ? "Upwards" : "Downwards";
+			name += ((subtype & 1) == 0) ? " (199 px)" : " (455 px)";
 			return name;
 		}
 
@@ -75,9 +80,8 @@ namespace S2ObjectDefinitions.WFZ
 		{
 			// update all the following platforms' sprites too, if possible
 			// (we're always updating 8 and not 4 on purpose, in case distance (platform count) is different from before)
-			int index = LevelData.Objects.IndexOf(obj) + 1;
-			for (int i = 0; (i < 8) && (index < LevelData.Objects.Count); i++, index++)
-				LevelData.Objects[index].UpdateSprite();
+			foreach (var entity in LevelData.Objects.Skip(LevelData.Objects.IndexOf(obj) + 1).Take(8))
+				entity.UpdateSprite();
 			
 			return sprite;
 		}

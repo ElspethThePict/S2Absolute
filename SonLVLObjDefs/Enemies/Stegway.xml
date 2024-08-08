@@ -14,23 +14,12 @@
       <EnumMember name="Right" />
     </Enum>
   </Enums>
-  <ImageSets>
-    <ImageSet id="left">
-      <ImageRef image="stegway" xflip="NeverFlip"/>
-    </ImageSet>
-    <ImageSet id="right">
-      <ImageRef image="stegway" xflip="AlwaysFlip"/>
-    </ImageSet>
-  </ImageSets>
-  <DefaultImage>
-    <ImageSetRef set="left" />
-  </DefaultImage>
   <Subtypes>
     <Subtype id="00" name="Facing Left">
-      <ImageSetRef set="left" />
+      <ImageRef image="stegway" xflip="NeverFlip"/>
     </Subtype>
     <Subtype id="01" name="Facing Right">
-      <ImageSetRef set="right" />
+      <ImageRef image="stegway" xflip="AlwaysFlip"/>
     </Subtype>
   </Subtypes>
 </ObjDef>

@@ -32,7 +32,7 @@ namespace S2ObjectDefinitions.OOZ
 					{ "Pop On Contact", 1 }
 				},
 				(obj) => (obj.PropertyValue == 1) ? 1 : 0,
-				(obj, value) => obj.PropertyValue = (byte)(int)value);
+				(obj, value) => obj.PropertyValue = (byte)((int)value));
 		}
 		
 		public override ReadOnlyCollection<byte> Subtypes

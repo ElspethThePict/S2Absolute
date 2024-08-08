@@ -14,14 +14,15 @@ namespace S2ObjectDefinitions.Global
 		public override void Init(ObjectData data)
 		{
 			BitmapBits sheet = LevelData.GetSpriteSheet("Global/Items.gif");
-			sprites[0] = new Sprite(sheet.GetSection(52, 17, 32, 16), -16, -8);
-			sprites[1] = new Sprite(sheet.GetSection(101, 1, 16, 32), -8, -16);
-			sprites[2] = new Sprite(sheet.GetSection(134, 67, 16, 32), -8, -16);
-			sprites[3] = new Sprite(sheet.GetSection(157, 132, 32, 16), -16, -8);
-			sprites[4] = new Sprite(sheet.GetSection(118, 34, 32, 32), -16, -16);
-			sprites[5] = new Sprite(sheet.GetSection(157, 83, 32, 32), -16, -16);
-			sprites[6] = new Sprite(sheet.GetSection(118, 34, 32, 32), -16, -16);
-			sprites[7] = new Sprite(sheet.GetSection(157, 83, 32, 32), -16, -16);
+			sprites[0] = new Sprite(sheet.GetSection(52, 17, 32, 16), -16, -8);   // Upright
+			sprites[1] = new Sprite(sheet.GetSection(101, 1, 16, 32), -8, -16);   // Right
+			sprites[2] = new Sprite(sheet.GetSection(134, 67, 16, 32), -8, -16);  // Left
+			sprites[3] = new Sprite(sheet.GetSection(157, 132, 32, 16), -16, -8); // Downwards
+			sprites[4] = new Sprite(sheet.GetSection(118, 34, 32, 32), -16, -16); // Up Right
+			sprites[5] = new Sprite(sheet.GetSection(157, 83, 32, 32), -16, -16); // Up Left
+			
+			sprites[6] = new Sprite(sprites[4], false, true); // Down Right
+			sprites[7] = new Sprite(sprites[5], false, true); // Down Left
 			
 			properties[0] = new PropertySpec("Direction", typeof(int), "Extended",
 				"Which direction this Spring should face.", null, new Dictionary<string, int>
@@ -38,7 +39,7 @@ namespace S2ObjectDefinitions.Global
 				(obj) => (obj.PropertyValue & 0x7f),
 				(obj, value) => obj.PropertyValue = (byte)((obj.PropertyValue & ~0x7f) | (int)value));;
 			
-			properties[1] = new PropertySpec("Twirl", typeof(int), "Extended",
+			properties[1] = new PropertySpec("Twirl", typeof(bool), "Extended",
 				"If this Spring should trigger the Twirl animation upon launch. Only affects upwards springs.", null,
 				(obj) => (obj.PropertyValue >= 0x80),
 				(obj, value) => obj.PropertyValue = (byte)((obj.PropertyValue & ~0x80) | ((bool)value ? 0x80 : 0x00)));
@@ -46,12 +47,12 @@ namespace S2ObjectDefinitions.Global
 			properties[2] = new PropertySpec("Override XVel", typeof(int), "Extended",
 				"The override x velocity this spring should use. Up right springs only.", null,
 				(obj) => ((V4ObjectEntry)obj).Value0,
-				(obj, value) => ((V4ObjectEntry)obj).Value0 = ((int)value));
+				(obj, value) => ((V4ObjectEntry)obj).Value0 = (int)value);
 			
 			properties[3] = new PropertySpec("Override YVel", typeof(int), "Extended",
 				"The override y velocity this spring should use. Up right springs only.", null,
 				(obj) => ((V4ObjectEntry)obj).Value1,
-				(obj, value) => ((V4ObjectEntry)obj).Value1 = ((int)value));
+				(obj, value) => ((V4ObjectEntry)obj).Value1 = (int)value);
 		}
 		
 		public override ReadOnlyCollection<byte> Subtypes

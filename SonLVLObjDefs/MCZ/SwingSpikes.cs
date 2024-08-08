@@ -23,8 +23,8 @@ namespace S2ObjectDefinitions.MCZ
 				(obj) => (Math.Max(obj.PropertyValue, (byte)1) - 1) & 7,
 				(obj, value) => obj.PropertyValue = (byte)((((Math.Max(obj.PropertyValue, (byte)1) - 1) & ~7) | (int)value) + 1));
 			
-			properties[1] = new PropertySpec("Swing Direction", typeof(int), "Extended",
-				"Which direction the Platform should swing in.", null, new Dictionary<string, int>
+			properties[1] = new PropertySpec("Start From", typeof(int), "Extended",
+				"Which direction the Platform should start from.", null, new Dictionary<string, int>
 				{
 					{ "Left", 0 },
 					{ "Right", 8 }
@@ -35,7 +35,7 @@ namespace S2ObjectDefinitions.MCZ
 		
 		public override ReadOnlyCollection<byte> Subtypes
 		{
-			get { return new ReadOnlyCollection<byte>(new byte[0]); }
+			get { return new ReadOnlyCollection<byte>(new byte[] {0x10, 0x08}); }
 		}
 		
 		public override byte DefaultSubtype
@@ -50,7 +50,7 @@ namespace S2ObjectDefinitions.MCZ
 
 		public override string SubtypeName(byte subtype)
 		{
-			return null;
+			return (((Math.Max(subtype, (byte)1) - 1) & 8) == 0) ? "Start From Left" : "Start From Right";
 		}
 
 		public override Sprite Image
@@ -60,7 +60,7 @@ namespace S2ObjectDefinitions.MCZ
 
 		public override Sprite SubtypeImage(byte subtype)
 		{
-			return sprites[1];
+			return sprites[2];
 		}
 
 		public override Sprite GetSprite(ObjectEntry obj)

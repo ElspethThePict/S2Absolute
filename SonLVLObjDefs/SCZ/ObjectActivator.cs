@@ -23,7 +23,12 @@ namespace S2ObjectDefinitions.SCZ
 		
 		public override ReadOnlyCollection<byte> Subtypes
 		{
-			get { return new ReadOnlyCollection<byte>(new byte[0]); }
+			get { return new ReadOnlyCollection<byte>(new byte[] {1, 2, 3}); }
+		}
+		
+		public override bool Debug
+		{
+			get { return true; }
 		}
 		
 		public override byte DefaultSubtype
@@ -38,7 +43,7 @@ namespace S2ObjectDefinitions.SCZ
 
 		public override string SubtypeName(byte subtype)
 		{
-			return null;
+			return "Activate " + subtype + " Object" + (subtype == 1 ? "" : "s");
 		}
 
 		public override Sprite Image
@@ -66,7 +71,7 @@ namespace S2ObjectDefinitions.SCZ
 			// Activators pointing to activators pointing to activators, it ain't anything pretty i tell you
 			// Not much we can do from here unfortunately, as that's what happens in-game too :(
 			
-			List<ObjectEntry> objs = LevelData.Objects.Skip(LevelData.Objects.IndexOf(obj)).TakeWhile(a => LevelData.Objects.IndexOf(a) <= (LevelData.Objects.IndexOf(obj) + obj.PropertyValue)).ToList();
+			List<ObjectEntry> objs = LevelData.Objects.Skip(LevelData.Objects.IndexOf(obj)).Take(obj.PropertyValue + 1).ToList();
 			if (objs.Count == 0)
 				return null;
 			

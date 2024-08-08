@@ -26,6 +26,16 @@ namespace S2AObjectDefinitions.EHZ
 			get { return new ReadOnlyCollection<byte>(new byte[] {2, 4, 6, 8, 10}); }
 		}
 		
+		public override bool Debug
+		{
+			get { return true; }
+		}
+		
+		public override byte DefaultSubtype
+		{
+			get { return 4; }
+		}
+		
 		public override PropertySpec[] CustomProperties
 		{
 			get { return properties; }
@@ -51,7 +61,7 @@ namespace S2AObjectDefinitions.EHZ
 			if (obj.PropertyValue <= 1)
 				return sprite;
 			
-			int st = -(((obj.PropertyValue) * 16) / 2);
+			int st = -((obj.PropertyValue * 16) / 2);
 			List<Sprite> sprs = new List<Sprite>();
 			for (int i = 0; i < obj.PropertyValue; i++)
 				sprs.Add(new Sprite(sprite, st + (i * 16), 0));

@@ -51,7 +51,7 @@ namespace S2ObjectDefinitions.MPZ
 	
 	class PlatConveyor : MPZ.DecoSprite
 	{
-		public override Dictionary<string, int> names { get { return new Dictionary<string, int>{{ "Frame 1", 0 }, { "Frame 2", 1 }}; } }
+		public override Dictionary<string, int> names { get { return new Dictionary<string, int>{{ "Left Frame", 0 }, { "Right Frame", 1 }}; } }
 		
 		public override ReadOnlyCollection<byte> Subtypes
 		{
@@ -132,7 +132,7 @@ namespace S2ObjectDefinitions.MPZ
 		
 		public override Sprite GetDebugOverlay(ObjectEntry obj)
 		{
-			return debug[obj.PropertyValue];
+			return debug[(sprites.Length > 1) ? obj.PropertyValue : 0];
 		}
 	}
 }

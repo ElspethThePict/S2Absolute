@@ -26,13 +26,13 @@ namespace S2ObjectDefinitions.WFZ
 			
 			properties[1] = new PropertySpec("Cutscene", typeof(bool), "Extended",
 				"If this Panel is used for the ending cutscene.", null,
-				(obj) => (obj.PropertyValue == 0x7F),
-				(obj, value) => obj.PropertyValue = (byte)((bool)value ? 0x7F : 0));
+				(obj) => (obj.PropertyValue == 0x7f),
+				(obj, value) => obj.PropertyValue = (byte)((bool)value ? 0x7f : 0));
 		}
 		
 		public override ReadOnlyCollection<byte> Subtypes
 		{
-			get { return new ReadOnlyCollection<byte>(new byte[0]); }
+			get { return new ReadOnlyCollection<byte>(new byte[] {2, 4, 6, 0x7f}); }
 		}
 		
 		public override byte DefaultSubtype
@@ -47,7 +47,7 @@ namespace S2ObjectDefinitions.WFZ
 
 		public override string SubtypeName(byte subtype)
 		{
-			return null;
+			return (subtype == 0x7f) ? "Cutscene Panel" : (subtype + " Second Grab Duration");
 		}
 
 		public override Sprite Image

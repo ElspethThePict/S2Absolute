@@ -46,17 +46,29 @@ namespace S2ObjectDefinitions.HPZ
 					{ "Bottom Right (Up Lean)", 7 }
 				},
 				(obj) => obj.PropertyValue & 7,
-				(obj, value) => obj.PropertyValue = (byte)((obj.PropertyValue & ~7) | (byte)((int)value)));
+				(obj, value) => obj.PropertyValue = (byte)((obj.PropertyValue & ~7) | (int)value));
 			
-			properties[1] = new PropertySpec("Rotate Speed", typeof(int), "Extended",
-				"What speed this Platform should spin at.", null,
-				(obj) => (obj.PropertyValue >> 3) & 15,
-				(obj, value) => obj.PropertyValue = (byte)((obj.PropertyValue & ~0x78) | (byte)(((int)value & 15) << 3)));
+			properties[1] = new PropertySpec("Speed", typeof(int), "Extended",
+				"What speed this Platform should spin at. Positive values are clockwise, negative values are counter-clockwise.", null,
+				(obj) => {
+						int speed = (obj.PropertyValue >> 3) & 0x0f;
+						if (speed >= 8)
+							speed = -(speed - 8);
+						return speed;
+					},
+				(obj, value) => {
+						int speed = Math.Min(Math.Max((int)value, -7), 7);
+						if (speed < 0)
+							speed = (-speed + 8);
+						
+						obj.PropertyValue = (byte)((obj.PropertyValue & ~0x78) | (speed << 3));
+					}
+				);
 			
 			properties[2] = new PropertySpec("Spiked Ball", typeof(bool), "Extended",
 				"If this object should be a Spiked Ball, as opposed to a Platform.", null,
 				(obj) => (obj.PropertyValue & 0x80) == 0x80,
-				(obj, value) => obj.PropertyValue = (byte)((obj.PropertyValue & ~0x80) | (byte)((bool)value ? 0x80 : 0x00)));
+				(obj, value) => obj.PropertyValue = (byte)((obj.PropertyValue & ~0x80) | ((bool)value ? 0x80 : 0x00)));
 			
 			properties[3] = new PropertySpec("Dynamic", typeof(bool), "Extended",
 				"If this platform's radius should expand and contract.", null,

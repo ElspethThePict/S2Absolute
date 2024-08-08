@@ -55,7 +55,7 @@ namespace S2ObjectDefinitions.HPZ
 			if (obj.PropertyValue == 0)
 				return sprite;
 			
-			int st = -(((obj.PropertyValue) * 16) / 2) + 8;
+			int st = -((obj.PropertyValue * 16) / 2) + 8;
 			List<Sprite> sprs = new List<Sprite>();
 			for (int i = 0; i < obj.PropertyValue; i++)
 			{

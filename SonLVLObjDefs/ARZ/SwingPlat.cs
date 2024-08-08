@@ -20,12 +20,12 @@ namespace S2ObjectDefinitions.ARZ
 			properties[0] = new PropertySpec("Size", typeof(int), "Extended",
 				"How many chains the Platform should hang off of.", null,
 				(obj) => (obj.PropertyValue & 0x7f),
-				(obj, value) => obj.PropertyValue = (byte)((obj.PropertyValue & 0x80) | (int)value & 0x7f));
+				(obj, value) => obj.PropertyValue = (byte)((obj.PropertyValue & ~0x7f) | ((int)value & 0x7f)));
 			
 			properties[1] = new PropertySpec("Can Snap", typeof(bool), "Extended",
 				"If the platform should detach and turn into a raft. Has no effect on inverted platforms.", null,
 				(obj) => (obj.PropertyValue >= 0x80),
-				(obj, value) => obj.PropertyValue = (byte)((obj.PropertyValue & 0x7f) | ((bool)value ? 0x80 : 0x00)));
+				(obj, value) => obj.PropertyValue = (byte)((obj.PropertyValue & ~0x80) | ((bool)value ? 0x80 : 0x00)));
 			
 			properties[2] = new PropertySpec("Inverted", typeof(bool), "Extended",
 				"If the Swinging Platform's movement should be inverted, compared to other Swing Platforms.", null,
@@ -35,7 +35,7 @@ namespace S2ObjectDefinitions.ARZ
 		
 		public override ReadOnlyCollection<byte> Subtypes
 		{
-			get { return new ReadOnlyCollection<byte>(new byte[0]); }
+			get { return new ReadOnlyCollection<byte>(new byte[] {4, 5, 6, 7, 8, 9, 10}); } // it can be any value, but why not give a few starting ones
 		}
 		
 		public override byte DefaultSubtype
@@ -50,7 +50,7 @@ namespace S2ObjectDefinitions.ARZ
 
 		public override string SubtypeName(byte subtype)
 		{
-			return null;
+			return subtype + " chains";
 		}
 
 		public override Sprite Image

@@ -26,6 +26,12 @@
     <ImageFromSheet id="frame8" sheet="MPZ/Objects.gif" sourcex="388" sourcey="100" width="32" height="32">
       <Offset X="-16" Y="-16" />
     </ImageFromSheet>
+    <ImageFromSheet id="markings" sheet="MPZ/Objects.gif" sourcex="29" sourcey="34" width="26" height="26">
+      <Offset X="-13" Y="-13" />
+    </ImageFromSheet>
+    <ImageFromSheet id="indent" sheet="MPZ/Objects.gif" sourcex="487" sourcey="157" width="24" height="24">
+      <Offset X="-12" Y="-12" />
+    </ImageFromSheet>
   </Images>
   <Properties>
     <Property name="Direction" description="Which direction this gear should rotate in." type="directions" startbit="0" length="8" />
@@ -61,6 +67,10 @@
       </ImageRef>
       <ImageRef image="frame8">
         <Offset X="-50" Y="-50" />
+      </ImageRef>
+      <ImageRef image="markings" />
+      <ImageRef image="indent">
+        <Offset X="-28" />
       </ImageRef>
     </ImageSet>
   </ImageSets>

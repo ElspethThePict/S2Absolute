@@ -6,10 +6,10 @@
     </ImageFromSheet>
   </Images>
   <Properties>
-    <Property name="Edit Chunk" description="If this Hull Seal should alter the chunk it's in upon player interaction." type="bool" startbit="0" length="8" />
+    <Property name="Ship Entrance" description="If this Hull Seal is next to the Ship's entrance. Used to place the shadow chunk in the level." type="bool" startbit="0" length="8" />
   </Properties>
   <Subtypes>
-    <Subtype id="00" name="Normal" image="seal" />
-    <Subtype id="01" name="Edit Chunk" image="seal" />
+    <Subtype id="00" name="Ship Exit" image="seal" />
+    <Subtype id="01" name="Ship Entrance" image="seal" />
   </Subtypes>
 </ObjDef>

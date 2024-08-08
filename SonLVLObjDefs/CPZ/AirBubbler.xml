@@ -6,6 +6,12 @@
     </ImageFromSheet>
   </Images>
   <Properties>
-    <Property name="Num Duds" description="How many effect bubbles should spawn before a breathable bubble. Lower numbers means more breathable bubbles."  type="int" startbit="0" length="8" />
+    <Property name="Delay" description="How long the delay between large bubbles should be." type="int" startbit="0" length="8" />
   </Properties>
+  <Subtypes>
+    <Subtype id="00" name="Fastest Bubble Rate" image="bubbler" />
+    <Subtype id="01" name="Fast Bubble Rate" image="bubbler" />
+    <Subtype id="02" name="Slow Bubble Rate" image="bubbler" />
+    <Subtype id="03" name="Slower Bubble Rate" image="bubbler" />
+  </Subtypes>
 </ObjDef>

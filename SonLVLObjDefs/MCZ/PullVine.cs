@@ -13,8 +13,9 @@ namespace S2ObjectDefinitions.MCZ
 		
 		public override void Init(ObjectData data)
 		{
-			sprites[0] = new Sprite(LevelData.GetSpriteSheet("MCZ/Objects.gif").GetSection(232, 176, 24, 80), -12, -40);
-			sprites[1] = new Sprite(LevelData.GetSpriteSheet("MCZ/Objects.gif").GetSection(232, 0, 24, 256), -12, -40);
+			BitmapBits sheet = LevelData.GetSpriteSheet("MCZ/Objects.gif");
+			sprites[0] = new Sprite(sheet.GetSection(232, 176, 24, 80), -12, -40);
+			sprites[1] = new Sprite(sheet.GetSection(232, 0, 24, 256), -12, -40);
 			
 			BitmapBits overlay = new BitmapBits(2, 177);
 			overlay.DrawLine(6, 0, 0, 0, 176); // LevelData.ColorWhite
@@ -27,7 +28,7 @@ namespace S2ObjectDefinitions.MCZ
 					{ "Upwards", 1 }
 				},
 				(obj) => ((obj.PropertyValue == 0) ? 0 : 1),
-				(obj, value) => obj.PropertyValue = (byte)(int)value);
+				(obj, value) => obj.PropertyValue = (byte)((int)value));
 		}
 		
 		public override ReadOnlyCollection<byte> Subtypes
@@ -52,7 +53,7 @@ namespace S2ObjectDefinitions.MCZ
 
 		public override Sprite SubtypeImage(byte subtype)
 		{
-			return sprites[0];
+			return sprites[(subtype == 0) ? 0 : 1];
 		}
 
 		public override Sprite GetSprite(ObjectEntry obj)

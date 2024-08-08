@@ -7,13 +7,15 @@ namespace S2ObjectDefinitions.OOZ
 {
 	class MovingSpikes : ObjectDefinition
 	{
-		private Sprite sprite;
+		private Sprite[] sprites = new Sprite[3];
 		private Sprite debug;
 		private PropertySpec[] properties = new PropertySpec[1];
 
 		public override void Init(ObjectData data)
 		{
-			sprite = new Sprite(LevelData.GetSpriteSheet("OOZ/Objects.gif").GetSection(206, 26, 48, 80), -24, -40);
+			sprites[2] = new Sprite(LevelData.GetSpriteSheet("OOZ/Objects.gif").GetSection(206, 26, 48, 80), -24, -40);
+			sprites[0] = new Sprite(sprites[2], -104, 0);
+			sprites[1] = new Sprite(sprites[2],  104, 0);
 			
 			BitmapBits bitmap = new BitmapBits(209, 2);
 			bitmap.DrawLine(6, 0, 0, 208, 0); // LevelData.ColorWhite
@@ -24,7 +26,7 @@ namespace S2ObjectDefinitions.OOZ
 				{
 					{ "Start From Left", 0 },
 					{ "Start From Right", 1 },
-					{ "Start at Current Position", 2 }
+					{ "Start From Middle", 2 }
 				},
 				(obj) => (obj.PropertyValue < 2) ? obj.PropertyValue : 2,
 				(obj, value) => obj.PropertyValue = (byte)((int)value));
@@ -55,27 +57,41 @@ namespace S2ObjectDefinitions.OOZ
 					return "Start From Right";
 				case 2:
 				default:
-					return "Start at Current Position";
+					return "Start From Middle";
 			}
 		}
 
 		public override Sprite Image
 		{
-			get { return sprite; }
+			get { return sprites[2]; }
 		}
 
 		public override Sprite SubtypeImage(byte subtype)
 		{
-			return sprite;
+			return sprites[2];
 		}
 
 		public override Sprite GetSprite(ObjectEntry obj)
 		{
-			return sprite;
+			return sprites[(obj.PropertyValue > 2) ? 2 : obj.PropertyValue];
 		}
 		
 		public override Sprite GetDebugOverlay(ObjectEntry obj)
 		{
+			for (int i = LevelData.Objects.IndexOf(obj); i >= 0; --i)
+			{
+				switch (LevelData.Objects[i].Name)
+				{
+					case "Spikes Activator": // well technically any non-Moving Spikes object can work.. but how about we don't loop around the entire object list every time
+						LevelData.Objects[i].UpdateDebugOverlay();
+						break;
+					case "Moving Spikes":
+						break;
+					default:
+						return debug;
+				}
+			}
+			
 			return debug;
 		}
 	}

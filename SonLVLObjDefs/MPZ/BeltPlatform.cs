@@ -4,7 +4,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace S2ObjectDefinitions.MPZ
+namespace S2AObjectDefinitions.MPZ
 {
 	class BeltPlatform : ObjectDefinition
 	{
@@ -203,6 +203,9 @@ namespace S2ObjectDefinitions.MPZ
 				}
 			};
 			*/
+			
+			// #Absolute - they removed belt activators, so..
+			// we don't need to worry about 'em here
 			
 			int sx = ((V4ObjectEntry)obj).Value0 - obj.X;
 			int sy = ((V4ObjectEntry)obj).Value1 - obj.Y;

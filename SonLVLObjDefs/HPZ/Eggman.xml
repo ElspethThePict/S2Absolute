@@ -1,17 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ObjDef xmlns="http://www.sonicretro.org">
   <Images>
+    <ImageFromSheet id="horn_low" sheet="HPZ/Objects.gif" sourcex="265" sourcey="235" width="40" height="6">
+      <Offset X="-56" Y="0" />
+    </ImageFromSheet>
     <ImageFromSheet id="eggman" sheet="HPZ/Objects.gif" sourcex="265" sourcey="139" width="60" height="20">
       <Offset X="-28" Y="-28"/>
     </ImageFromSheet>
     <ImageFromSheet id="eggmobile" sheet="HPZ/Objects.gif" sourcex="265" sourcey="202" width="64" height="32">
       <Offset X="-32" Y="-8"/>
     </ImageFromSheet>
+    <ImageFromSheet id="horn_high" sheet="HPZ/Objects.gif" sourcex="265" sourcey="241" width="40" height="6">
+      <Offset X="-56" Y="6" />
+    </ImageFromSheet>
+    <ImageFromSheet id="pipe" sheet="HPZ/Objects.gif" sourcex="430" sourcey="132" width="20" height="20">
+      <Offset X="0" Y="-44" />
+    </ImageFromSheet>
+    <ImageFromSheet id="horn" sheet="HPZ/Objects.gif" sourcex="451" sourcey="214" width="32" height="40">
+      <Offset X="-32" Y="-60" />
+    </ImageFromSheet>
+    <ImageFromSheet id="valvebase" sheet="HPZ/Objects.gif" sourcex="405" sourcey="132" width="24" height="24">
+      <Offset X="8" Y="-12" />
+    </ImageFromSheet>
+    <ImageFromSheet id="valve1" sheet="HPZ/Objects.gif" sourcex="407" sourcey="123" width="10" height="8">
+      <Offset X="10" Y="-20" />
+    </ImageFromSheet>
+    <ImageFromSheet id="valve2" sheet="HPZ/Objects.gif" sourcex="407" sourcey="123" width="10" height="8">
+      <Offset X="20" Y="-20" />
+    </ImageFromSheet>
   </Images>
   <ImageSets>
     <ImageSet id="eggman">
+      <ImageRef image="horn_low" />
       <ImageRef image="eggmobile" />
       <ImageRef image="eggman" />
+      <ImageRef image="horn_high" />
+      <ImageRef image="pipe" />
+      <ImageRef image="horn" />
+      <ImageRef image="valvebase" />
+      <ImageRef image="valve1" />
+      <ImageRef image="valve2" />
     </ImageSet>
   </ImageSets>
   <DefaultImage>

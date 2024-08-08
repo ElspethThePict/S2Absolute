@@ -9,6 +9,7 @@ namespace S2AObjectDefinitions.EHZ
 	class Waterfall : ObjectDefinition
 	{
 		private readonly Sprite[] sprites = new Sprite[10];
+		private ReadOnlyCollection<byte> subtypes;
 		private PropertySpec[] properties = new PropertySpec[1];
 		
 		public override void Init(ObjectData data)
@@ -33,21 +34,23 @@ namespace S2AObjectDefinitions.EHZ
 				sprites[7] = new Sprite(sheet.GetSection(192, 0, 64, 192), -32, -128);
 				sprites[8] = new Sprite(sheet.GetSection(192, 64, 64, 96), -32, -32);
 				
-				// we skip a few numbers in this list, 2 and 4 are skipped because they're blank, 6 is skipped because it's the same as 0
+				// (we skip 4 because it's blank)
 				properties[0] = new PropertySpec("Length", typeof(int), "Extended",
 					"How long this Waterfall is.", null, new Dictionary<string, int>
 					{
 						{ "Top", 0 },
-						{ "256 px", 1 },
-						{ "192 px", 7 },
-						{ "160 px", 2 },
-						{ "128 px", 3 },
-						{ "96 px", 8 },
+						{ "16 px", 6 },
 						{ "48 px", 5 },
-						{ "16 px", 6 }
+						{ "96 px", 8 },
+						{ "128 px", 3 },
+						{ "160 px", 2 },
+						{ "192 px", 7 },
+						{ "256 px", 1 },
 					},
 					(obj) => (int)obj.PropertyValue,
 					(obj, value) => obj.PropertyValue = (byte)((int)value));
+				
+				subtypes = new ReadOnlyCollection<byte>(new byte[] {0, 6, 5, 8, 3, 2, 7, 1});
 			}
 			else
 			{
@@ -75,12 +78,14 @@ namespace S2AObjectDefinitions.EHZ
 					},
 					(obj) => (int)obj.PropertyValue,
 					(obj, value) => obj.PropertyValue = (byte)((int)value));
+				
+				subtypes = new ReadOnlyCollection<byte>(new byte[] {0, 3, 8, 5, 7, 1});
 			}
 		}
 		
 		public override ReadOnlyCollection<byte> Subtypes
 		{
-			get { return new ReadOnlyCollection<byte>(new byte[] {0, 3, 8, 5, 7, 1}); }
+			get { return subtypes; }
 		}
 		
 		public override byte DefaultSubtype
@@ -96,7 +101,7 @@ namespace S2AObjectDefinitions.EHZ
 		public override string SubtypeName(byte subtype)
 		{
 			if (properties[0].Enumeration.ContainsValue(subtype))
-				return properties[0].Enumeration.GetKey(subtype);
+				return properties[0].Enumeration.GetKey(subtype) + " Frame";
 			
 			return "Blank"; // well technically MBZ's "Top 2" falls under here too, but let's just ignore that since it's not on the subtypes list anyways (and MBZ isn't even real in S2A either-)
 		}

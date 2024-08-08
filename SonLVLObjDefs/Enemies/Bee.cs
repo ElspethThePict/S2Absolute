@@ -37,7 +37,7 @@ namespace S2ObjectDefinitions.Enemies
 					{ "Right", 1 }
 				},
 				(obj) => obj.PropertyValue & 1,
-				(obj, value) => obj.PropertyValue = (byte)((obj.PropertyValue & ~1) | (byte)((int)value)));
+				(obj, value) => obj.PropertyValue = (byte)((obj.PropertyValue & ~1) | (int)value));
 		}
 
 		public override ReadOnlyCollection<byte> Subtypes
@@ -52,7 +52,7 @@ namespace S2ObjectDefinitions.Enemies
 
 		public override string SubtypeName(byte subtype)
 		{
-			return (subtype == 0) ? "Start Facing Left" : "Start Facing Right";
+			return (subtype == 0) ? "Facing Left" : "Facing Right";
 		}
 
 		public override Sprite Image

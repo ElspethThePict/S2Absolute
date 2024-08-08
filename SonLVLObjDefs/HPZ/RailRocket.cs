@@ -46,7 +46,7 @@ namespace S2ObjectDefinitions.HPZ
 		
 		public override ReadOnlyCollection<byte> Subtypes
 		{
-			get { return new ReadOnlyCollection<byte>(new byte[0]); }
+			get { return new ReadOnlyCollection<byte>(new byte[] {0x0c, 0x8c}); }
 		}
 		
 		public override byte DefaultSubtype
@@ -61,7 +61,7 @@ namespace S2ObjectDefinitions.HPZ
 
 		public override string SubtypeName(byte subtype)
 		{
-			return null;
+			return (subtype < 0x80) ? "Travel Left" : "Travel Right";
 		}
 
 		public override Sprite Image

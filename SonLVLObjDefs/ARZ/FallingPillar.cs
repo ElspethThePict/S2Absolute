@@ -49,7 +49,7 @@ namespace S2ObjectDefinitions.ARZ
 		
 		public override string SubtypeName(byte subtype)
 		{
-			return (subtype == 1) ? "Static Platform" : "Falling Platform";
+			return (subtype == 1) ? "Static Pillar" : "Falling Pillar";
 		}
 
 		public override Sprite Image
