@@ -471,6 +471,7 @@ event ObjectStartup
 				stage.waterState = 0
 			end if
 		end if
+		WaterPresent = 1
 	next
 	Water_value35 = 0
 	foreach (GROUP_PLAYERS, currentPlayer, ACTIVE_ENTITIES)
