@@ -27,7 +27,7 @@ ElspethThePict
 Cosmic Eternity
 AlyStyle
 Tania
-with contributions from Leonx254
+with contributions from Leonx254 and GeffGeff
 
 Artists:
 Aprkot
