@@ -314,7 +314,6 @@ event ObjectStartup
 	SpriteFrame(-8, -10, 16, 16, 18, 170)
 	SpriteFrame(-8, -10, 16, 16, 35, 170)
 	BrokenMonitor_value27 = BrokenMonitor_Function80
-	WaterPresent = 0
 end event
 
 event RSDKDraw

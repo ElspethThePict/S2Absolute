@@ -7,7 +7,6 @@
 
 //-------Aliases-------//
 private alias 51 : TYPE_WATERFALL
-private alias object.value3 : object.spritecount
 
 // Function declarations
 reserve function Waterfall_DebugDraw
@@ -35,35 +34,22 @@ event ObjectMain
 		object.value1 = stage.waterLevel
 		object.value1 -= object.iypos
 		object.value1 += 16
-		object.spritecount = 0
-		while object.value1 > 256
-			object.value1 -= 256
-			object.spritecount++
-		loop
-		//if object.value1 > 256
-		//	object.value1 = 256
-		//end if
+		if object.value1 > 256
+			object.value1 = 256
+		end if
 	end if
 end event
 
 
 event ObjectDraw
-	temp0 = 0
-	temp1 = object.ypos
-	EditFrame(0, -16, -16, 32, 256, 223, 0)
-	while temp0 < object.spritecount
-		DrawSpriteFX(object.frame, FX_INK, object.xpos, temp1)
-		temp1 += 0x1000000
-		temp0++
-	loop
 	if object.propertyValue == 0
 		EditFrame(0, -16, -16, 32, object.value1, 223, 0)
 	end if
-	DrawSpriteFX(object.frame, FX_INK, object.xpos, temp1)
+	DrawSpriteFX(object.frame, FX_INK, object.xpos, object.ypos)
 	if object.value2 == 1
 		temp0 = object.value1
 		temp0 <<= 16
-		temp0 += temp1
+		temp0 += object.ypos
 		DrawSpriteXY(16, object.xpos, temp0)
 	end if
 end event
@@ -89,7 +75,6 @@ event ObjectStartup
 	SpriteFrame(-16, -16, 32, 112, 223, 32)
 	SpriteFrame(-24, -40, 48, 24, 174, 231)
 	foreach (TypeName[Waterfall], arrayPos0, ALL_ENTITIES)
-		object[arrayPos0].priority = PRIORITY_ACTIVE
 		object[arrayPos0].drawOrder = 5
 		object[arrayPos0].inkEffect = INK_ALPHA
 		object[arrayPos0].alpha = 160

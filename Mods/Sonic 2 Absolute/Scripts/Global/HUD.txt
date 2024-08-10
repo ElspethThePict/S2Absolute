@@ -34,13 +34,11 @@ reserve function SpeedRead
 reserve function CharColl
 reserve function SuperButton
 reserve function LivesHud
-reserve function WaterRead
 
 // Static Values
 
 // Tables
 private value HUD_X = 0;
-public value WaterPresent = 0;
 
 function DebugExtra
 	//Extra Numbers below rings, useful for debugging+
@@ -53,14 +51,6 @@ function DebugExtra
 		CallFunction(PerfectCount)
 		CallFunction(CharColl)
 		CallFunction(TileFind)
-		CallFunction(WaterRead)
-	end if
-end function
-
-function WaterRead
-	if WaterPresent == 1
-		DrawSpriteScreenXY(64, 18, 185)
-		DrawNumbers(0, 50, 200, stage.waterLevel, 5, 8, 1)
 	end if
 end function
 
@@ -827,7 +817,6 @@ event ObjectStartup
 	SpriteFrame(0, 0, 8, 11, 19, 74) //61 A
 	SpriteFrame(0, 0, 8, 11, 28, 74) //62 B
 	SpriteFrame(0, 0, 40, 11, 260, 149) //63 Layer
-	SpriteFrame(0, 0, 41, 11, 260, 230) //64 Water
 	
 	
 	
