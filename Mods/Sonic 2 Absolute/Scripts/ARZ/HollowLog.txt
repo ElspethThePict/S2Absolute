@@ -66,9 +66,9 @@ event ObjectMain
 				BoxCollisionTest(C_BOX, object.entityPos, -41, -24, 41, -20, currentPlayer, HITBOX_AUTO, HITBOX_AUTO, HITBOX_AUTO, HITBOX_AUTO)
 				BoxCollisionTest(C_BOX, object.entityPos, -49, 24, 48, 25, currentPlayer, HITBOX_AUTO, HITBOX_AUTO, HITBOX_AUTO, HITBOX_AUTO)
 			next
-			if stage.debugMode == 0
-				if specialStage.emeralds >= 127
-					if options.gameMode < 2
+			//if stage.debugMode == 0
+				//if specialStage.emeralds >= 127
+					//if options.gameMode < 2
 						if object[+2].type == TypeName[Pull Vine]
 							if object[+2].value7 > 0
 								object.state++
@@ -84,9 +84,9 @@ event ObjectMain
 								
 							end if
 						end if
-					end if
-				end if
-			end if
+					//end if
+				//end if
+			//end if
 			break
 		case 1
 			foreach (GROUP_PLAYERS, currentPlayer, ACTIVE_ENTITIES)
