@@ -6,32 +6,15 @@
 // ----------------------------------
 
 //-------Aliases-------//
-private alias 0x32000 : emerald.speed
 private alias 76 : TYPE_ORIGINALGEM
-private alias object.value0 : object.timer
-private alias object.value1 : object.sfxCount
-private alias object.value2 : object.fade
-private alias object.value3 : object.xoffset
-private alias object.value4 : object.yoffset
-private alias object.value5 : object.emdrawn
-private alias object.value6 : object.targetx
-private alias object.value7 : object.targety
-private alias object.value8 : object.shake
+private alias object.value1 : object.timer
+
 // Static Values
 
 // Tables
 
-public table worm.frame
-	0, 5, 4, 4, 4, 4, 3, 4, 4, 4, 5, 5, 5, 6, 7
-end table
-
-private table emerald.order
-	0, 1, 7, 2, 6, 3, 5, 4
-end table
-
 reserve function OriginalGem_DebugDraw
 reserve function OriginalGem_DebugSpawn
-reserve function OriginalGem_DrawEmerald
 
 // Static Values
 
@@ -46,421 +29,53 @@ function OriginalGem_DebugSpawn
 	CreateTempObject(TypeName[Original Gem], 1, object.xpos, object.ypos)
 end function
 
-function OriginalGem_DrawEmerald
-	cos(temp2, temp1)
-	flipsign(temp2)
-	temp2 <<= 7
-	temp2 *= object.yoffset
-	temp2 += object.ypos
-	temp7 = oscillation
-	temp7 <<= 1
-	Sin(temp3, temp7)
-	temp3 <<= 10
-	temp2 += temp3
-	sin(temp3, temp1)
-	temp3 <<= 7
-	temp3 *= object.xoffset
-	temp3 += object.xpos
-	DrawSpriteXY(temp0, temp3, temp2)
-end function
-
 event ObjectMain
-	switch object.propertyValue
-	case 0
-		switch object.state
+	switch object.state
 		case 0
-			//activate when player passes over the emerald
 			foreach (GROUP_PLAYERS, currentPlayer, ACTIVE_ENTITIES)
-				BoxCollisionTest(C_TOUCH, object.entityPos, -10, -120, 10, 0, currentPlayer, HITBOX_AUTO, HITBOX_AUTO, HITBOX_AUTO, HITBOX_AUTO)
-				if checkResult == 1
-					if currentPlayer == 0
+				BoxCollisionTest(C_BOX, object.entityPos, -24, -16, 24, 16, currentPlayer, HITBOX_AUTO, HITBOX_AUTO, HITBOX_AUTO, HITBOX_AUTO)
+				if currentPlayer == 0
+					if checkResult == 1
 						object.state++
-						object.priority = PRIORITY_ACTIVE
-						stage.newWaterLevel = 1950
-						stage.newWaterLevel <<= 16					
-						stage.curYBoundary2 = 1980
-						stage.deathBoundary = stage.curYBoundary2
-						stage.deathBoundary <<= 16
-						SetMusicTrack("DanceofChaos.ogg", 4, 71010)
-						PlaySfx(SfxName[Large Wall], 0)
-						object.shake = 60
+						object.priority = PRIORITY_ACTIVE_PAUSED
+						StopMusic()
+						PlaySfx(SfxName[Warp], 0)
+						stage.state = 3
 					end if
 				end if
 			next
 			break
 		case 1
-			//if the music is stopped because extra life, just leave it stopped
-			if object[25].type == TypeName[Music Event]
-				if object[25].propertyValue == 2
-					object[25].type = TypeName[Blank Object]
-				end if
-			end if
-			
-			//turn music down
-			if music.volume == 0
-				object.state++
-			else
-				music.volume--				
-			end if
-			break
-		case 2
-			foreach (GROUP_PLAYERS, currentPlayer, ACTIVE_ENTITIES)
-				BoxCollisionTest(C_TOUCH, object.entityPos, -300, -120, 10, 0, currentPlayer, HITBOX_AUTO, HITBOX_AUTO, HITBOX_AUTO, HITBOX_AUTO)
-				if checkResult == 1
-					if currentPlayer == 0
-						object.timer++						
-					end if
-				end if
-			next
-			if object.timer >= 180
-				object.state++
-				object.timer = 0
-				PlayMusic(4)
-			end if
-			break
-		case 3
-			object.timer++
-			if object.timer >= 96
-				object.state++
-				object.priority = PRIORITY_ACTIVE
-				object.timer = 0
-				PlaySfx(SfxName[Hatch 2],0)
-				CallFunction(BreakGem_Pieces)
-				ResetObjectEntity(350, TypeName[Guardian], 14, 0, 0)
-				ResetObjectEntity(351, TypeName[Guardian], 13, 0, 0)
-				ResetObjectEntity(352, TypeName[Guardian], 12, 0, 0)
-				ResetObjectEntity(353, TypeName[Guardian], 11, 0, 0)
-				ResetObjectEntity(354, TypeName[Guardian], 10, 0, 0)
-				ResetObjectEntity(355, TypeName[Guardian], 9, 0, 0)
-				ResetObjectEntity(356, TypeName[Guardian], 8, 0, 0)
-				ResetObjectEntity(357, TypeName[Guardian], 7, 0, 0)
-				ResetObjectEntity(358, TypeName[Guardian], 6, 0, 0)
-				ResetObjectEntity(359, TypeName[Guardian], 5, 0, 0)
-				ResetObjectEntity(360, TypeName[Guardian], 4, 0, 0)
-				ResetObjectEntity(361, TypeName[Guardian], 3, 0, 0)
-				ResetObjectEntity(362, TypeName[Guardian], 2, 0, 0)
-				ResetObjectEntity(363, TypeName[Guardian], 1, 0, 0)
-				ResetObjectEntity(364, TypeName[Guardian], 0, object.xpos, object.ypos)
-				object[364].speed = 0x500
-				object[364].angle = 192
-				foreach (TypeName[Guardian], arrayPos0, ALL_ENTITIES)
-					object[arrayPos0].priority = PRIORITY_ACTIVE
-					GetTableValue(object[arrayPos0].frame, object[arrayPos0].propertyValue, worm.frame)		
-				next
-			end if
-			break
-		case 4
-			object.timer++
-			if object.timer >= 70
-				object.state++
-				object.timer = 0
-				temp0 = 256
-				temp0 <<= 16
-				object[364].xpos -= temp0
-				object[364].angle = 64
-			end if
-			break
-		case 5
-			temp0 = object.ypos
-			temp0 >>= 21
-			temp0++
-			temp0 <<= 21
-			if object[364].ypos >= temp0
-				object.state++
-				object.timer = 0
-				temp0 = 38
-				temp0 <<= 23
-				temp1 = 10
-				temp1 <<= 23
-				temp3 = 0
-				while temp3 < 24
-					CreateTempObject(TypeName[Solid Ground], temp3, temp0, temp1)
-					rand(object[tempObjectPos].yvel, 0x20000)
-					object[tempObjectPos].yvel += 0x20000
-					object[tempObjectPos].drawOrder = 5
-					object[tempObjectPos].priority = PRIORITY_ACTIVE
-					temp3++
-					temp0 += 0x200000
-				loop
-				temp0 = 38
-				while temp0 < 44
-					SetTileLayerEntry(0, 0, temp0, 9)
-					SetTileLayerEntry(0, 0, temp0, 10)
-					SetTileLayerEntry(0, 0, temp0, 11)
-					SetTileLayerEntry(0, 0, temp0, 12)
-					temp0++
-				loop
-				foreach (GROUP_PLAYERS, currentPlayer, ACTIVE_ENTITIES)
-					object[currentPlayer].state = PlayerObject_Knockback
-					object[currentPlayer].animation = ANI_HURT
-					object[currentPlayer].yvel = -0x40000
-					object[currentPlayer].speed = -0x20000
-					object[currentPlayer].gravity = GRAVITY_AIR
-					object[currentPlayer].scrollTracking = 1
-					object[currentPlayer].tileCollisions = 1
-					if object[currentPlayer].value25 == 0x1000
-						object[currentPlayer].speed >>= 1
-						object[currentPlayer].yvel >>= 1
-					end if
-				next
-				PlaySfx(SfxName[Explosion 3], 0)
-			end if
-			break
-		case 6
-			if object.sfxCount < 2
-				object.timer++
-				if object.timer >= 50
-					object.timer = 0
-					object.sfxCount++
-					PlaySfx(SfxName[Explosion 3], 0)
-				end if
-			else
-				object.state++
-			end if
-		case 7
-			if object.fade < 384
-				object.fade += 4
-			else
-				object.state++
-				object.timer = 0
-				object[0].controlMode = 0
-				foreach (TypeName[Solid Ground], arrayPos0, ALL_ENTITIES)
-					object[arrayPos0].type = TypeName[Blank Object]
-				next
-				object[0].xpos = 5736
-				object[0].xpos <<= 16
-				object[0].ypos = 1890
-				object[0].ypos <<= 16
-				object[0].xvel = 0
-				object[0].speed = 0
-				
-				stage[0].activeLayer = 2
-				
-				object[349].xpos = 5568
-				object[349].xpos <<= 16
-				object[349].ypos = 1780
-				object[349].ypos <<= 16
-				object[349].xoffset = 120
-				object[349].state = 0
-				screen.cameraX = object[0].ixpos
-				screen.cameraY = object[0].iypos
-				stage.curXBoundary2 = 5960
-				stage.curXBoundary1 = 5176
-				stage.curYBoundary1 = stage.curYBoundary2
-				stage.curYBoundary1 -= screen.ysize
-				
-			end if
-			SetScreenFade(color7, color7, color7, object.fade)
-			break
-		case 8
-			object.fade -= 4
-			if object.fade > 0
-				SetScreenFade(color7, color7, color7, object.fade)
-			else
-				object.state = 9
-				object[349].state = 2
-			end if
-			break
-		case 9
-			object.timer++
-			if object.timer >= 120
-				object[364].state = 1
-				object[364].xpos = 6000
-				object[364].ypos = 1860
-				object[364].xpos <<= 16
-				object[364].ypos <<= 16
-				object.type = TypeName[Blank Object]
-			end if
-			break
-		end switch
-		
-		if object.state < 4
 			foreach (GROUP_PLAYERS, currentPlayer, ACTIVE_ENTITIES)
 				BoxCollisionTest(C_BOX, object.entityPos, -24, -16, 24, 16, currentPlayer, HITBOX_AUTO, HITBOX_AUTO, HITBOX_AUTO, HITBOX_AUTO)
 			next
-		end if
-		
-		if object.shake > 0
-			object.shake--
-		end if
-		
-		if object.state > 1
-			//prevent waiting animation
-			if object[0].animation == ANI_STOPPED
-				object[0].value1 = 0
-			end if
-		end if
-		break
-	case 1
-		switch object.state
-			case 0
-				foreach (GROUP_PLAYERS, currentPlayer, ACTIVE_ENTITIES)
-					BoxCollisionTest(C_BOX, object.entityPos, -24, -16, 24, 16, currentPlayer, HITBOX_AUTO, HITBOX_AUTO, HITBOX_AUTO, HITBOX_AUTO)
-					if currentPlayer == 0
-						if checkResult == 1
-							object.state++
-							object.priority = PRIORITY_ACTIVE_PAUSED
-							StopMusic()
-							PlaySfx(SfxName[Warp], 0)
-							stage.state = 3
-						end if
-					end if
-				next
-				break
-			case 1
-				foreach (GROUP_PLAYERS, currentPlayer, ACTIVE_ENTITIES)
-					BoxCollisionTest(C_BOX, object.entityPos, -24, -16, 24, 16, currentPlayer, HITBOX_AUTO, HITBOX_AUTO, HITBOX_AUTO, HITBOX_AUTO)
-				next
-				CallFunction(StarPost_FadetoWhite)
-				object.timer++
-				if object.timer >= 180
-					recGoggles = 0
-					CallFunction(StageSetup_LoadStageState)
-					stage.activeList = PRESENTATION_STAGE
-					stage.listPos = 0
-					LoadStage()
-				end if
-				break
-		end switch
-		break
-	case 2
-		object.angle += 8
-		object.angle &= 511
-		switch object.state
-		case 1
-			if object.outOfBounds == 0				
-				object.xoffset += 3
-				object.ypos += object.yvel
-				object.yvel -= 0x1000
-			else
-				object.xpos = object.targetx
-				object.ypos = object.targety
-				object.state = 0
-				object.xvel = 0
-				object.yvel = 0
-				object.xoffset = 16
-				object.yoffset = 2
-			end if
-			break
-		case 2
+			CallFunction(StarPost_FadetoWhite)
 			object.timer++
-			if object.timer >= 30
-				object.timer = 0
-				CreateTempObject(TypeName[Red Star], 0, object.xpos, object.ypos)
-				object[tempObjectPos].yvel = 0x20000
-				rand(object[tempObjectPos].xvel, 0x20000)
-				object[tempObjectPos].xvel -= 0x10000
+			if object.timer >= 180
+				recGoggles = 0
+				CallFunction(StageSetup_LoadStageState)
+				stage.activeList = PRESENTATION_STAGE
+				stage.listPos = 0
+				LoadStage()
 			end if
 			break
-		case 3
-			if object.outOfBounds == 0				
-				CreateTempObject(TypeName[Blank Object], 0, object.targetx, object.targety)
-				BoxCollisionTest(C_TOUCH, object.entityPos, -16, -16, 16, 16, object[tempObjectPos].entityPos, -16, -16, 16, 16)
-				if checkResult == 0
-					temp0 = object.targetx
-					temp0 -= object.xpos
-					temp1 = object.targety
-					temp1 -= object.ypos
-					ATan2(temp3, temp0, temp1)
-					Cos256(object.xvel, temp3)
-					Sin256(object.yvel, temp3)
-					object.xvel *= emerald.speed
-					object.xvel >>= 8
-					object.yvel *= emerald.speed
-					object.yvel >>= 8
-					object.xpos += object.xvel
-					object.ypos += object.yvel
-				else
-					object.xpos = object.targetx
-					object.ypos = object.targety
-					object.state = 0
-					object.xvel = 0
-					object.yvel = 0
-				end if
-			else
-				object.xpos = object.targetx
-				object.ypos = object.targety
-				object.state = 0
-				object.xvel = 0
-				object.yvel = 0
-			end if
-			break
-		end switch
-		break
 	end switch
 end event
 
 
 event ObjectDraw
-	switch object.propertyValue
-	case 0
-	case 1
-		if object.state < 4
-			temp0 = object.shake
-			temp0 &= 3
-			temp0--
-			if temp0 == 2
-				temp0 = 0
-			end if
-			temp0 <<= 16
-			temp0 += object.xpos
-			DrawSpriteXY(7, temp0, object.ypos)
-		end if
-		break
-	case 2
-		//why is the code to draw seven sprites so complex?
-		//well reader, it was an absolute fuck-on to try and get the emeralds in the front position
-		//to be drawn last
-		//there's two loops in here for fuck's sake
-		object.emdrawn = 0
-		temp6 = 0
-		while object.emdrawn < 127			
-			temp0 = 0
-			temp1 = object.angle
-			while temp0 < 7
-				temp4 = temp1
-				temp4 += 32
-				temp4 &= 511
-				temp4 >>= 6				
-				GetTableValue(temp5, temp6, emerald.order)
-				if temp4 == temp5
-					CallFunction(OriginalGem_DrawEmerald)
-					SetBit(object.emdrawn, temp0, 1)
-				end if
-				
-				//count emerald drawn
-				temp0++
-				temp1 += 73
-				temp1 &= 511
-			loop
-			temp6++
-		loop
-		break
-	end switch
+	DrawSpriteXY(0, object.xpos, object.ypos)
 end event
 
 
 event ObjectStartup
 	LoadSpriteSheet("HPZ/Objects.gif")
-	SpriteFrame(-6, -6, 12, 12, 99, 123)
-	SpriteFrame(-6, -6, 12, 12, 112, 123)
-	SpriteFrame(-6, -6, 12, 12, 125, 123)
-	SpriteFrame(-6, -6, 12, 12, 99, 136)
-	SpriteFrame(-6, -6, 12, 12, 112, 136)
-	SpriteFrame(-6, -6, 12, 12, 99, 149)
-	SpriteFrame(-6, -6, 12, 12, 112, 149)
 	SpriteFrame(-32, -16, 64, 32, 1, 223)
 	
 	SetTableValue(TypeName[Original Gem], DebugMode_ObjCount, DebugMode_TypesTable)
 	SetTableValue(OriginalGem_DebugDraw, DebugMode_ObjCount, DebugMode_DrawTable)
 	SetTableValue(OriginalGem_DebugSpawn, DebugMode_ObjCount, DebugMode_SpawnTable)
 	DebugMode_ObjCount++
-	
-	foreach (TypeName[Original Gem], arrayPos0, ALL_ENTITIES)
-		if recGoggles == 0
-			object[arrayPos0].propertyValue = 1
-		end if
-	next
 	
 end event
 
