@@ -490,6 +490,7 @@ event ObjectStartup
 				stage.waterState = 0
 			end if
 		end if
+		WaterPresent = 1
 	next
 	Water_value38 = 0
 	foreach (256, currentPlayer, ALL_ENTITIES)

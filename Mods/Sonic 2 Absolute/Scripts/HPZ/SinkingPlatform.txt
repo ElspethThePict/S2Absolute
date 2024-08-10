@@ -28,22 +28,25 @@ end function
 
 
 event ObjectMain
-	temp6 = object.ypos
+	temp6 = object.ypos	
+	object.value1 = stage.waterLevel
+	object.value1 <<= 16
 	switch object.state
 	case 0
 		if object.ypos <= object.value1
 			object.ypos = object.value1
 			object.yvel = 0
-			if object.value3 == 1
-				object.yvel = 0x10000
-				object.state = 1
-			end if
+			object.state = 2
 		else
 			object.yvel -= 0x3800
 			if object.yvel < -0x80000
 				object.yvel = -0x80000
 			end if
 			object.ypos += object.yvel
+		end if
+		if object.value3 == 1
+			object.yvel = 0x10000
+			object.state = 1
 		end if
 		break
 	case 1
@@ -52,6 +55,13 @@ event ObjectMain
 			object.state = 0
 		end if
 		break
+	case 2
+		object.ypos = object.value1
+		object.yvel = 0
+		if object.value3 == 1
+			object.yvel = 0x10000
+			object.state = 1
+		end if
 	end switch
 	object.value3 = 0
 	temp0 = object.ypos
