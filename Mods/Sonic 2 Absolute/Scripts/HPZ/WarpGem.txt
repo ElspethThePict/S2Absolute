@@ -1,7 +1,7 @@
 
 
 //-------Aliases-------//
-
+private alias object.value1 : object.timer
 // Static Values
 
 // Tables
@@ -28,25 +28,76 @@ event ObjectMain
 		switch object.state
 			case 0
 				foreach (GROUP_PLAYERS, currentPlayer, ACTIVE_ENTITIES)
-					BoxCollisionTest(C_BOX, object.entityPos, -24, -16, 24, 16, currentPlayer, HITBOX_AUTO, HITBOX_AUTO, HITBOX_AUTO, HITBOX_AUTO)
+					BoxCollisionTest(C_BOX, object.entityPos, -9, -16, 9, 16, currentPlayer, HITBOX_AUTO, HITBOX_AUTO, HITBOX_AUTO, HITBOX_AUTO)
 					if currentPlayer == 0
 						if checkResult == 1
 							object.state++
+							object[currentPlayer].animation = ANI_JUMPING
+							object[currentPlayer].state = PlayerObject_Blank
+							object[currentPlayer].xvel = 0
+							object[currentPlayer].yvel = -0x3800
+							object[currentPlayer].gravity = GRAVITY_AIR
+							object[currentPlayer].value15 = 0
+							object.timer = 300
+							PlaySfx(SfxName[Lift], 0)
+							foreach (TypeName[Infinite], arrayPos0, ALL_ENTITIES)
+								object[arrayPos0].type = TypeName[Blank Object]
+							next							
+							arrayPos0 = playerCount
+							arrayPos0 += currentPlayer
+							ResetObjectEntity(arrayPos0, TypeName[Red Stars], 0, object[currentPlayer].xpos, object[currentPlayer].ypos)
+							object[arrayPos0].priority = PRIORITY_ACTIVE
 						end if
 					end if
 				next
 				break
 			case 1
 				foreach (GROUP_PLAYERS, currentPlayer, ACTIVE_ENTITIES)
-					BoxCollisionTest(C_BOX, object.entityPos, -24, -16, 24, 16, currentPlayer, HITBOX_AUTO, HITBOX_AUTO, HITBOX_AUTO, HITBOX_AUTO)
+					BoxCollisionTest(C_BOX, object.entityPos, -9, -16, 9, 16, currentPlayer, HITBOX_AUTO, HITBOX_AUTO, HITBOX_AUTO, HITBOX_AUTO)
+					if object[currentPlayer].state == PlayerObject_Blank
+						temp0 = object.xpos
+						temp0 -= object[currentPlayer].xpos
+						temp0 >>= 5
+						object[currentPlayer].xpos += temp0
+						object.timer--
+						if object.timer <= 0
+							object.timer = 0
+							object.state = 0
+							object[currentPlayer].tileCollisions = 0
+							CreateTempObject(TypeName[Tube Path], 4, object.xpos, object.ypos)
+							object[tempObjectPos].value1 = currentPlayer
+							object[tempObjectPos].value2 = object.entityPos
+							object[tempObjectPos].value2++
+							PlaySfx(SfxName[Red Star], 0)
+						end if
+					else
+						object.state = 0
+					end if
 				next
 				break
 		end switch
 		break
 	case 1 //receiver
 		foreach (GROUP_PLAYERS, currentPlayer, ACTIVE_ENTITIES)
-			BoxCollisionTest(C_BOX, object.entityPos, -24, -16, 24, 16, currentPlayer, HITBOX_AUTO, HITBOX_AUTO, HITBOX_AUTO, HITBOX_AUTO)
-		next
+			BoxCollisionTest(C_BOX, object.entityPos, -9, -16, 9, 16, currentPlayer, HITBOX_AUTO, HITBOX_AUTO, HITBOX_AUTO, HITBOX_AUTO)
+			if object[currentPlayer].state == PlayerObject_Blank
+				BoxCollisionTest(C_TOUCH, object.entityPos, -9, -128, 9, 16, currentPlayer, HITBOX_AUTO, HITBOX_AUTO, HITBOX_AUTO, HITBOX_AUTO)
+				if checkResult == 1
+					object[currentPlayer].gravity = GRAVITY_AIR
+					object[currentPlayer].value18 = 4
+					object[currentPlayer].value15 = 0
+					object[currentPlayer].state = PlayerObject_HandleAir
+					object[currentPlayer].xpos = object.xpos
+					object[currentPlayer].tileCollisions = 1
+					object[currentPlayer].yvel = 0		
+					object[currentPlayer].xvel = 0
+					object[currentPlayer].speed = 0					
+					arrayPos0 = playerCount
+					arrayPos0 += currentPlayer
+					CallFunction(PlayerObject_RestorePowerup)
+				end if
+			end if
+		next		
 		break
 	end switch
 end event
