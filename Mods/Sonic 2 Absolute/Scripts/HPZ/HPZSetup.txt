@@ -535,19 +535,19 @@ function HPZSetup_LevelWrap
 			stage.deathBoundary <<= 16
 			HPZSetup_Ymark = 0
 		end if
-		if HPZSetup_wrapmark == 1
-			HPZSetup_wrapmark = 0
-			arrayPos0 = 32
-			while arrayPos0 < 0x4A0
-				if object[arrayPos0].ypos >= 0x680 0000
-					if object[arrayPos0].type != TypeName[Water]
-						object[arrayPos0].ypos -= 0x8000000
-						object[arrayPos0].value31 -= 0x8000000
-					end if
-				end if
-				arrayPos0++
-			loop
-		end if
+		//if HPZSetup_wrapmark == 1
+		//	HPZSetup_wrapmark = 0
+		//	arrayPos0 = 32
+		//	while arrayPos0 < 0x4A0
+		//		if object[arrayPos0].ypos >= 0x680 0000
+		//			if object[arrayPos0].type != TypeName[Water]
+		//				object[arrayPos0].ypos -= 0x8000000
+		//				object[arrayPos0].value31 -= 0x8000000
+		///			end if
+		//		end if
+		//		arrayPos0++
+		//	loop
+		//end if
 	end if
 end function
 

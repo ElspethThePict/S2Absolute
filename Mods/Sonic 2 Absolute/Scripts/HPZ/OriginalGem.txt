@@ -21,7 +21,7 @@ reserve function OriginalGem_DebugSpawn
 // Tables
 
 function OriginalGem_DebugDraw
-	DrawSprite(1)
+	DrawSprite(0)
 end function
 
 
