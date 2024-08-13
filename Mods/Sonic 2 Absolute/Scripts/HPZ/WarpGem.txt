@@ -1,13 +1,14 @@
 
 
 //-------Aliases-------//
-private alias object.value1 : object.timer
+private alias object.value1 : object.goal
 // Static Values
 
 // Tables
 
 reserve function WarpGem_DebugDraw
 reserve function WarpGem_DebugSpawn
+reserve function WarpGem_PseudoBlank
 
 // Static Values
 
@@ -17,9 +18,11 @@ function WarpGem_DebugDraw
 	DrawSprite(0)
 end function
 
+function WarpGem_PseudoBlank //just like PlayerObject_Blank, but there's objects looking for that and we want rid of them
+end function
 
 function WarpGem_DebugSpawn
-	CreateTempObject(TypeName[Warp Gem], 0, object.xpos, object.ypos)
+	CreateTempObject(TypeName[Warp Gem], 1, object.xpos, object.ypos)
 end function
 
 event ObjectMain
@@ -28,7 +31,7 @@ event ObjectMain
 		switch object.state
 			case 0
 				foreach (GROUP_PLAYERS, currentPlayer, ACTIVE_ENTITIES)
-					BoxCollisionTest(C_BOX, object.entityPos, -9, -16, 9, 16, currentPlayer, HITBOX_AUTO, HITBOX_AUTO, HITBOX_AUTO, HITBOX_AUTO)
+					BoxCollisionTest(C_BOX, object.entityPos, -15, -14, 12, 13, currentPlayer, HITBOX_AUTO, HITBOX_AUTO, HITBOX_AUTO, HITBOX_AUTO)
 					if currentPlayer == 0
 						if checkResult == 1
 							object.state++
@@ -38,7 +41,8 @@ event ObjectMain
 							object[currentPlayer].yvel = -0x3800
 							object[currentPlayer].gravity = GRAVITY_AIR
 							object[currentPlayer].value15 = 0
-							object.timer = 300
+							object.goal = object.ypos
+							object.goal -= 0x3C0000
 							PlaySfx(SfxName[Lift], 0)
 							foreach (TypeName[Infinite], arrayPos0, ALL_ENTITIES)
 								object[arrayPos0].type = TypeName[Blank Object]
@@ -53,15 +57,13 @@ event ObjectMain
 				break
 			case 1
 				foreach (GROUP_PLAYERS, currentPlayer, ACTIVE_ENTITIES)
-					BoxCollisionTest(C_BOX, object.entityPos, -9, -16, 9, 16, currentPlayer, HITBOX_AUTO, HITBOX_AUTO, HITBOX_AUTO, HITBOX_AUTO)
+					BoxCollisionTest(C_BOX, object.entityPos, -15, -14, 12, 13, currentPlayer, HITBOX_AUTO, HITBOX_AUTO, HITBOX_AUTO, HITBOX_AUTO)
 					if object[currentPlayer].state == PlayerObject_Blank
 						temp0 = object.xpos
 						temp0 -= object[currentPlayer].xpos
 						temp0 >>= 5
 						object[currentPlayer].xpos += temp0
-						object.timer--
-						if object.timer <= 0
-							object.timer = 0
+						if object[currentPlayer].ypos <= object.goal
 							object.state = 0
 							object[currentPlayer].tileCollisions = 0
 							CreateTempObject(TypeName[Tube Path], 4, object.xpos, object.ypos)
@@ -79,24 +81,37 @@ event ObjectMain
 		break
 	case 1 //receiver
 		foreach (GROUP_PLAYERS, currentPlayer, ACTIVE_ENTITIES)
-			BoxCollisionTest(C_BOX, object.entityPos, -9, -16, 9, 16, currentPlayer, HITBOX_AUTO, HITBOX_AUTO, HITBOX_AUTO, HITBOX_AUTO)
-			if object[currentPlayer].state == PlayerObject_Blank
-				BoxCollisionTest(C_TOUCH, object.entityPos, -9, -128, 9, 16, currentPlayer, HITBOX_AUTO, HITBOX_AUTO, HITBOX_AUTO, HITBOX_AUTO)
-				if checkResult == 1
-					object[currentPlayer].gravity = GRAVITY_AIR
-					object[currentPlayer].value18 = 4
-					object[currentPlayer].value15 = 0
-					object[currentPlayer].state = PlayerObject_HandleAir
-					object[currentPlayer].xpos = object.xpos
-					object[currentPlayer].tileCollisions = 1
-					object[currentPlayer].yvel = 0		
-					object[currentPlayer].xvel = 0
-					object[currentPlayer].speed = 0					
-					arrayPos0 = playerCount
-					arrayPos0 += currentPlayer
-					CallFunction(PlayerObject_RestorePowerup)
+			BoxCollisionTest(C_BOX, object.entityPos, -15, -14, 12, 13, currentPlayer, HITBOX_AUTO, HITBOX_AUTO, HITBOX_AUTO, HITBOX_AUTO)
+			switch object.state
+			case 0 //ready to receive
+				if object[currentPlayer].state == PlayerObject_Blank
+					BoxCollisionTest(C_TOUCH, object.entityPos, -9, -128, 9, 16, currentPlayer, HITBOX_AUTO, HITBOX_AUTO, HITBOX_AUTO, HITBOX_AUTO)
+					if checkResult == 1
+						object[currentPlayer].state = WarpGem_PseudoBlank
+						object[currentPlayer].xpos = object.xpos
+						object[currentPlayer].yvel = 0x3800
+						object[currentPlayer].xvel = 0
+						object[currentPlayer].speed = 0
+						object.state++
+					end if
 				end if
-			end if
+				break
+			case 1 //receiving
+				if checkResult == 1
+					if object[currentPlayer].state == WarpGem_PseudoBlank
+						object[currentPlayer].gravity = GRAVITY_AIR
+						object[currentPlayer].value18 = 4
+						object[currentPlayer].value15 = 0
+						object[currentPlayer].state = PlayerObject_HandleAir
+						object[currentPlayer].tileCollisions = 1	
+						arrayPos0 = playerCount
+						arrayPos0 += currentPlayer
+						CallFunction(PlayerObject_RestorePowerup)
+						object.state = 0
+					end if
+				end if
+				break
+			end switch
 		next		
 		break
 	end switch
@@ -110,7 +125,7 @@ end event
 
 event ObjectStartup
 	LoadSpriteSheet("HPZ/Objects4.gif")
-	SpriteFrame(-32, -16, 64, 32, 34, 1)
+	SpriteFrame(-32, -17, 44, 30, 68, 34)
 	
 	SetTableValue(TypeName[Warp Gem], DebugMode_ObjCount, DebugMode_TypesTable)
 	SetTableValue(WarpGem_DebugDraw, DebugMode_ObjCount, DebugMode_DrawTable)
