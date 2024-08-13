@@ -29,7 +29,7 @@ event ObjectMain
 	switch object.propertyValue
 	case 0 //sender
 		switch object.state
-			case 0
+			case 0 //ready to send
 				foreach (GROUP_PLAYERS, currentPlayer, ACTIVE_ENTITIES)
 					BoxCollisionTest(C_BOX, object.entityPos, -15, -14, 12, 13, currentPlayer, HITBOX_AUTO, HITBOX_AUTO, HITBOX_AUTO, HITBOX_AUTO)
 					if currentPlayer == 0
@@ -55,7 +55,7 @@ event ObjectMain
 					end if
 				next
 				break
-			case 1
+			case 1 //sending
 				foreach (GROUP_PLAYERS, currentPlayer, ACTIVE_ENTITIES)
 					BoxCollisionTest(C_BOX, object.entityPos, -15, -14, 12, 13, currentPlayer, HITBOX_AUTO, HITBOX_AUTO, HITBOX_AUTO, HITBOX_AUTO)
 					if object[currentPlayer].state == PlayerObject_Blank
