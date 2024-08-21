@@ -36,8 +36,8 @@ event ObjectMain
 				BoxCollisionTest(C_TOUCH, object.entityPos, -7, -7, 7, 7, currentPlayer, HITBOX_AUTO, HITBOX_AUTO, HITBOX_AUTO, HITBOX_AUTO)
 				if checkResult == 1
 					object.state = 1
-					SetBit(specialStage.emeralds, 8, 1) //Eighth bit as a flag. We still have all the emeralds, but we've put down specific ones
-					SetBit(specialStage.emeralds, object.propertyValue, 0) //StageSetup will return any emeralds on level load
+					SetBit(specialStage.emeralds, 7, 1) //Eighth bit as a flag. We still have all the emeralds, but we've put down specific ones
+					SetBit(specialStage.emeralds, object.propertyValue, 0)
 					if PlayerObject_SuperState == 1
 						PlayerObject_SuperState = 2
 					end if
@@ -50,7 +50,7 @@ end event
 
 
 event ObjectDraw
-	DrawSprite(0)
+	DrawSprite(7)
 	if object.state == 1
 		DrawSprite(object.propertyValue)
 	end if
@@ -59,14 +59,14 @@ end event
 
 event ObjectStartup
 	LoadSpriteSheet("HPZ/Objects3.gif")
-	SpriteFrame(-13, -7, 26, 26, 1, 47) // 0 frame
-	SpriteFrame(-6, -6, 12, 12, 28, 47) // 1 cyan
-	SpriteFrame(-6, -6, 12, 12, 41, 47) // 2 purple
-	SpriteFrame(-6, -6, 12, 12, 54, 47) // 3 red
-	SpriteFrame(-6, -6, 12, 12, 28, 60) // 4 magenta
-	SpriteFrame(-6, -6, 12, 12, 41, 60) // 5 yellow
-	SpriteFrame(-6, -6, 12, 12, 28, 73) // 6 green
-	SpriteFrame(-6, -6, 12, 12, 41, 73) // 7 white
+	SpriteFrame(-6, -6, 12, 12, 28, 47) // 0 cyan
+	SpriteFrame(-6, -6, 12, 12, 41, 47) // 1 purple
+	SpriteFrame(-6, -6, 12, 12, 54, 47) // 2 red
+	SpriteFrame(-6, -6, 12, 12, 28, 60) // 3 magenta
+	SpriteFrame(-6, -6, 12, 12, 41, 60) // 4 yellow
+	SpriteFrame(-6, -6, 12, 12, 28, 73) // 5 green
+	SpriteFrame(-6, -6, 12, 12, 41, 73) // 6 white
+	SpriteFrame(-13, -7, 26, 26, 1, 47) // 7 frame
 	
 	SetTableValue(TypeName[Pedestal], DebugMode_ObjCount, DebugMode_TypesTable)
 	SetTableValue(Pedestal_DebugDraw, DebugMode_ObjCount, DebugMode_DrawTable)
