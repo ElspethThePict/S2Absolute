@@ -422,7 +422,7 @@ event ObjectMain
 				CallFunction(TransportTube_Function135)
 			end if
 		end if
-		if object[currentPlayer].state != 1
+		if object[currentPlayer].state != PlayerObject_Blank
 			object.state = 1
 			object.priority = PRIORITY_ACTIVE_BOUNDS
 		end if
