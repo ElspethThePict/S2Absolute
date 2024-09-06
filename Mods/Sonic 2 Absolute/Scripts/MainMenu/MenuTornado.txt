@@ -199,7 +199,7 @@ event ObjectStartup
 	versionone = 	1
 	versiontwo = 	2
 	versionthree = 	2
-	versionsub = 	024 08 21 23
+	versionsub = 	024 09 06 14
 end event
 
 event RSDKDraw
