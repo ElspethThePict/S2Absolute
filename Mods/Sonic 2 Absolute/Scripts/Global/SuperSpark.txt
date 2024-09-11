@@ -96,7 +96,13 @@ event ObjectMain
 				break
 			end switch
 			break
-		case 2 //AfterImages
+		case 2 //AfterImages			
+			//Store current position
+			object.value1++
+			object.value1 &= 7
+			SetTableValue(object[-playerCount].xpos, object.value1, image.xpos)
+			SetTableValue(object[-playerCount].ypos, object.value1, image.ypos)
+			
 			if object.state == 0
 				object.drawOrder = -1
 				object.inkEffect = INK_ALPHA
@@ -191,12 +197,6 @@ event ObjectDraw
 					object.frame = object[-playerCount].value44
 				end if
 			end if
-			
-			//Store current position
-			object.value1++
-			object.value1 &= 7
-			SetTableValue(object[-playerCount].xpos, object.value1, image.xpos)
-			SetTableValue(object[-playerCount].ypos, object.value1, image.ypos)
 
 			if object[0].type != TypeName[Debug Mode]
 				temp0 = object.value1
