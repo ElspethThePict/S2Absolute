@@ -99,7 +99,7 @@ namespace S2ObjectDefinitions.Credits
 		public override Sprite GetSprite(ObjectEntry obj)
 		{
 			// we're simplying the object.frame process by combining Knuckles's sprites into 1
-			return sprites[obj.PropertyValue];
+			return (obj.PropertyValue < 10) ? sprites[obj.PropertyValue] : new Sprite(LevelData.UnknownSprite);
 		}
 	}
 }
