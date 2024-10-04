@@ -51,7 +51,7 @@ event ObjectMain
 			specialStage.emeralds = 0
 			specialStage.nextZone = 0
 			stage.activeList = PRESENTATION_STAGE
-			stage.listPos = 6
+			stage.listPos = StageName[P - MAIN MENU]
 			LoadStage()
 		end if
 		SetScreenFade(0, 0, 0, object.value0)
@@ -71,7 +71,7 @@ event ObjectMain
 			specialStage.emeralds = 0
 			specialStage.nextZone = 0
 			stage.activeList = PRESENTATION_STAGE
-			stage.listPos = 5
+			stage.listPos = StageName[P - LEVEL SELECT]
 			LoadStage()
 		end if
 		SetScreenFade(0, 0, 0, object.value0)

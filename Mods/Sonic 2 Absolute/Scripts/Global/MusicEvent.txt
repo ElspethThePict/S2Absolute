@@ -274,7 +274,7 @@ event ObjectMain
                     stage.activeList = PRESENTATION_STAGE                    
                     switch options.gameMode
                         case 2 //Time Attack Menu
-                            stage.listPos = 7
+                            stage.listPos = StageName[P - TIME ATTACK]
 							player.score = 0
                             break
                         case 3 //Handle score save and back to Arcade menu
@@ -284,15 +284,15 @@ event ObjectMain
                             saveRAM[640] = temp0
 							saveRAM[650] = stage.listPos
                             stage.activeList = PRESENTATION_STAGE
-                            stage.listPos = 8
+                            stage.listPos = StageName[P - ARCADE]
                             break
 						case 5
 							saveRAM[801] += object[0].value0
-							stage.listPos = 6
+							stage.listPos = StageName[P - MAIN MENU]
 							player.score = 0
 							break
 						default
-							stage.listPos = 6
+							stage.listPos = StageName[P - MAIN MENU]
 							player.score = 0
 							break
                     end switch                    

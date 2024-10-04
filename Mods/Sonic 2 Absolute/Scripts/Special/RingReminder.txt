@@ -112,7 +112,7 @@ event ObjectMain
 					else
 						StopMusic()
 						stage.activeList = PRESENTATION_STAGE
-						stage.listPos = 6							
+						stage.listPos = StageName[P - MAIN MENU]						
 						switch options.gameMode
 							case 3 //Handle score save and back to Arcade menu
 								saveRAM[630] = player.score
@@ -121,7 +121,7 @@ event ObjectMain
 								saveRAM[640] = temp0
 								saveRAM[650] = specialStage.nextZone
 								stage.activeList = PRESENTATION_STAGE
-								stage.listPos = 8
+								stage.listPos = StageName[P - ARCADE]
 								break
 							default
 								player.score = 0

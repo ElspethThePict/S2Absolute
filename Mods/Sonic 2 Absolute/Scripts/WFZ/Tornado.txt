@@ -102,7 +102,7 @@ function Tornade_EndWFZ
 				LoadStage()
 			else
 				stage.activeList = PRESENTATION_STAGE
-				stage.listPos = 0
+				stage.listPos = StageName[P - TITLE SCREEN]
 				LoadStage()
 			end if
 		end if
@@ -496,7 +496,7 @@ event ObjectMain
 					LoadStage()
 				else
 					stage.activeList = PRESENTATION_STAGE
-					stage.listPos = 0
+					stage.listPos = StageName[P - TITLE SCREEN]
 					LoadStage()
 				end if
 			

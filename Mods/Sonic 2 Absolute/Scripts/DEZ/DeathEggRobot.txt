@@ -817,7 +817,7 @@ event ObjectMain
 						saveRAM[640] = temp0
 						saveRAM[650] = 20
 						stage.activeList = PRESENTATION_STAGE
-						stage.listPos = 8
+						stage.listPos = StageName[P - ARCADE]
 						break						
 					case 1
 						arrayPos1 = options.saveSlot
@@ -827,7 +827,7 @@ event ObjectMain
 						saveRAM[arrayPos1] = 22
 					default
 						stage.activeList = PRESENTATION_STAGE
-						stage.listPos = 1
+						stage.listPos = StageName[P - ENDING]
 						break
 				end switch
 				WriteSaveRAM()

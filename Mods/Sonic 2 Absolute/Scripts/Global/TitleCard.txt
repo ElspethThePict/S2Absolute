@@ -204,9 +204,9 @@ event ObjectMain
 		else
 			stage.activeList = PRESENTATION_STAGE
 			if credits.screen > 0
-				stage.listPos = 2
+				stage.listPos = StageName[P - STAFF CREDITS]
 			else
-				stage.listPos = 0
+				stage.listPos = StageName[P - TITLE SCREEN]
 				StopMusic()
 			end if
 			LoadStage()
@@ -232,7 +232,7 @@ event ObjectMain
 		else
 			if credits.screen > 0
 				stage.activeList = PRESENTATION_STAGE
-				stage.listPos = 2
+				stage.listPos = StageName[P - STAFF CREDITS]
 			else
 				StopMusic()
 			end if
@@ -412,7 +412,7 @@ event ObjectStartup
 				CheckCurrentStageFolder("ZoneM")
 				if checkResult == 0
 					stage.activeList = PRESENTATION_STAGE
-					stage.listPos = 0
+					stage.listPos = StageName[P - TITLE SCREEN]
 					LoadStage()
 				end if
 			end if

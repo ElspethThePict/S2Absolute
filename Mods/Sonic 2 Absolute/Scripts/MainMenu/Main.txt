@@ -495,7 +495,7 @@ function Menu.firstcontrol
 	end if
 	if inputPress.buttonB == 1
 		stage.activeList = PRESENTATION_STAGE
-		stage.listPos = 0
+		stage.listPos = StageName[P - TITLE SCREEN]
 		object.state = Menu.LoadOut
 	end if
 end function
@@ -528,13 +528,13 @@ function ModesControl
 		switch menu.modes.highlight
 			case 0 //Time Attack
 				stage.activeList = PRESENTATION_STAGE
-				stage.listPos = 7				
+				stage.listPos = StageName[P - TIME ATTACK]		
 				menu.loadcall = 0
 				object.state = Menu.LoadOut
 				break
 			case 1 //Arcade
 				stage.activeList = PRESENTATION_STAGE
-				stage.listPos = 8				
+				stage.listPos = StageName[P - ARCADE]		
 				menu.loadcall = 0
 				object.state = Menu.LoadOut
 				break
@@ -1431,7 +1431,7 @@ function ExtrasControl
 				player.lives = 3
 				player.score = 0
 				player.scoreBonus = 50000
-				stage.listPos = 1
+				stage.listPos = StageName[B - EMERALD HILL ZONE 3]
 
 				stage.activeList = BONUS_STAGE
 				specialStage.emeralds = 0

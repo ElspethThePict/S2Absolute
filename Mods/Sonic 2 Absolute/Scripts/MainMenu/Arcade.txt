@@ -179,7 +179,7 @@ event ObjectDraw
 			else
 				StopMusic()
 				stage.activeList = PRESENTATION_STAGE
-				stage.listPos = 6
+				stage.listPos = StageName[P - MAIN MENU]
 				saveRAM[620] = char.select
 				WriteSaveRAM()
 				LoadStage()

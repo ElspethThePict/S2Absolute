@@ -113,7 +113,7 @@ event ObjectMain
 			starPostID = 0
 			object.direction = FLIP_NONE
 			stage.activeList = PRESENTATION_STAGE
-			stage.listPos = 6
+			stage.listPos = StageName[P - MAIN MENU]
 			LoadStage()
 		end if
 		break

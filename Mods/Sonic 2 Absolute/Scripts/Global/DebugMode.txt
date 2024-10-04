@@ -173,7 +173,7 @@ event ObjectMain
 		if DebugMode_ExitTimer == 384
 			starPostID = 0
 			stage.activeList = PRESENTATION_STAGE
-			stage.listPos = 5
+			stage.listPos = StageName[P - LEVEL SELECT]
 			LoadStage()
 		end if
 	end if

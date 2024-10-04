@@ -197,7 +197,7 @@ event ObjectMain
 				vs.rings2P = object[0].value0
 			end if
 			stage.activeList = PRESENTATION_STAGE
-			stage.listPos = 3
+			stage.listPos = StageName[P - 2P VS]
 			LoadStage()
 		end if
 		if object.value0 > 0

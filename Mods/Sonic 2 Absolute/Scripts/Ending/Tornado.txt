@@ -374,7 +374,7 @@ event ObjectMain
 			object.value0 += 12
 		else
 			stage.activeList = PRESENTATION_STAGE
-			stage.listPos = 2
+			stage.listPos = StageName[P - STAFF CREDITS]
 			LoadStage()
 		end if
 		if object.value0 > 0

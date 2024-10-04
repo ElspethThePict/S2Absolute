@@ -41,13 +41,13 @@ event ObjectMain
 				stage.activeList = PRESENTATION_STAGE
 				if options.vsMode == 0
 					if player.continues == 0
-						stage.listPos = 6
+						stage.listPos = StageName[P - MAIN MENU]
 						LoadStage()
 					else
-						stage.listPos = 4
+						stage.listPos = StageName[P - CONTINUE SCREEN]
 					end if
 				else
-					stage.listPos = 3
+					stage.listPos = StageName[P - 2P VS]
 					if vs.playerID == 0
 						if object.entityPos == 0
 							player.score = 0
@@ -111,7 +111,7 @@ event ObjectMain
 					end if
 					starPostID = 0
 					stage.activeList = PRESENTATION_STAGE
-					stage.listPos = 3
+					stage.listPos = StageName[P - 2P VS]
 				end if
 				if options.gameMode == 1
 					arrayPos1 = options.saveSlot
@@ -203,7 +203,7 @@ event ObjectMain
 			saveRAM[640] = temp0
 			saveRAM[650] = stage.listPos
 			stage.activeList = PRESENTATION_STAGE
-			stage.listPos = 8
+			stage.listPos = StageName[P - ARCADE]
 			break
 		end if
 		SetScreenFade(0, 0, 0, object.value3)

@@ -279,7 +279,7 @@ event ObjectMain
 			stage.listPos++
 			if stage.listPos > 20
 				stage.activeList = PRESENTATION_STAGE
-				stage.listPos = 6
+				stage.listPos = StageName[P - MAIN MENU]
 			end if
 			switch options.gameMode
 				case 1
@@ -330,7 +330,7 @@ event ObjectMain
 					specialStage.emeralds = 0
 					specialStage.nextZone = 0
 					stage.activeList = PRESENTATION_STAGE
-					stage.listPos = 7
+					stage.listPos = StageName[P - TIME ATTACK]
 					LoadStage()
 					break
 				case 5
@@ -344,7 +344,7 @@ event ObjectMain
 					specialStage.emeralds = 0
 					specialStage.nextZone = 0
 					stage.activeList = PRESENTATION_STAGE
-					stage.listPos = 6
+					stage.listPos = StageName[P - MAIN MENU]
 					LoadStage()
 					break
 					
@@ -357,7 +357,7 @@ event ObjectMain
 						LoadStage()
 					else
 						stage.activeList = PRESENTATION_STAGE
-						stage.listPos = 0
+						stage.listPos = StageName[P - TITLE SCREEN]
 						LoadStage()
 					end if
 					break

@@ -101,7 +101,7 @@ event ObjectMain
 			specialStage.nextZone = 0
 			if end.highlight == 1
 				stage.activeList = PRESENTATION_STAGE
-				stage.listPos = 6
+				stage.listPos = StageName[P - MAIN MENU]
 			end if
 			LoadStage()
 		end if
