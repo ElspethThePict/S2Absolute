@@ -49,9 +49,9 @@ event ObjectMain
 			foreach (GROUP_PLAYERS, currentPlayer, ACTIVE_ENTITIES)
 				BoxCollisionTest(C_BOX, object.entityPos, -24, -16, 24, 16, currentPlayer, HITBOX_AUTO, HITBOX_AUTO, HITBOX_AUTO, HITBOX_AUTO)
 			next
-			CallFunction(StarPost_FadetoWhite)
-			object.timer++
-			if object.timer >= 180
+			SetClassicFade(color7, color7, color7, object.timer)
+			object.timer += 8
+			if object.timer >= 784
 				recGoggles = 0
 				CallFunction(StageSetup_LoadStageState)
 				stage.activeList = PRESENTATION_STAGE

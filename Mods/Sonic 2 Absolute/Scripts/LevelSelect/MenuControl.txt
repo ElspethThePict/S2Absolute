@@ -47,9 +47,6 @@ public alias saveRAM[300] : saved.SuperMaxDash
 // Function declarations
 reserve function MenuControl_Function0
 reserve function MenuControl_Function1
-reserve function StarPost_FadetoWhite
-reserve function StarPost_processColor
-reserve function StarPost_getColorAdd
 
 // Static Values
 public value MenuControl_value2 = 0;
@@ -313,106 +310,6 @@ function MenuControl_Function1
 	end if
 end function
 
-function StarPost_FadetoWhite
-	temp0 = 0
-	while temp0 < 8
-		temp1 = 0
-		while temp1 < 256
-			GetPaletteEntry(temp0, temp1, object.value11)			
-			CallFunction(StarPost_processColor)			
-			SetPaletteEntry(temp0, temp1, object.value11)
-			temp1++
-		loop
-	temp0++
-	loop	
-end function
-
-function StarPost_processColor	
-	temp3 = object.value11
-	temp3 >>= 16
-	temp3 &= 0xFF
-	temp4 = object.value11
-	temp4 >>= 8
-	temp4 &= 0xFF
-	temp5 = object.value11
-	temp5 &= 0xFF
-	
-	if temp3 < color7
-		temp6 = temp3
-		CallFunction(StarPost_getColorAdd)
-		temp3 += temp2
-		if temp3 > color7
-			temp3 = color7
-		end if
-	else
-		if temp4 < color7
-			temp6 = temp4
-			CallFunction(StarPost_getColorAdd)
-			temp4 += temp2
-			if temp4 > color7
-				temp4 = color7
-			end if
-		else
-			if temp5 < color7
-				temp6 = temp5
-				CallFunction(StarPost_getColorAdd)
-				temp5 += temp2
-				if temp5 > color7
-					temp5 = color7
-				end if
-			else
-				temp3 = color7
-				temp4 = color7
-				temp5 = color7
-			end if
-		end if	
-	end if
-	
-	object.value11 = temp3
-	object.value11 <<= 8
-	object.value11 += temp4
-	object.value11 <<= 8
-	object.value11 += temp5
-end function
-
-function StarPost_getColorAdd
-	if saved.graphics == 2
-		if temp6 <= color7
-			temp2 = color7
-			temp2 -= temp6
-		end if
-		if temp6 <= color6
-			temp2 = color7
-			temp2 -= color6
-		end if
-		if temp6 <= color5
-			temp2 = color6
-			temp2 -= color5
-		end if
-		if temp6 <= color4
-			temp2 = color5
-			temp2 -= color4
-		end if
-		if temp6 <= color3
-			temp2 = color4
-			temp2 -= color3
-		if temp6 <= color2
-			temp2 = color3
-			temp2 -= color2
-		end if
-		if temp6 <= color1
-			temp2 = color2
-			temp2 -= color1
-		end if
-		end if
-		if temp6 == 0
-			temp2 = color1
-		end if
-	else
-		temp2 = color1
-	end if
-end function
-
 event ObjectMain
 	object[+1].xpos = screen.xcenter
 	object[+1].xpos += 118
@@ -661,8 +558,7 @@ event ObjectMain
 		if object.value0 < 768
 			music.volume -= 10
 			object.value0 += 8
-			CallFunction(StarPost_FadetoWhite)
-			//SetScreenFade(208, 255, 224, object.value0)
+			SetClassicFade(color7, color7, color7, object.value0)
 		else
 			StopMusic()
 			temp0 = object.value3
@@ -674,7 +570,7 @@ event ObjectMain
 			stage.activeList = temp1
 			stage.listPos = temp2
 			LoadStage()
-			//SetScreenFade(208, 255, 224, 255)
+			SetClassicFade(color7, color7, color7, 255)
 		end if
 		break
 	end switch

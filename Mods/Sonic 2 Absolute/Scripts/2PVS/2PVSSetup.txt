@@ -79,19 +79,19 @@ event ObjectMain
 		if object.value0 < 768
 			music.volume -= 10
 			object.value0 += 8
-			SetScreenFade(208, 255, 224, object.value0)
+			SetClassicFade(color7, color7, color7, object.value0)
 		else
 			vs.checkpoint1P = 0
 			vs.checkpoint2P = 0
-			fadeColor = 208
+			fadeColor = color7
 			fadeColor <<= 16
-			temp0 = 255
+			temp0 = color7
 			temp0 <<= 8
 			fadeColor += temp0
-			fadeColor += 224
+			fadeColor += color7
 			StopMusic()
 			LoadStage()
-			SetScreenFade(208, 255, 224, 255)
+			SetClassicFade(color7, color7, color7, 255)
 		end if
 		break
 	end switch
