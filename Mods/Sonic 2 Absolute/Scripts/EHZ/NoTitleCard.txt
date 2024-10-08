@@ -227,7 +227,7 @@ event ObjectMain
 			end if
 			LoadStage()
 		end if
-		SetScreenFade(0, 0, 0, object.value9)
+		SetClassicFade(0, 0, 0, object.value9)
 		break	
 	end switch
 end event
@@ -236,7 +236,7 @@ end event
 event ObjectDraw
 	if object.state < 7
 		SetActivePalette(0, 0, screen.ysize)
-		DrawRect(0, 0, screen.xsize, screen.ysize, 0, 0, 0, object.alpha)
+		ClassicTint(0, 0, screen.xsize, screen.ysize, 0, 0, 0, object.alpha)
 	end if
 	if object.state > 8
 		DrawSpriteScreenXY(0, object.value1, 64)

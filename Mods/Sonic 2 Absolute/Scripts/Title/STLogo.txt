@@ -451,7 +451,7 @@ event ObjectDraw
 		ClearScreen(1)
 		DrawSprite(0)
 		DrawSprite(1)
-		DrawRect(0, 0, screen.xsize, screen.ysize, 0, 0, 0, object.alpha)
+		ClassicTint(0, 0, screen.xsize, screen.ysize, 0, 0, 0, object.alpha)
 		break
 	case 2
 		ClearScreen(1)

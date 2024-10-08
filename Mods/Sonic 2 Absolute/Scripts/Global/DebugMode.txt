@@ -169,7 +169,7 @@ event ObjectMain
 		end if
 	else
 		DebugMode_ExitTimer += 8
-		SetScreenFade(0, 0, 0, DebugMode_ExitTimer)
+		SetClassicFade(0, 0, 0, DebugMode_ExitTimer)
 		if DebugMode_ExitTimer == 384
 			starPostID = 0
 			stage.activeList = PRESENTATION_STAGE

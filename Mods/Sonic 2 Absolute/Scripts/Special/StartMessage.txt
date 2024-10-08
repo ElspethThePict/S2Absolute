@@ -34,7 +34,7 @@ event ObjectMain
 			object.value7 = 0
 			object.state = 3
 			object.value0 = 256
-			SetScreenFade(object.value1, object.value2, object.value3, object.value0)
+			SetClassicFade(object.value1, object.value2, object.value3, object.value0)
 		end if
 		break
 	case 1
@@ -74,7 +74,7 @@ event ObjectMain
 			CreateTempObject(TypeName[Text Message], 4, 0, 0)
 			object[tempObjectPos].drawOrder = 5
 		end if
-		SetScreenFade(object.value1, object.value2, object.value3, object.value0)
+		SetClassicFade(object.value1, object.value2, object.value3, object.value0)
 		PlayMusic(0)
 		break
 	case 4
@@ -89,7 +89,7 @@ event ObjectMain
 			object.state++			
 			stage.pauseEnabled = 1
 		end if
-		SetScreenFade(object.value1, object.value2, object.value3, object.value0)
+		SetClassicFade(object.value1, object.value2, object.value3, object.value0)
 		break
 	case 5
 		if object.ypos < 108

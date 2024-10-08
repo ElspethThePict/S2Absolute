@@ -478,7 +478,7 @@ event ObjectDraw
 				end switch
 				break	
 		end switch
-		DrawRect(0, 0, screen.xsize, screen.ysize, 0, 0, 0, pause.fadeout)
+		ClassicTint(0, 0, screen.xsize, screen.ysize, 0, 0, 0, pause.fadeout)
 		
 		//DrawNumbers(12, screen.xcenter, screen.ycenter, object.state, 6, 8, 0)
 		SetActivePalette(0, 0, screen.ysize)

@@ -801,7 +801,7 @@ event ObjectMain
 			music.volume--
 			object.value16 += 2
 			if object.propertyValue == 0
-				SetScreenFade(255, 255, 255, object.value16)
+				SetClassicFade(color7, color7, color7, object.value16)
 			end if
 			if object.value16 >= 768
 				if stage.debugMode == 0
@@ -840,7 +840,7 @@ event ObjectMain
 			music.volume--
 			object.value16 += 2
 			if object.propertyValue == 0
-				SetScreenFade(255, 255, 255, object.value16)
+				SetClassicFade(color7, color7, color7, object.value16)
 			end if
 			if object.value16 >= 768
 				if stage.debugMode == 0

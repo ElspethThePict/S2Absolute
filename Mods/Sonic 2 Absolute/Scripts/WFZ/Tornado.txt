@@ -46,7 +46,7 @@ function Tornade_EndWFZ
 	if Tornado_TriggerEnd > 0
 		music.volume -= 2
 		Tornado_TriggerEnd += 4
-		SetScreenFade(0, 0, 0, Tornado_TriggerEnd)
+		SetClassicFade(0, 0, 0, Tornado_TriggerEnd)
 		if Tornado_TriggerEnd >= 384
 			StopMusic()
 			fadeColor = 0
@@ -440,7 +440,7 @@ event ObjectMain
 		else
 			music.volume -= 2
 			Tornado_TriggerEnd += 4
-			SetScreenFade(0, 0, 0, Tornado_TriggerEnd)
+			SetClassicFade(0, 0, 0, Tornado_TriggerEnd)
 			if Tornado_TriggerEnd == 384
 				StopMusic()
 				fadeColor = 0

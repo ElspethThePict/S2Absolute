@@ -286,7 +286,7 @@ event ObjectMain
 		object.alpha = 0
 		object.inkEffect = INK_ALPHA
 		object.value0 = 320
-		SetScreenFade(0, 0, 0, object.value0)
+		SetClassicFade(0, 0, 0, object.value0)
 		object.state++
 		break
 	case 1
@@ -298,7 +298,7 @@ event ObjectMain
 			object.value2 = 256
 			object.state++
 		end if
-		SetScreenFade(0, 0, 0, object.value0)
+		SetClassicFade(0, 0, 0, object.value0)
 		break
 	case 2
 		object.frame++
@@ -348,14 +348,14 @@ event ObjectMain
 	case 7
 		if object.value0 < 256
 			object.value0 += 8
-			SetScreenFade(0, 0, 0, object.value0)
+			SetClassicFade(0, 0, 0, object.value0)
 		else
 			if saved.Title == 1
 				ResetObjectEntity(object.entityPos, TypeName[K Logo], 0, object.xpos, object.ypos)
 			else
 				ResetObjectEntity(object.entityPos, TypeName[ST Screen], 0, object.xpos, object.ypos)
 			end if
-			SetScreenFade(0, 0, 0, 255)
+			SetClassicFade(0, 0, 0, 255)
 		end if
 		break
 	end switch

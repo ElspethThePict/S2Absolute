@@ -54,7 +54,7 @@ event ObjectMain
 			stage.listPos = StageName[P - MAIN MENU]
 			LoadStage()
 		end if
-		SetScreenFade(0, 0, 0, object.value0)
+		SetClassicFade(0, 0, 0, object.value0)
 		break
 	case 2
 		object.value0 += 8
@@ -74,7 +74,7 @@ event ObjectMain
 			stage.listPos = StageName[P - LEVEL SELECT]
 			LoadStage()
 		end if
-		SetScreenFade(0, 0, 0, object.value0)
+		SetClassicFade(0, 0, 0, object.value0)
 		break
 	case 3
 		object.value0 += 8
@@ -85,7 +85,7 @@ event ObjectMain
 			stage.listPos = 4
 			LoadStage()
 		end if
-		SetScreenFade(0, 0, 0, object.value0)
+		SetClassicFade(0, 0, 0, object.value0)
 		break
 	case 4
 		object.value0 += 8
@@ -109,7 +109,7 @@ event ObjectMain
 			credits.screen = 0
 			LoadStage()
 		end if
-		SetScreenFade(0, 0, 0, object.value0)
+		SetClassicFade(0, 0, 0, object.value0)
 		break
 	end switch
 end event

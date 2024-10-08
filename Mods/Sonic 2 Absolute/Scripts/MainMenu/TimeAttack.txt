@@ -498,7 +498,7 @@ event ObjectMain
 				stage.player2Enabled = 0
 				LoadStage()
 			end if
-			SetScreenFade(0, 0, 0, menufade)					
+			SetClassicFade(0, 0, 0, menufade)					
 			break
 		case 100 // Exiting
 			if menufade < 320
@@ -523,7 +523,7 @@ event ObjectMain
 				stage.listPos = StageName[P - MAIN MENU]
 				LoadStage()
 			end if
-			SetScreenFade(0, 0, 0, menufade)					
+			SetClassicFade(0, 0, 0, menufade)					
 			break
 	end switch
 end event

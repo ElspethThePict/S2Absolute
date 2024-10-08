@@ -397,7 +397,7 @@ function Menu.LoadIn
 		menu.fade += 16
 		temp0 = 320
 		temp0 -= menu.fade
-		SetScreenFade(0, 0, 0, temp0)
+		SetClassicFade(0, 0, 0, temp0)
 	else
 		object.state = Menu.firstcontrol
 		PlayMusic(0)
@@ -425,7 +425,7 @@ function Menu.LoadOut
 				break
 		end switch
 	end if
-	SetScreenFade(0, 0, 0, menu.fade)
+	SetClassicFade(0, 0, 0, menu.fade)
 end function
 
 

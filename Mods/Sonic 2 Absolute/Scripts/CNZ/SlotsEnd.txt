@@ -105,7 +105,7 @@ event ObjectMain
 			end if
 			LoadStage()
 		end if
-		SetScreenFade(0, 0, 0, object.value9)
+		SetClassicFade(0, 0, 0, object.value9)
 		break	
 	end switch
 end event

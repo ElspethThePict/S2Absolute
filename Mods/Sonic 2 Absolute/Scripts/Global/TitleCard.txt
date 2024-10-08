@@ -53,7 +53,7 @@ event ObjectMain
 			object.state = 7
 			object.value0 = 272
 			stage.state = STAGE_RUNNING
-			SetScreenFade(0, 0, 0, 255)
+			SetClassicFade(0, 0, 0, 255)
 		else
 			object.state++
 		end if
@@ -185,7 +185,7 @@ event ObjectMain
 	case 7
 		if object.value0 > 0
 			object.value0 -= 16
-			SetScreenFade(0, 0, 0, object.value0)
+			SetClassicFade(0, 0, 0, object.value0)
 		else
 			currentPlayer = 0
 			while currentPlayer < playerCount
@@ -211,7 +211,7 @@ event ObjectMain
 			end if
 			LoadStage()
 		end if
-		SetScreenFade(0, 0, 0, object.value0)
+		SetClassicFade(0, 0, 0, object.value0)
 		break
 	case 9
 		object.value1 += 32
@@ -238,7 +238,7 @@ event ObjectMain
 			end if
 			LoadStage()
 		end if
-		SetScreenFade(0, 0, 0, object.value0)
+		SetClassicFade(0, 0, 0, object.value0)
 		break
 	case 11
 	end switch
